@@ -10,7 +10,7 @@ namespace Entidades
     {
         public Dueño(): base ()
         {
-
+            
         }
      
         public Dueño(string usuario,string password) : base(usuario,password)

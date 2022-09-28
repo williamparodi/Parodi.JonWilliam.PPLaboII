@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             this.btn_Login = new System.Windows.Forms.Button();
             this.txt_Password = new System.Windows.Forms.TextBox();
             this.txt_Usuario = new System.Windows.Forms.TextBox();
@@ -35,17 +36,21 @@
             // 
             // btn_Login
             // 
+            this.btn_Login.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.btn_Login.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btn_Login.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_Login.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btn_Login.Location = new System.Drawing.Point(296, 278);
             this.btn_Login.Name = "btn_Login";
             this.btn_Login.Size = new System.Drawing.Size(162, 49);
             this.btn_Login.TabIndex = 0;
             this.btn_Login.Text = "LOGIN";
-            this.btn_Login.UseVisualStyleBackColor = true;
+            this.btn_Login.UseVisualStyleBackColor = false;
             this.btn_Login.Click += new System.EventHandler(this.btn_Login_Click);
             // 
             // txt_Password
             // 
+            this.txt_Password.BackColor = System.Drawing.Color.PaleTurquoise;
             this.txt_Password.Location = new System.Drawing.Point(296, 207);
             this.txt_Password.Name = "txt_Password";
             this.txt_Password.PasswordChar = '*';
@@ -55,6 +60,7 @@
             // 
             // txt_Usuario
             // 
+            this.txt_Usuario.BackColor = System.Drawing.Color.PaleTurquoise;
             this.txt_Usuario.Location = new System.Drawing.Point(296, 139);
             this.txt_Usuario.Name = "txt_Usuario";
             this.txt_Usuario.PlaceholderText = "Ingrese usuario";
@@ -66,11 +72,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.txt_Usuario);
             this.Controls.Add(this.txt_Password);
             this.Controls.Add(this.btn_Login);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FrmLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.ResumeLayout(false);
             this.PerformLayout();
