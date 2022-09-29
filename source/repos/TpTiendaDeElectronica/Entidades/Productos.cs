@@ -18,7 +18,7 @@ namespace Entidades
             this.marca = EMarca.SinMarca;
             this.precio = 0;
             this.cantidad = 0;
-            this.categoria = "Sin marca";
+            this.categoria = "Sin categoria";
         }
 
         public Productos(EMarca marca,string categoria, double precio,int cantidad) : this()
@@ -52,6 +52,32 @@ namespace Entidades
             get { return this.cantidad; }
             set { this.cantidad = value; }
         }
+
+        public static explicit operator string(Productos prod)
+        {
+            return (string)prod.categoria;
+        }
+
+        public static bool operator ==(Productos prod1, Productos prod2)
+        {
+            bool retorno = false;
+            
+            if(prod1 is not null && prod2 is not null)
+            {
+                if(prod1.categoria == prod2.categoria)
+                {
+                    retorno = true;
+                }
+            }
+
+            return retorno;
+        }
+
+        public static bool operator !=(Productos prod1, Productos prod2)
+        {
+            return !(prod1 == prod2);
+        }
+
 
         public virtual string MostrarProducto()
         {

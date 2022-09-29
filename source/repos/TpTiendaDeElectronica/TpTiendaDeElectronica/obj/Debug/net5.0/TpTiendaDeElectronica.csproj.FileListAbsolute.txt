@@ -14,3 +14,6 @@ C:\Users\Willy\source\repos\TpTiendaDeElectronica\TpTiendaDeElectronica\obj\Debu
 C:\Users\Willy\source\repos\TpTiendaDeElectronica\TpTiendaDeElectronica\obj\Debug\net5.0\TpTiendaDeElectronica.pdb
 C:\Users\Willy\source\repos\TpTiendaDeElectronica\TpTiendaDeElectronica\obj\Debug\net5.0\TpTiendaDeElectronica.genruntimeconfig.cache
 C:\Users\Willy\source\repos\TpTiendaDeElectronica\TpTiendaDeElectronica\obj\Debug\net5.0\ref\TpTiendaDeElectronica.dll
+C:\Users\Willy\source\repos\TpTiendaDeElectronica\TpTiendaDeElectronica\bin\Debug\net5.0\Entidades.dll
+C:\Users\Willy\source\repos\TpTiendaDeElectronica\TpTiendaDeElectronica\bin\Debug\net5.0\Entidades.pdb
+C:\Users\Willy\source\repos\TpTiendaDeElectronica\TpTiendaDeElectronica\obj\Debug\net5.0\TpTiendaDeElectronica.csproj.CopyComplete
