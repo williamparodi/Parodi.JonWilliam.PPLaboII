@@ -18,35 +18,35 @@ namespace Entidades
             
         }
         
-        private void CrearUsuarioDueño()
+        public override void CrearUsuario()
         {
             StringBuilder sb = new StringBuilder("");
             sb.Append("roberto@gmail.com");
             this.usuario = sb.ToString();
         }
 
-        private void CrearPasswordDueño()
+        public override void CrearPassword()
         {
             StringBuilder sb = new StringBuilder("");
             sb.Append("roberto1234");
             this.password = sb.ToString();
         }
         
-        public string GetUsuarioDueño()
+        public override string GetUsuario()
         {
             if (this.usuario == "NN")
             {
-                CrearUsuarioDueño();
+                CrearUsuario();
             }
 
             return this.usuario;
         }
 
-        public string GetPasswordDueño()
+        public override string GetPassword()
         {
             if (this.password == "Sin contraseña")
             {
-                CrearPasswordDueño();
+                CrearPassword();
             }
 
             return this.password;

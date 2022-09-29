@@ -32,7 +32,7 @@ namespace Vistas
                 venta.Show();
                 this.Hide();
             }
-            else if(txt_Usuario.Text == dueño.GetUsuarioDueño() && txt_Password.Text == dueño.GetPasswordDueño())
+            else if(txt_Usuario.Text == dueño.GetUsuario() && txt_Password.Text == dueño.GetPassword())
             {
                 MessageBox.Show("Dueño");
             }

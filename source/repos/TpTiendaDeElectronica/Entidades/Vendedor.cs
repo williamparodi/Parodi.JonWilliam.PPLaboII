@@ -22,21 +22,21 @@ namespace Entidades
             this.password = password;
         }
 
-        private void CrearUsuario()
+        public virtual void CrearUsuario()
         {
             StringBuilder sb = new StringBuilder("");
             sb.Append("pablo@gmail.com");
             this.usuario = sb.ToString();
         }
 
-        private void CrearPassword()
+        public virtual void CrearPassword()
         {
             StringBuilder sb = new StringBuilder("");
             sb.Append("pablo1234");
             this.password = sb.ToString();
         }
 
-        public string GetUsuario()
+        public virtual string GetUsuario()
         {
             if (this.usuario == "NN")
             {
@@ -47,7 +47,7 @@ namespace Entidades
 
         }
 
-        public string GetPassword()
+        public virtual string GetPassword()
         {
             if(this.password == "Sin contraseña")
             {
