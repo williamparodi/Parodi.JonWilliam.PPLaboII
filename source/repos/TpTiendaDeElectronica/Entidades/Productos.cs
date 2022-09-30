@@ -8,34 +8,34 @@ namespace Entidades
 {
     public class Productos
     {
-        protected string categoria;
-        protected EMarca marca;
+        protected ECategorias categoria;
+        protected string nombre;
         protected double precio;
         protected int cantidad;
 
         public Productos()
         {
-            this.marca = EMarca.SinMarca;
+            this.nombre = "Sin nombre";
             this.precio = 0;
             this.cantidad = 0;
-            this.categoria = "Sin categoria";
+            this.categoria = ECategorias.SinCategoria;
         }
 
-        public Productos(EMarca marca,string categoria, double precio,int cantidad) : this()
+        public Productos(ECategorias categoria,string nombre, double precio,int cantidad) : this()
         {
             this.categoria = categoria;
-            this.marca = marca;
+            this.nombre = nombre;
             this.precio = precio;
             this.cantidad = cantidad;
         }
 
-        public EMarca Marca
+        public string Nombre
         {
-            get { return this.marca; }
-            set { this.marca = value; }
+            get { return this.nombre; }
+            set { this.nombre = value; }
         }
 
-        public string Categoria
+        public ECategorias Categoria
         {
             get { return this.categoria; }
             set { this.categoria = value; }
@@ -52,12 +52,7 @@ namespace Entidades
             get { return this.cantidad; }
             set { this.cantidad = value; }
         }
-
-        public static explicit operator string(Productos prod)
-        {
-            return (string)prod.categoria;
-        }
-
+      
         public static bool operator ==(Productos prod1, Productos prod2)
         {
             bool retorno = false;
@@ -77,12 +72,12 @@ namespace Entidades
         {
             return !(prod1 == prod2);
         }
-
+        
 
         public virtual string MostrarProducto()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append($"Categoria : {this.categoria} Marca : {this.marca} Precio : {this.precio}");
+            sb.Append($"Categoria : {this.categoria} Nombre : {this.nombre} Precio : {this.precio}");
             return sb.ToString();
 
         }

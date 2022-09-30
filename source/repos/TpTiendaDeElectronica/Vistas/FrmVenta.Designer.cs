@@ -42,6 +42,12 @@
             this.dtgvListaPorductos = new System.Windows.Forms.DataGridView();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Articulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmb_Categorias = new System.Windows.Forms.ComboBox();
+            this.lbl_Categoria = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txt_PrecioMinimo = new System.Windows.Forms.TextBox();
+            this.lbl_NombreProducto = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvListaPorductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,7 +118,7 @@
             // 
             // txt_Dni
             // 
-            this.txt_Dni.Location = new System.Drawing.Point(439, 157);
+            this.txt_Dni.Location = new System.Drawing.Point(427, 157);
             this.txt_Dni.Name = "txt_Dni";
             this.txt_Dni.PlaceholderText = "0.000.000";
             this.txt_Dni.Size = new System.Drawing.Size(84, 25);
@@ -137,7 +143,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(661, 157);
+            this.textBox2.Location = new System.Drawing.Point(645, 157);
             this.textBox2.Name = "textBox2";
             this.textBox2.PlaceholderText = "011 -0000000";
             this.textBox2.Size = new System.Drawing.Size(100, 25);
@@ -146,7 +152,7 @@
             // dtgvListaPorductos
             // 
             this.dtgvListaPorductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvListaPorductos.Location = new System.Drawing.Point(39, 286);
+            this.dtgvListaPorductos.Location = new System.Drawing.Point(28, 286);
             this.dtgvListaPorductos.Name = "dtgvListaPorductos";
             this.dtgvListaPorductos.RowTemplate.Height = 25;
             this.dtgvListaPorductos.Size = new System.Drawing.Size(376, 159);
@@ -162,12 +168,68 @@
             this.Articulo.HeaderText = "Articulo";
             this.Articulo.Name = "Articulo";
             // 
+            // cmb_Categorias
+            // 
+            this.cmb_Categorias.FormattingEnabled = true;
+            this.cmb_Categorias.Location = new System.Drawing.Point(108, 209);
+            this.cmb_Categorias.Name = "cmb_Categorias";
+            this.cmb_Categorias.Size = new System.Drawing.Size(121, 25);
+            this.cmb_Categorias.TabIndex = 12;
+            // 
+            // lbl_Categoria
+            // 
+            this.lbl_Categoria.AutoSize = true;
+            this.lbl_Categoria.Location = new System.Drawing.Point(26, 212);
+            this.lbl_Categoria.Name = "lbl_Categoria";
+            this.lbl_Categoria.Size = new System.Drawing.Size(76, 17);
+            this.lbl_Categoria.TabIndex = 13;
+            this.lbl_Categoria.Text = "Categoria :";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(252, 212);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(201, 17);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Busqueda por precio maximo :";
+            // 
+            // txt_PrecioMinimo
+            // 
+            this.txt_PrecioMinimo.Location = new System.Drawing.Point(455, 209);
+            this.txt_PrecioMinimo.Name = "txt_PrecioMinimo";
+            this.txt_PrecioMinimo.PlaceholderText = "0.00";
+            this.txt_PrecioMinimo.Size = new System.Drawing.Size(66, 25);
+            this.txt_PrecioMinimo.TabIndex = 15;
+            // 
+            // lbl_NombreProducto
+            // 
+            this.lbl_NombreProducto.AutoSize = true;
+            this.lbl_NombreProducto.Location = new System.Drawing.Point(552, 212);
+            this.lbl_NombreProducto.Name = "lbl_NombreProducto";
+            this.lbl_NombreProducto.Size = new System.Drawing.Size(153, 17);
+            this.lbl_NombreProducto.TabIndex = 16;
+            this.lbl_NombreProducto.Text = "Nombre de Producto : ";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(709, 209);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 25);
+            this.textBox1.TabIndex = 17;
+            // 
             // FrmVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightCoral;
             this.ClientSize = new System.Drawing.Size(914, 510);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.lbl_NombreProducto);
+            this.Controls.Add(this.txt_PrecioMinimo);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lbl_Categoria);
+            this.Controls.Add(this.cmb_Categorias);
             this.Controls.Add(this.dtgvListaPorductos);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.lbl_TelefonoCliente);
@@ -205,5 +267,11 @@
         private System.Windows.Forms.DataGridView dtgvListaPorductos;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Articulo;
+        private System.Windows.Forms.ComboBox cmb_Categorias;
+        private System.Windows.Forms.Label lbl_Categoria;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txt_PrecioMinimo;
+        private System.Windows.Forms.Label lbl_NombreProducto;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

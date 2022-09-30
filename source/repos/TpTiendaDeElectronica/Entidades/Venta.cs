@@ -47,7 +47,7 @@ namespace Entidades
 
             foreach (Productos cat in venta.listaProductos)
             {
-                if (cat.Categoria == categoria)
+                if (cat.Categoria.ToString() == categoria)
                 {
                     auxlista.listaProductos.Add(cat);
                 }
@@ -57,13 +57,57 @@ namespace Entidades
         }
 
         //Filtrar por precio
+        public Venta FiltraPorPrecio(double precio, Venta venta)
+        {
+            Venta auxlista = new Venta();
+
+            foreach (Productos pre in venta.listaProductos)
+            {
+                if (precio >= pre.Precio)
+                {
+                    auxlista.listaProductos.Add(pre);
+                }
+            }
+
+            return auxlista;
+        }
+
         //Buscar nombre
-        //Buscar por marca
+        public Venta BuscaPorNombre(string nombre, Venta venta)
+        {
+            Venta auxlista = new Venta();
+
+            foreach (Productos cat in venta.listaProductos)
+            {
+                if (cat.Nombre == nombre)
+                {
+                    auxlista.listaProductos.Add(cat);
+                }
+            }
+
+            return auxlista;
+        }
+
+        //Suma Total  la venta 
+        public double CalcularTotal(Venta venta)
+        {
+            double total = 0;
+
+            if( venta.listaProductos is not null && venta.listaProductos.Any())//se fija q contenga elementos
+            {
+                foreach(Productos p in venta.listaProductos)
+                {
+                    total += p.Precio;
+                }
+            }
+
+            return total;
+        }
 
 
+        //Metodo credito
 
-
-
+        //Metodo Listado de Venta
 
 
 
