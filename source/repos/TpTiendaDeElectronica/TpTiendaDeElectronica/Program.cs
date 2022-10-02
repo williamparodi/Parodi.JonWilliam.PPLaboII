@@ -14,7 +14,7 @@ namespace TpTiendaDeElectronica
         {
             List<Productos> listadeProductos = new List<Productos>();
             double total = 0;
-
+            double totalConCredito = 0;
             Productos listaProductos = new Productos(ECategorias.Microprocesador,"Ryzen 5",55666,75);
             Productos listaProductos1 = new Productos(ECategorias.Mother, "Asus",2323, 75);
             Productos listaProductos2 = new Productos(ECategorias.Gabinete, "Terma", 65652, 75);
@@ -30,7 +30,7 @@ namespace TpTiendaDeElectronica
             Venta nueva3 = nueva.FiltraPorPrecio(3000, nueva);
             Venta nueva4 = nueva.BuscaPorNombre("Ryzen 5", nueva);
             total = nueva.CalcularTotal(nueva);
-
+            totalConCredito = nueva.CalcularPagoConCredito(total);
 
             Console.WriteLine(nueva.MostrarListaProductos());
             Console.WriteLine("Lista Filtrada: ");
@@ -38,6 +38,7 @@ namespace TpTiendaDeElectronica
             Console.WriteLine(nueva3.MostrarListaProductos());
             Console.WriteLine(nueva4.MostrarListaProductos());
             Console.WriteLine(total);
+            Console.WriteLine(totalConCredito);
         }
     }
 }

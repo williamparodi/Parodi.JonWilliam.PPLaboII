@@ -104,8 +104,18 @@ namespace Entidades
             return total;
         }
 
-
         //Metodo credito
+        public double CalcularPagoConCredito(double total)
+        {
+            double totalCredito = 0;
+            
+            if(total > 0)
+            {
+                totalCredito = total * 1.10;
+            }
+
+            return totalCredito;
+        }
 
         //Metodo Listado de Venta
 
