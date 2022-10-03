@@ -50,7 +50,11 @@
             this.txt_NombreProducto = new System.Windows.Forms.TextBox();
             this.btn_Agregar = new System.Windows.Forms.Button();
             this.btn_Borrar = new System.Windows.Forms.Button();
+            this.dtgv_CarroDeCompras = new System.Windows.Forms.DataGridView();
+            this.lbl_Productos = new System.Windows.Forms.Label();
+            this.lbl_ProductosSeleccionados = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvListaPorductos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_CarroDeCompras)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_NombreEmpresa
@@ -91,7 +95,6 @@
             this.txt_Fecha.Name = "txt_Fecha";
             this.txt_Fecha.Size = new System.Drawing.Size(100, 25);
             this.txt_Fecha.TabIndex = 3;
-            this.txt_Fecha.TextChanged += new System.EventHandler(this.txt_Fecha_TextChanged);
             // 
             // lbl_Cliente
             // 
@@ -158,8 +161,9 @@
             this.dtgvListaPorductos.Location = new System.Drawing.Point(26, 372);
             this.dtgvListaPorductos.Name = "dtgvListaPorductos";
             this.dtgvListaPorductos.RowTemplate.Height = 25;
-            this.dtgvListaPorductos.Size = new System.Drawing.Size(497, 190);
+            this.dtgvListaPorductos.Size = new System.Drawing.Size(395, 190);
             this.dtgvListaPorductos.TabIndex = 11;
+            this.dtgvListaPorductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvListaPorductos_CellClick);
             // 
             // Codigo
             // 
@@ -184,6 +188,7 @@
             this.cmb_Categorias.Name = "cmb_Categorias";
             this.cmb_Categorias.Size = new System.Drawing.Size(121, 25);
             this.cmb_Categorias.TabIndex = 12;
+            this.cmb_Categorias.SelectedIndexChanged += new System.EventHandler(this.cmb_Categorias_SelectedIndexChanged);
             // 
             // lbl_Categoria
             // 
@@ -229,7 +234,7 @@
             // 
             // btn_Agregar
             // 
-            this.btn_Agregar.Location = new System.Drawing.Point(402, 297);
+            this.btn_Agregar.Location = new System.Drawing.Point(26, 594);
             this.btn_Agregar.Name = "btn_Agregar";
             this.btn_Agregar.Size = new System.Drawing.Size(121, 32);
             this.btn_Agregar.TabIndex = 18;
@@ -239,19 +244,50 @@
             // 
             // btn_Borrar
             // 
-            this.btn_Borrar.Location = new System.Drawing.Point(567, 297);
+            this.btn_Borrar.Location = new System.Drawing.Point(645, 593);
             this.btn_Borrar.Name = "btn_Borrar";
             this.btn_Borrar.Size = new System.Drawing.Size(121, 33);
             this.btn_Borrar.TabIndex = 19;
             this.btn_Borrar.Text = "Borrar";
             this.btn_Borrar.UseVisualStyleBackColor = true;
+            this.btn_Borrar.Click += new System.EventHandler(this.btn_Borrar_Click);
+            // 
+            // dtgv_CarroDeCompras
+            // 
+            this.dtgv_CarroDeCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgv_CarroDeCompras.Location = new System.Drawing.Point(645, 372);
+            this.dtgv_CarroDeCompras.Name = "dtgv_CarroDeCompras";
+            this.dtgv_CarroDeCompras.RowTemplate.Height = 25;
+            this.dtgv_CarroDeCompras.Size = new System.Drawing.Size(386, 190);
+            this.dtgv_CarroDeCompras.TabIndex = 20;
+            // 
+            // lbl_Productos
+            // 
+            this.lbl_Productos.AutoSize = true;
+            this.lbl_Productos.Location = new System.Drawing.Point(26, 348);
+            this.lbl_Productos.Name = "lbl_Productos";
+            this.lbl_Productos.Size = new System.Drawing.Size(84, 17);
+            this.lbl_Productos.TabIndex = 21;
+            this.lbl_Productos.Text = "Productos : ";
+            // 
+            // lbl_ProductosSeleccionados
+            // 
+            this.lbl_ProductosSeleccionados.AutoSize = true;
+            this.lbl_ProductosSeleccionados.Location = new System.Drawing.Point(647, 345);
+            this.lbl_ProductosSeleccionados.Name = "lbl_ProductosSeleccionados";
+            this.lbl_ProductosSeleccionados.Size = new System.Drawing.Size(176, 17);
+            this.lbl_ProductosSeleccionados.TabIndex = 22;
+            this.lbl_ProductosSeleccionados.Text = "Producctos Seleccionados :";
             // 
             // FrmVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightCoral;
-            this.ClientSize = new System.Drawing.Size(914, 626);
+            this.ClientSize = new System.Drawing.Size(1177, 657);
+            this.Controls.Add(this.lbl_ProductosSeleccionados);
+            this.Controls.Add(this.lbl_Productos);
+            this.Controls.Add(this.dtgv_CarroDeCompras);
             this.Controls.Add(this.btn_Borrar);
             this.Controls.Add(this.btn_Agregar);
             this.Controls.Add(this.txt_NombreProducto);
@@ -275,7 +311,9 @@
             this.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Name = "FrmVenta";
             this.Text = "Venta";
+            this.Load += new System.EventHandler(this.FrmVenta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvListaPorductos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_CarroDeCompras)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -305,5 +343,8 @@
         private System.Windows.Forms.TextBox txt_NombreProducto;
         private System.Windows.Forms.Button btn_Agregar;
         private System.Windows.Forms.Button btn_Borrar;
+        private System.Windows.Forms.DataGridView dtgv_CarroDeCompras;
+        private System.Windows.Forms.Label lbl_Productos;
+        private System.Windows.Forms.Label lbl_ProductosSeleccionados;
     }
 }
