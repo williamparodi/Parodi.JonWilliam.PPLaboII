@@ -53,6 +53,7 @@
             this.dtgv_CarroDeCompras = new System.Windows.Forms.DataGridView();
             this.lbl_Productos = new System.Windows.Forms.Label();
             this.lbl_ProductosSeleccionados = new System.Windows.Forms.Label();
+            this.btn_RealizarVenta = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvListaPorductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_CarroDeCompras)).BeginInit();
             this.SuspendLayout();
@@ -279,12 +280,23 @@
             this.lbl_ProductosSeleccionados.TabIndex = 22;
             this.lbl_ProductosSeleccionados.Text = "Producctos Seleccionados :";
             // 
+            // btn_RealizarVenta
+            // 
+            this.btn_RealizarVenta.Location = new System.Drawing.Point(981, 593);
+            this.btn_RealizarVenta.Name = "btn_RealizarVenta";
+            this.btn_RealizarVenta.Size = new System.Drawing.Size(151, 33);
+            this.btn_RealizarVenta.TabIndex = 23;
+            this.btn_RealizarVenta.Text = "Realizar Venta";
+            this.btn_RealizarVenta.UseVisualStyleBackColor = true;
+            this.btn_RealizarVenta.Click += new System.EventHandler(this.btn_RealizarVenta_Click);
+            // 
             // FrmVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightCoral;
             this.ClientSize = new System.Drawing.Size(1177, 657);
+            this.Controls.Add(this.btn_RealizarVenta);
             this.Controls.Add(this.lbl_ProductosSeleccionados);
             this.Controls.Add(this.lbl_Productos);
             this.Controls.Add(this.dtgv_CarroDeCompras);
@@ -346,5 +358,6 @@
         private System.Windows.Forms.DataGridView dtgv_CarroDeCompras;
         private System.Windows.Forms.Label lbl_Productos;
         private System.Windows.Forms.Label lbl_ProductosSeleccionados;
+        private System.Windows.Forms.Button btn_RealizarVenta;
     }
 }

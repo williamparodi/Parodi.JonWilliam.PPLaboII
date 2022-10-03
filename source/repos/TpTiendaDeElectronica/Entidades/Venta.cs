@@ -28,7 +28,7 @@ namespace Entidades
             set { listaProductos = value; }
         }
 
-        public string MostrarListaProductos()
+        public  string MostrarListaProductos()
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("Lista de Productos: ");
@@ -117,9 +117,23 @@ namespace Entidades
             return totalCredito;
         }
 
-        //Metodo Listado de Venta
+        public bool ConfirmaVenta(List<Productos> listaVenta)
+        {
+            bool retorno = true;
 
+            if(listaProductos is not null && listaProductos.Count>0)
+            {
+                foreach(Productos producto in listaVenta)
+                {
+                    if(producto.Cantidad <=0)
+                    {
+                        retorno = false;
+                    }
+                }
+            }
 
+            return retorno;
+        }
 
 
 
