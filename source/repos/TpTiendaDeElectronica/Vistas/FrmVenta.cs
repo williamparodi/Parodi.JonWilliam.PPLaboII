@@ -25,22 +25,29 @@ namespace Vistas
 
         private void btn_Agregar_Click(object sender, EventArgs e)
         {
-            int n = dtgvListaPorductos.Rows.Add();
+            //int n = dtgvListaPorductos.Rows.Add();
+            this.dtgvListaPorductos.DataSource = null;
             List<Productos> listadeProductos = new List<Productos>();
             Productos listaProductos = new Productos(ECategorias.Microprocesador, "Ryzen 5", 55666, 75);
+            Productos listaProductos1 = new Productos(ECategorias.Mother, "Asus", 2323, 75);
+            Productos listaProductos2 = new Productos(ECategorias.Gabinete, "Terma", 65652, 75);
+            Productos listaProductos3 = new Productos(ECategorias.Microprocesador, "Ryzen 5", 9874, 95);
+
             listadeProductos.Add(listaProductos);
-            Venta nueva = new Venta(listadeProductos);
+            listadeProductos.Add(listaProductos1);
+            listadeProductos.Add(listaProductos2);
+            listadeProductos.Add(listaProductos3);
 
-            /*
-            dtgvListaPorductos.Rows[n].Cells[0].Value = cmb_Categorias.Text;
-            dtgvListaPorductos.Rows[n].Cells[1].Value = txt_NombreProducto.Text;
-            dtgvListaPorductos.Rows[n].Cells[2].Value = txt_PrecioMaximo.Text;
-            */
-            dtgvListaPorductos.Rows[n].Cells[0].Value = nueva.Categoria.ToString();
-            dtgvListaPorductos.Rows[n].Cells[1].Value = nueva.Nombre;
-            dtgvListaPorductos.Rows[n].Cells[2].Value = nueva.Cantidad;
-            dtgvListaPorductos.Rows[n].Cells[3].Value = $"{nueva.Precio}";
+            //
+            Venta venta = new Venta(listadeProductos);
+            Venta ventaFiltrada = new Venta();
+            ventaFiltrada = venta.FiltraPorCategoria(cmb_Categorias.Text, venta);
 
+            this.dtgvListaPorductos.DataSource = venta.ListaProductos;
+            //this.dtgvListaPorductos.DataSource = ventaFiltrada.ListaProductos;
+            int index = this.dtgvListaPorductos.CurrentRow.Index;
+            
+            
 
             //Limpio txt
             cmb_Categorias.Text = string.Empty;

@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             this.btn_Login = new System.Windows.Forms.Button();
             this.txt_Password = new System.Windows.Forms.TextBox();
-            this.txt_Usuario = new System.Windows.Forms.TextBox();
+            this.cmb_Usuario = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btn_Login
@@ -57,15 +57,20 @@
             this.txt_Password.PlaceholderText = "Ingrese Contraseña";
             this.txt_Password.Size = new System.Drawing.Size(162, 23);
             this.txt_Password.TabIndex = 1;
+            this.txt_Password.Click += new System.EventHandler(this.txt_Password_Click);
             // 
-            // txt_Usuario
+            // cmb_Usuario
             // 
-            this.txt_Usuario.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.txt_Usuario.Location = new System.Drawing.Point(296, 139);
-            this.txt_Usuario.Name = "txt_Usuario";
-            this.txt_Usuario.PlaceholderText = "Ingrese usuario";
-            this.txt_Usuario.Size = new System.Drawing.Size(162, 23);
-            this.txt_Usuario.TabIndex = 2;
+            this.cmb_Usuario.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.cmb_Usuario.FormattingEnabled = true;
+            this.cmb_Usuario.Items.AddRange(new object[] {
+            "pablo@gmail.com",
+            "roberto@gmail.com"});
+            this.cmb_Usuario.Location = new System.Drawing.Point(296, 135);
+            this.cmb_Usuario.Name = "cmb_Usuario";
+            this.cmb_Usuario.Size = new System.Drawing.Size(162, 23);
+            this.cmb_Usuario.TabIndex = 2;
+            this.cmb_Usuario.Text = "Ingrese Usuario";
             // 
             // FrmLogin
             // 
@@ -74,7 +79,7 @@
             this.BackColor = System.Drawing.Color.LightSeaGreen;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.txt_Usuario);
+            this.Controls.Add(this.cmb_Usuario);
             this.Controls.Add(this.txt_Password);
             this.Controls.Add(this.btn_Login);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -90,6 +95,6 @@
 
         private System.Windows.Forms.Button btn_Login;
         private System.Windows.Forms.TextBox txt_Password;
-        private System.Windows.Forms.TextBox txt_Usuario;
+        private System.Windows.Forms.ComboBox cmb_Usuario;
     }
 }

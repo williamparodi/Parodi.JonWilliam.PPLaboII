@@ -40,11 +40,6 @@
             this.lbl_TelefonoCliente = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.dtgvListaPorductos = new System.Windows.Forms.DataGridView();
-            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Articulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmb_Categorias = new System.Windows.Forms.ComboBox();
@@ -160,42 +155,11 @@
             // dtgvListaPorductos
             // 
             this.dtgvListaPorductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvListaPorductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Categoria,
-            this.Nombre,
-            this.Cantidad,
-            this.Precio,
-            this.Subtotal});
             this.dtgvListaPorductos.Location = new System.Drawing.Point(26, 372);
             this.dtgvListaPorductos.Name = "dtgvListaPorductos";
             this.dtgvListaPorductos.RowTemplate.Height = 25;
-            this.dtgvListaPorductos.Size = new System.Drawing.Size(546, 169);
+            this.dtgvListaPorductos.Size = new System.Drawing.Size(497, 190);
             this.dtgvListaPorductos.TabIndex = 11;
-            // 
-            // Categoria
-            // 
-            this.Categoria.HeaderText = "Categoria";
-            this.Categoria.Name = "Categoria";
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre de Producto";
-            this.Nombre.Name = "Nombre";
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio unitario";
-            this.Precio.Name = "Precio";
-            // 
-            // Subtotal
-            // 
-            this.Subtotal.HeaderText = "Subtotal";
-            this.Subtotal.Name = "Subtotal";
             // 
             // Codigo
             // 
@@ -339,11 +303,6 @@
         private System.Windows.Forms.TextBox txt_PrecioMaximo;
         private System.Windows.Forms.Label lbl_NombreProducto;
         private System.Windows.Forms.TextBox txt_NombreProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Subtotal;
         private System.Windows.Forms.Button btn_Agregar;
         private System.Windows.Forms.Button btn_Borrar;
     }

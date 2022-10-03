@@ -11,7 +11,7 @@ namespace Entidades
         private List<Productos> listaProductos;
         private DateTime fechaActual;
 
-        public Venta()
+        public Venta() 
         {
             this.listaProductos = new List<Productos>();
             fechaActual = DateTime.Now;
@@ -21,7 +21,7 @@ namespace Entidades
         {
             this.listaProductos = listaProductos;
         }
-
+       
         public List<Productos> ListaProductos
         {
             get { return listaProductos; }
