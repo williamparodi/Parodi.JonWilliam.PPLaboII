@@ -54,6 +54,10 @@
             this.lbl_Productos = new System.Windows.Forms.Label();
             this.lbl_ProductosSeleccionados = new System.Windows.Forms.Label();
             this.btn_RealizarVenta = new System.Windows.Forms.Button();
+            this.cmb_FormaDePago = new System.Windows.Forms.ComboBox();
+            this.lbl_FormaDePago = new System.Windows.Forms.Label();
+            this.lbl_PrecioTotal = new System.Windows.Forms.Label();
+            this.txt_PrecioTotal = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvListaPorductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_CarroDeCompras)).BeginInit();
             this.SuspendLayout();
@@ -63,7 +67,7 @@
             this.lbl_NombreEmpresa.AutoSize = true;
             this.lbl_NombreEmpresa.BackColor = System.Drawing.Color.DarkGray;
             this.lbl_NombreEmpresa.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lbl_NombreEmpresa.Location = new System.Drawing.Point(143, 24);
+            this.lbl_NombreEmpresa.Location = new System.Drawing.Point(26, 19);
             this.lbl_NombreEmpresa.Name = "lbl_NombreEmpresa";
             this.lbl_NombreEmpresa.Size = new System.Drawing.Size(123, 19);
             this.lbl_NombreEmpresa.TabIndex = 0;
@@ -75,7 +79,7 @@
             this.lbl_Direccion.BackColor = System.Drawing.Color.DarkGray;
             this.lbl_Direccion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lbl_Direccion.Font = new System.Drawing.Font("Sitka Subheading", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_Direccion.Location = new System.Drawing.Point(143, 58);
+            this.lbl_Direccion.Location = new System.Drawing.Point(26, 58);
             this.lbl_Direccion.Name = "lbl_Direccion";
             this.lbl_Direccion.Size = new System.Drawing.Size(184, 30);
             this.lbl_Direccion.TabIndex = 1;
@@ -94,7 +98,7 @@
             // 
             this.txt_Fecha.Location = new System.Drawing.Point(98, 110);
             this.txt_Fecha.Name = "txt_Fecha";
-            this.txt_Fecha.Size = new System.Drawing.Size(100, 25);
+            this.txt_Fecha.Size = new System.Drawing.Size(153, 25);
             this.txt_Fecha.TabIndex = 3;
             // 
             // lbl_Cliente
@@ -128,6 +132,7 @@
             this.txt_Dni.Location = new System.Drawing.Point(427, 157);
             this.txt_Dni.Name = "txt_Dni";
             this.txt_Dni.PlaceholderText = "0.000.000";
+            this.txt_Dni.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txt_Dni.Size = new System.Drawing.Size(84, 25);
             this.txt_Dni.TabIndex = 7;
             // 
@@ -153,6 +158,7 @@
             this.textBox2.Location = new System.Drawing.Point(645, 157);
             this.textBox2.Name = "textBox2";
             this.textBox2.PlaceholderText = "011 -0000000";
+            this.textBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBox2.Size = new System.Drawing.Size(100, 25);
             this.textBox2.TabIndex = 10;
             // 
@@ -214,6 +220,7 @@
             this.txt_PrecioMaximo.Location = new System.Drawing.Point(163, 302);
             this.txt_PrecioMaximo.Name = "txt_PrecioMaximo";
             this.txt_PrecioMaximo.PlaceholderText = "0.00";
+            this.txt_PrecioMaximo.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txt_PrecioMaximo.Size = new System.Drawing.Size(66, 25);
             this.txt_PrecioMaximo.TabIndex = 15;
             // 
@@ -235,7 +242,7 @@
             // 
             // btn_Agregar
             // 
-            this.btn_Agregar.Location = new System.Drawing.Point(26, 594);
+            this.btn_Agregar.Location = new System.Drawing.Point(26, 587);
             this.btn_Agregar.Name = "btn_Agregar";
             this.btn_Agregar.Size = new System.Drawing.Size(121, 32);
             this.btn_Agregar.TabIndex = 18;
@@ -245,7 +252,7 @@
             // 
             // btn_Borrar
             // 
-            this.btn_Borrar.Location = new System.Drawing.Point(645, 593);
+            this.btn_Borrar.Location = new System.Drawing.Point(645, 587);
             this.btn_Borrar.Name = "btn_Borrar";
             this.btn_Borrar.Size = new System.Drawing.Size(121, 33);
             this.btn_Borrar.TabIndex = 19;
@@ -282,7 +289,7 @@
             // 
             // btn_RealizarVenta
             // 
-            this.btn_RealizarVenta.Location = new System.Drawing.Point(981, 593);
+            this.btn_RealizarVenta.Location = new System.Drawing.Point(880, 676);
             this.btn_RealizarVenta.Name = "btn_RealizarVenta";
             this.btn_RealizarVenta.Size = new System.Drawing.Size(151, 33);
             this.btn_RealizarVenta.TabIndex = 23;
@@ -290,12 +297,54 @@
             this.btn_RealizarVenta.UseVisualStyleBackColor = true;
             this.btn_RealizarVenta.Click += new System.EventHandler(this.btn_RealizarVenta_Click);
             // 
+            // cmb_FormaDePago
+            // 
+            this.cmb_FormaDePago.FormattingEnabled = true;
+            this.cmb_FormaDePago.Items.AddRange(new object[] {
+            "Efectivo",
+            "Credito"});
+            this.cmb_FormaDePago.Location = new System.Drawing.Point(910, 592);
+            this.cmb_FormaDePago.Name = "cmb_FormaDePago";
+            this.cmb_FormaDePago.Size = new System.Drawing.Size(121, 25);
+            this.cmb_FormaDePago.TabIndex = 24;
+            // 
+            // lbl_FormaDePago
+            // 
+            this.lbl_FormaDePago.AutoSize = true;
+            this.lbl_FormaDePago.Location = new System.Drawing.Point(793, 595);
+            this.lbl_FormaDePago.Name = "lbl_FormaDePago";
+            this.lbl_FormaDePago.Size = new System.Drawing.Size(111, 17);
+            this.lbl_FormaDePago.TabIndex = 25;
+            this.lbl_FormaDePago.Text = "Forma de Pago :";
+            // 
+            // lbl_PrecioTotal
+            // 
+            this.lbl_PrecioTotal.AutoSize = true;
+            this.lbl_PrecioTotal.Location = new System.Drawing.Point(833, 640);
+            this.lbl_PrecioTotal.Name = "lbl_PrecioTotal";
+            this.lbl_PrecioTotal.Size = new System.Drawing.Size(92, 17);
+            this.lbl_PrecioTotal.TabIndex = 26;
+            this.lbl_PrecioTotal.Text = "Precio Total :";
+            // 
+            // txt_PrecioTotal
+            // 
+            this.txt_PrecioTotal.Location = new System.Drawing.Point(931, 637);
+            this.txt_PrecioTotal.Name = "txt_PrecioTotal";
+            this.txt_PrecioTotal.PlaceholderText = "0.00";
+            this.txt_PrecioTotal.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txt_PrecioTotal.Size = new System.Drawing.Size(100, 25);
+            this.txt_PrecioTotal.TabIndex = 27;
+            // 
             // FrmVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightCoral;
-            this.ClientSize = new System.Drawing.Size(1177, 657);
+            this.ClientSize = new System.Drawing.Size(1177, 743);
+            this.Controls.Add(this.txt_PrecioTotal);
+            this.Controls.Add(this.lbl_PrecioTotal);
+            this.Controls.Add(this.lbl_FormaDePago);
+            this.Controls.Add(this.cmb_FormaDePago);
             this.Controls.Add(this.btn_RealizarVenta);
             this.Controls.Add(this.lbl_ProductosSeleccionados);
             this.Controls.Add(this.lbl_Productos);
@@ -359,5 +408,9 @@
         private System.Windows.Forms.Label lbl_Productos;
         private System.Windows.Forms.Label lbl_ProductosSeleccionados;
         private System.Windows.Forms.Button btn_RealizarVenta;
+        private System.Windows.Forms.ComboBox cmb_FormaDePago;
+        private System.Windows.Forms.Label lbl_FormaDePago;
+        private System.Windows.Forms.Label lbl_PrecioTotal;
+        private System.Windows.Forms.TextBox txt_PrecioTotal;
     }
 }

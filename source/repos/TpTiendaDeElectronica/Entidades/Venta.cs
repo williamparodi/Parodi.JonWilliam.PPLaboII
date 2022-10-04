@@ -9,12 +9,11 @@ namespace Entidades
     public class Venta : Productos
     {
         private List<Productos> listaProductos;
-        private DateTime fechaActual;
 
         public Venta() 
         {
             this.listaProductos = new List<Productos>();
-            fechaActual = DateTime.Now;
+            
         }
 
         public Venta(List<Productos> listaProductos) : this()
@@ -89,13 +88,13 @@ namespace Entidades
         }
 
         //Suma Total  la venta 
-        public double CalcularTotal(Venta venta)
+        public double CalcularTotal(List<Productos> listaProductos)
         {
             double total = 0;
 
-            if( venta.listaProductos is not null && venta.listaProductos.Any())//se fija q contenga elementos
+            if(listaProductos is not null && listaProductos.Any())//se fija q contenga elementos
             {
-                foreach(Productos p in venta.listaProductos)
+                foreach(Productos p in listaProductos)
                 {
                     total += p.Precio;
                 }
@@ -135,8 +134,43 @@ namespace Entidades
             return retorno;
         }
 
+        public double CalcularPago(string formaPago,List<Productos> listaCompras)
+        {
+            double subtotal = 0;
+            double total = 0;
 
+            if(formaPago != string.Empty && listaCompras is not null)
+            {
+                if (formaPago == "Credito")
+                {
+                    subtotal = CalcularTotal(listaCompras);
+                    total = CalcularPagoConCredito(subtotal);
+                }
+                else if (formaPago == "Efectivo")
+                {
+                    total = CalcularTotal(listaCompras);
+                }
+            }
 
+            return total;
+        }
+        
+        public void DescontarUnidad(List<Productos> listaProductos,List<Productos> listaCompras)
+        {
+            if(listaProductos is not null && listaCompras is not null && listaProductos.Any() && listaCompras.Any())
+            {
+                if(ConfirmaVenta(listaCompras))
+                {
+                    foreach(Productos p in listaProductos)
+                    {
+                        if(listaCompras.Contains(p))//mmm probar
+                        {
+                            p.Cantidad--;
+                        }
+                    }
+                }
+            }
+        }
 
 
 

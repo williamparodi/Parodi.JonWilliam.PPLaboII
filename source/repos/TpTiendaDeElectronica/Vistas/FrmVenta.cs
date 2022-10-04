@@ -10,7 +10,7 @@ namespace Vistas
     {
         private List<Productos> listaDeProductos = new List<Productos>();
         private List<Productos> listaFiltrada = new List<Productos>();
-        protected Venta ventaFiltrada = new Venta();
+        private Venta ventaFiltrada = new Venta();
         private int fila = 0;
         
         public FrmVenta()
@@ -33,41 +33,41 @@ namespace Vistas
 
             this.dtgvListaPorductos.DataSource = null;
             this.dtgvListaPorductos.DataSource = listaDeProductos;
+            this.cmb_Categorias.SelectedIndex = 0;
+            this.cmb_FormaDePago.SelectedIndex = 0;
+            this.txt_Fecha.Text = DateTime.Now.ToString();
 
         }
 
         private void cmb_Categorias_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             Venta venta = new Venta(listaDeProductos);
-            //Venta ventaFiltrada = new Venta();
-
+            
             this.ventaFiltrada = venta.FiltraPorCategoria(cmb_Categorias.Text, venta);
-
-            //this.dtgvListaPorductos.DataSource = venta.ListaProductos;
             this.dtgvListaPorductos.DataSource = ventaFiltrada.ListaProductos;
 
             //Limpio txt
+            /*
             cmb_Categorias.Text = string.Empty;
             txt_NombreProducto.Text = string.Empty;
             txt_PrecioMaximo.Text = string.Empty;
+            */
         }
 
         private void dtgvListaPorductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //this.fila = this.dtgvListaPorductos.CurrentRow.Index;
             this.fila = e.RowIndex;
             if (fila != -1)
             {
                 this.listaFiltrada.Add(ventaFiltrada.ListaProductos[fila]);
             }
-
         }
 
         private void btn_Agregar_Click(object sender, EventArgs e)
         {
             this.dtgv_CarroDeCompras.DataSource = null;
             this.dtgv_CarroDeCompras.DataSource = listaFiltrada;
+            this.txt_PrecioTotal.Text = ventaFiltrada.CalcularPago(cmb_FormaDePago.Text,listaFiltrada).ToString();
         }
 
         private void btn_Borrar_Click(object sender, EventArgs e)
@@ -75,22 +75,8 @@ namespace Vistas
             dtgv_CarroDeCompras.Columns.Clear();
             this.listaFiltrada.Clear();
         }
-
-        //No muestra nada 
-        public string MostrarListaProductos()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Lista de Productos: ");
-
-            foreach (Productos p in this.listaFiltrada)
-            {
-                sb.AppendLine(p.MostrarProducto());
-                //sb.AppendLine($"Categoria : {p.Categoria} Nombre : {p.Nombre} Precio : {p.Precio}");
-            }
-
-            return sb.ToString();
-        }
         
+       
         private void btn_RealizarVenta_Click(object sender, EventArgs e)
         {
             StringBuilder sb = new StringBuilder("");
@@ -98,7 +84,11 @@ namespace Vistas
 
             if(ventaFiltrada.ConfirmaVenta(listaFiltrada) && listaFiltrada is not null)
             {
-                FrmDetalleCompra frmDetalleCompra = new FrmDetalleCompra();
+                FrmDetalleCompra frmDetalleCompra = new FrmDetalleCompra(listaFiltrada,this.txt_PrecioTotal.Text);
+                if(frmDetalleCompra.confirma)
+                {
+                    ventaFiltrada.DescontarUnidad(listaDeProductos, listaFiltrada);
+                }
                 frmDetalleCompra.ShowDialog();
             }
             else
@@ -107,5 +97,8 @@ namespace Vistas
             }
 
         }
+
+        
+      
     }
 }
