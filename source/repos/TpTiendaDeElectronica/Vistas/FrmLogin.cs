@@ -34,7 +34,9 @@ namespace Vistas
             }
             else if(cmb_Usuario.Text == dueño.GetUsuario() && txt_Password.Text == dueño.GetPassword())
             {
-                MessageBox.Show("Dueño");
+                FrmMenuPrincipal frmMenuPrincipal = new FrmMenuPrincipal();
+                frmMenuPrincipal.Show();
+                this.Hide();
             }
             else
             {

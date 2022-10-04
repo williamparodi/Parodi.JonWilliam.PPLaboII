@@ -8,12 +8,11 @@ namespace Entidades
 {
     public class Venta : Productos
     {
-        private List<Productos> listaProductos;
+        protected List<Productos> listaProductos;
 
         public Venta() 
         {
-            this.listaProductos = new List<Productos>();
-            
+            this.listaProductos = new List<Productos>();  
         }
 
         public Venta(List<Productos> listaProductos) : this()
