@@ -46,12 +46,6 @@ namespace Vistas
             this.ventaFiltrada = venta.FiltraPorCategoria(cmb_Categorias.Text, venta);
             this.dtgvListaPorductos.DataSource = ventaFiltrada.ListaProductos;
 
-            //Limpio txt
-            /*
-            cmb_Categorias.Text = string.Empty;
-            txt_NombreProducto.Text = string.Empty;
-            txt_PrecioMaximo.Text = string.Empty;
-            */
         }
 
         private void dtgvListaPorductos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -85,11 +79,20 @@ namespace Vistas
             if(ventaFiltrada.ConfirmaVenta(listaFiltrada) && listaFiltrada is not null)
             {
                 FrmDetalleCompra frmDetalleCompra = new FrmDetalleCompra(listaFiltrada,this.txt_PrecioTotal.Text);
-                if(frmDetalleCompra.confirma)
+                frmDetalleCompra.ShowDialog();
+                if (frmDetalleCompra.confirma)
                 {
                     ventaFiltrada.DescontarUnidad(listaDeProductos, listaFiltrada);
+                    this.Show();
+                    this.dtgv_CarroDeCompras.Columns.Clear();
+                    this.listaFiltrada.Clear();
+                    this.txt_PrecioTotal.Text = string.Empty;
                 }
-                frmDetalleCompra.ShowDialog();
+                else
+                {
+                    this.Show();
+                }
+                
             }
             else
             {

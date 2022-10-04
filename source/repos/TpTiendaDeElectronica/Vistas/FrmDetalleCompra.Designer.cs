@@ -39,7 +39,7 @@
             this.lbl_DetallesDeCompra.AutoSize = true;
             this.lbl_DetallesDeCompra.BackColor = System.Drawing.Color.PaleTurquoise;
             this.lbl_DetallesDeCompra.Font = new System.Drawing.Font("Noto Serif", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.lbl_DetallesDeCompra.Location = new System.Drawing.Point(244, 28);
+            this.lbl_DetallesDeCompra.Location = new System.Drawing.Point(12, 29);
             this.lbl_DetallesDeCompra.Name = "lbl_DetallesDeCompra";
             this.lbl_DetallesDeCompra.Size = new System.Drawing.Size(254, 33);
             this.lbl_DetallesDeCompra.TabIndex = 0;
@@ -50,7 +50,7 @@
             this.lbl_ListaProductos.AutoSize = true;
             this.lbl_ListaProductos.BackColor = System.Drawing.Color.PaleTurquoise;
             this.lbl_ListaProductos.Font = new System.Drawing.Font("Noto Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.lbl_ListaProductos.Location = new System.Drawing.Point(244, 91);
+            this.lbl_ListaProductos.Location = new System.Drawing.Point(12, 89);
             this.lbl_ListaProductos.Name = "lbl_ListaProductos";
             this.lbl_ListaProductos.Size = new System.Drawing.Size(240, 28);
             this.lbl_ListaProductos.TabIndex = 1;
@@ -59,7 +59,7 @@
             // btn_Aceptar
             // 
             this.btn_Aceptar.Font = new System.Drawing.Font("OpenSymbol", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_Aceptar.Location = new System.Drawing.Point(633, 383);
+            this.btn_Aceptar.Location = new System.Drawing.Point(766, 492);
             this.btn_Aceptar.Name = "btn_Aceptar";
             this.btn_Aceptar.Size = new System.Drawing.Size(110, 37);
             this.btn_Aceptar.TabIndex = 2;
@@ -70,18 +70,19 @@
             // btn_Cancelar
             // 
             this.btn_Cancelar.Font = new System.Drawing.Font("OpenSymbol", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_Cancelar.Location = new System.Drawing.Point(497, 383);
+            this.btn_Cancelar.Location = new System.Drawing.Point(596, 492);
             this.btn_Cancelar.Name = "btn_Cancelar";
             this.btn_Cancelar.Size = new System.Drawing.Size(110, 37);
             this.btn_Cancelar.TabIndex = 3;
             this.btn_Cancelar.Text = "Cancelar";
             this.btn_Cancelar.UseVisualStyleBackColor = true;
+            this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
             // 
             // FrmDetalleCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(951, 553);
             this.Controls.Add(this.btn_Cancelar);
             this.Controls.Add(this.btn_Aceptar);
             this.Controls.Add(this.lbl_ListaProductos);

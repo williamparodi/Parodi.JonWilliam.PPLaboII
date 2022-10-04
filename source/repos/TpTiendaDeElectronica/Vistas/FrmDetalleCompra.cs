@@ -27,14 +27,28 @@ namespace Vistas
             {
                 sb.AppendLine(p.MostrarProducto());
             }
-            sb.AppendLine("Precio Total : ");
-            sb.AppendLine(precio);
+            sb.AppendLine($"Precio Total :{precio}");
+            
             this.lbl_ListaProductos.Text = sb.ToString();
         }
         
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
+            StringBuilder sb = new StringBuilder("");
+            sb.AppendLine("Venta exitosa!");
+            sb.AppendLine("Factura guardada");
+            MessageBox.Show(sb.ToString(), "Venta", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.confirma = true;
+            this.Hide();
+        }
+
+        private void btn_Cancelar_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder("");
+            sb.AppendLine("Venta cancelada");
+            MessageBox.Show(sb.ToString(), "Venta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.confirma = false;
+            this.Hide();
         }
     }
 }

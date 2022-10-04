@@ -98,7 +98,8 @@
             // 
             this.txt_Fecha.Location = new System.Drawing.Point(98, 110);
             this.txt_Fecha.Name = "txt_Fecha";
-            this.txt_Fecha.Size = new System.Drawing.Size(153, 25);
+            this.txt_Fecha.ReadOnly = true;
+            this.txt_Fecha.Size = new System.Drawing.Size(131, 25);
             this.txt_Fecha.TabIndex = 3;
             // 
             // lbl_Cliente
@@ -331,6 +332,7 @@
             this.txt_PrecioTotal.Location = new System.Drawing.Point(931, 637);
             this.txt_PrecioTotal.Name = "txt_PrecioTotal";
             this.txt_PrecioTotal.PlaceholderText = "0.00";
+            this.txt_PrecioTotal.ReadOnly = true;
             this.txt_PrecioTotal.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txt_PrecioTotal.Size = new System.Drawing.Size(100, 25);
             this.txt_PrecioTotal.TabIndex = 27;
@@ -371,6 +373,7 @@
             this.Controls.Add(this.lbl_NombreEmpresa);
             this.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Name = "FrmVenta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Venta";
             this.Load += new System.EventHandler(this.FrmVenta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgvListaPorductos)).EndInit();
