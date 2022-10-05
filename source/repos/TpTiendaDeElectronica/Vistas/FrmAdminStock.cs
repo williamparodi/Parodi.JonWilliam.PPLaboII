@@ -15,6 +15,7 @@ namespace Vistas
     {
         private List<Productos> listaFiltrada = new List<Productos>();
         private AdminitradorStock adminitradorStock = new AdminitradorStock();
+        private Productos nuevoProducto = new Productos();
         public FrmAdminStock()
         {
             InitializeComponent();
@@ -32,22 +33,22 @@ namespace Vistas
             adminitradorStock.AgregarProductoAStock(listaProductos1);
             adminitradorStock.AgregarProductoAStock(listaProductos2);
             adminitradorStock.AgregarProductoAStock(listaProductos3);
-            
+            this.dtgv_DatagridFiltrada.DataSource = null;
         }
 
         private void cmb_BuscarCategoriaStock_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
             this.listaFiltrada = adminitradorStock.FiltrarCategoria(cmb_BuscarCategoriaStock.Text);
-            this.dtgv_DatagridFiltrada.DataSource = null;
             this.dtgv_DatagridFiltrada.DataSource = listaFiltrada;
         }
 
         private void btn_AceptarStock_Click(object sender, EventArgs e)
         {
-            Productos nuevoProducto = new Productos();
-            nuevoProducto = adminitradorStock.AgregarDatosAProducto(txt_NombreStock.Text, txt_CantidadStock.Text, txt_PrecioStock.Text,cmb_CategoriaStock.Text);
-            adminitradorStock.AgregarProductoAStock(nuevoProducto);
+            
+            this.nuevoProducto = adminitradorStock.AgregarDatosAProducto(txt_NombreStock.Text, txt_CantidadStock.Text, txt_PrecioStock.Text,cmb_CategoriaStock.Text);
+            adminitradorStock.AgregarProductoAStock(this.nuevoProducto);
+           
+            
         }
     }
 }

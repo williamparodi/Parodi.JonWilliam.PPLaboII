@@ -2,15 +2,17 @@
 
 namespace Entidades
 {
-    public class AdminitradorStock : Venta
+    public class AdminitradorStock 
     {
-        public AdminitradorStock() : base()
+        private List<Productos> listaProductos;
+        private Productos producto;
+        public AdminitradorStock() 
         {
-
+            this.listaProductos = new List<Productos>();
         }
-        public AdminitradorStock(List<Productos> listaProductos) : base(listaProductos)
+        public AdminitradorStock(List<Productos> listaProductos)
         {
-            
+            this.listaProductos = listaProductos;
         }
 
         public Productos AgregarNombre(string nombre)
@@ -30,16 +32,21 @@ namespace Entidades
             set { this.listaProductos = value; }
         }
 
+        public Productos Productos
+        {
+            get { return this.producto; }
+            set { this.producto = value; }
+        }
+
         public Productos AgregarCantidad(string cantidad)
         {
-            Productos producto = new Productos();
             int cantidadASumar = 0;
 
             if (!string.IsNullOrEmpty(cantidad))
             {
                 if (int.TryParse(cantidad, out cantidadASumar))
                 {
-                    producto.Cantidad = cantidadASumar;
+                    this.producto.Cantidad = cantidadASumar;
                 }
             }
             return producto;
@@ -47,14 +54,14 @@ namespace Entidades
 
         public Productos AgregarPrecio(string precio)
         {
-            Productos producto = new Productos();
-            int precioASumar = 0;
+            
+            double precioASumar = 0;
 
             if (!string.IsNullOrEmpty(precio))
             {
-                if (int.TryParse(precio, out precioASumar))
+                if (double.TryParse(precio, out precioASumar))
                 {
-                    producto.Precio = precioASumar;
+                    this.producto.Precio = precioASumar;
                 }
             }
             return producto;
@@ -62,28 +69,26 @@ namespace Entidades
 
         public Productos AgregarDatosAProducto(string nombre, string cantidad, string precio,string categoria)
         {
-            Productos producto = new Productos();
-
-            producto = AgregarNombre(nombre);
-            producto = AgregarCantidad(cantidad);
-            producto = AgregarPrecio(precio);
+            this.producto = AgregarNombre(nombre);
+            this.producto = AgregarCantidad(cantidad);
+            this.producto = AgregarPrecio(precio);
 
             switch(categoria)
             {
                 case "Mother":
-                    producto.Categoria = ECategorias.Mother;
+                    this.producto.Categoria = ECategorias.Mother;
                     break;
                 case "MicroProcesador":
-                    producto.Categoria = ECategorias.Microprocesador;
+                    this.producto.Categoria = ECategorias.Microprocesador;
                     break;
                 case "Perisfericos":
-                    producto.Categoria = ECategorias.Perisfericos;
+                    this.producto.Categoria = ECategorias.Perisfericos;
                     break;
                 case "Gabinete":
-                    producto.Categoria = ECategorias.Gabinete;
+                    this.producto.Categoria = ECategorias.Gabinete;
                     break;
                 case "Monitor":
-                    producto.Categoria = ECategorias.Monitor;   
+                    this.producto.Categoria = ECategorias.Monitor;   
                     break;
                 default:
                     break;
@@ -97,7 +102,7 @@ namespace Entidades
         {
             if (producto is not null)
             {
-                this.ListaDeProductos.Add(producto);
+                this.listaProductos.Add(producto);
             }
         }
 
