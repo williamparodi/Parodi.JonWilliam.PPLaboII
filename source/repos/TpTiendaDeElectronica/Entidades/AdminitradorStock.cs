@@ -10,7 +10,7 @@ namespace Entidades
         }
         public AdminitradorStock(List<Productos> listaProductos) : base(listaProductos)
         {
-
+            
         }
 
         public Productos AgregarNombre(string nombre)
@@ -33,13 +33,13 @@ namespace Entidades
         public Productos AgregarCantidad(string cantidad)
         {
             Productos producto = new Productos();
-            int cantidadASumar;
+            int cantidadASumar = 0;
 
-            if (!string.IsNullOrEmpty(nombre))
+            if (!string.IsNullOrEmpty(cantidad))
             {
                 if (int.TryParse(cantidad, out cantidadASumar))
                 {
-                    producto.Cantidad += cantidadASumar;
+                    producto.Cantidad = cantidadASumar;
                 }
             }
             return producto;
@@ -48,9 +48,9 @@ namespace Entidades
         public Productos AgregarPrecio(string precio)
         {
             Productos producto = new Productos();
-            int precioASumar;
+            int precioASumar = 0;
 
-            if (!string.IsNullOrEmpty(nombre))
+            if (!string.IsNullOrEmpty(precio))
             {
                 if (int.TryParse(precio, out precioASumar))
                 {
@@ -60,7 +60,7 @@ namespace Entidades
             return producto;
         }
 
-        public Productos AgregarDatosAProducto(string nombre, string cantidad, string precio)
+        public Productos AgregarDatosAProducto(string nombre, string cantidad, string precio,string categoria)
         {
             Productos producto = new Productos();
 
@@ -68,6 +68,28 @@ namespace Entidades
             producto = AgregarCantidad(cantidad);
             producto = AgregarPrecio(precio);
 
+            switch(categoria)
+            {
+                case "Mother":
+                    producto.Categoria = ECategorias.Mother;
+                    break;
+                case "MicroProcesador":
+                    producto.Categoria = ECategorias.Microprocesador;
+                    break;
+                case "Perisfericos":
+                    producto.Categoria = ECategorias.Perisfericos;
+                    break;
+                case "Gabinete":
+                    producto.Categoria = ECategorias.Gabinete;
+                    break;
+                case "Monitor":
+                    producto.Categoria = ECategorias.Monitor;   
+                    break;
+                default:
+                    break;
+                    
+            }
+            
             return producto;
         }
 
@@ -75,7 +97,7 @@ namespace Entidades
         {
             if (producto is not null)
             {
-                this.listaProductos.Add(producto);
+                this.ListaDeProductos.Add(producto);
             }
         }
 

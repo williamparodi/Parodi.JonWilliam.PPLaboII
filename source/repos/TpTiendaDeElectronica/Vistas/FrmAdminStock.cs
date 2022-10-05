@@ -43,6 +43,11 @@ namespace Vistas
             this.dtgv_DatagridFiltrada.DataSource = listaFiltrada;
         }
 
-
+        private void btn_AceptarStock_Click(object sender, EventArgs e)
+        {
+            Productos nuevoProducto = new Productos();
+            nuevoProducto = adminitradorStock.AgregarDatosAProducto(txt_NombreStock.Text, txt_CantidadStock.Text, txt_PrecioStock.Text,cmb_CategoriaStock.Text);
+            adminitradorStock.AgregarProductoAStock(nuevoProducto);
+        }
     }
 }

@@ -33,9 +33,9 @@
             this.lbl_NombreStock = new System.Windows.Forms.Label();
             this.txt_NombreStock = new System.Windows.Forms.TextBox();
             this.lbl_PrecioStock = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txt_PrecioStock = new System.Windows.Forms.TextBox();
             this.lbl_CantidadStock = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txt_CantidadStock = new System.Windows.Forms.TextBox();
             this.lbl_TituloStock = new System.Windows.Forms.Label();
             this.btn_AceptarStock = new System.Windows.Forms.Button();
             this.btn_CanelarStock = new System.Windows.Forms.Button();
@@ -100,12 +100,12 @@
             this.lbl_PrecioStock.TabIndex = 4;
             this.lbl_PrecioStock.Text = "Precio :";
             // 
-            // textBox1
+            // txt_PrecioStock
             // 
-            this.textBox1.Location = new System.Drawing.Point(110, 135);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(121, 23);
-            this.textBox1.TabIndex = 5;
+            this.txt_PrecioStock.Location = new System.Drawing.Point(110, 135);
+            this.txt_PrecioStock.Name = "txt_PrecioStock";
+            this.txt_PrecioStock.Size = new System.Drawing.Size(121, 23);
+            this.txt_PrecioStock.TabIndex = 5;
             // 
             // lbl_CantidadStock
             // 
@@ -117,12 +117,12 @@
             this.lbl_CantidadStock.TabIndex = 6;
             this.lbl_CantidadStock.Text = "Cantidad :";
             // 
-            // textBox2
+            // txt_CantidadStock
             // 
-            this.textBox2.Location = new System.Drawing.Point(110, 177);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(121, 23);
-            this.textBox2.TabIndex = 7;
+            this.txt_CantidadStock.Location = new System.Drawing.Point(110, 177);
+            this.txt_CantidadStock.Name = "txt_CantidadStock";
+            this.txt_CantidadStock.Size = new System.Drawing.Size(121, 23);
+            this.txt_CantidadStock.TabIndex = 7;
             // 
             // lbl_TituloStock
             // 
@@ -143,6 +143,7 @@
             this.btn_AceptarStock.TabIndex = 9;
             this.btn_AceptarStock.Text = "Aceptar";
             this.btn_AceptarStock.UseVisualStyleBackColor = true;
+            this.btn_AceptarStock.Click += new System.EventHandler(this.btn_AceptarStock_Click);
             // 
             // btn_CanelarStock
             // 
@@ -212,7 +213,7 @@
             this.dtgv_DatagridFiltrada.Location = new System.Drawing.Point(25, 331);
             this.dtgv_DatagridFiltrada.Name = "dtgv_DatagridFiltrada";
             this.dtgv_DatagridFiltrada.RowTemplate.Height = 25;
-            this.dtgv_DatagridFiltrada.Size = new System.Drawing.Size(345, 150);
+            this.dtgv_DatagridFiltrada.Size = new System.Drawing.Size(463, 150);
             this.dtgv_DatagridFiltrada.TabIndex = 16;
             // 
             // btn_SalirStock
@@ -229,6 +230,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Thistle;
             this.ClientSize = new System.Drawing.Size(800, 502);
             this.Controls.Add(this.btn_SalirStock);
             this.Controls.Add(this.dtgv_DatagridFiltrada);
@@ -240,9 +242,9 @@
             this.Controls.Add(this.btn_CanelarStock);
             this.Controls.Add(this.btn_AceptarStock);
             this.Controls.Add(this.lbl_TituloStock);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txt_CantidadStock);
             this.Controls.Add(this.lbl_CantidadStock);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txt_PrecioStock);
             this.Controls.Add(this.lbl_PrecioStock);
             this.Controls.Add(this.txt_NombreStock);
             this.Controls.Add(this.lbl_NombreStock);
@@ -264,9 +266,9 @@
         private System.Windows.Forms.Label lbl_NombreStock;
         private System.Windows.Forms.TextBox txt_NombreStock;
         private System.Windows.Forms.Label lbl_PrecioStock;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_PrecioStock;
         private System.Windows.Forms.Label lbl_CantidadStock;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txt_CantidadStock;
         private System.Windows.Forms.Label lbl_TituloStock;
         private System.Windows.Forms.Button btn_AceptarStock;
         private System.Windows.Forms.Button btn_CanelarStock;
