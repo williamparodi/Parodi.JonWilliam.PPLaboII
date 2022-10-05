@@ -26,7 +26,9 @@ namespace Vistas
 
         private void btn_Admin_Click(object sender, EventArgs e)
         {
-
+            FrmAdminStock frmAdminStock = new FrmAdminStock();
+            frmAdminStock.Show();
+            this.Hide();
         }
     }
 }

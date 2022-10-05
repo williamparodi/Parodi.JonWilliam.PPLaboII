@@ -43,10 +43,10 @@
             this.lbl_BusquedaCategoria = new System.Windows.Forms.Label();
             this.cmb_BuscarCategoriaStock = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.txt_BuscarPrecioMaximo = new System.Windows.Forms.TextBox();
+            this.dtgv_DatagridFiltrada = new System.Windows.Forms.DataGridView();
             this.btn_SalirStock = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_DatagridFiltrada)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_CategoriaStock
@@ -187,6 +187,7 @@
             this.cmb_BuscarCategoriaStock.Name = "cmb_BuscarCategoriaStock";
             this.cmb_BuscarCategoriaStock.Size = new System.Drawing.Size(121, 23);
             this.cmb_BuscarCategoriaStock.TabIndex = 13;
+            this.cmb_BuscarCategoriaStock.SelectedIndexChanged += new System.EventHandler(this.cmb_BuscarCategoriaStock_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -198,21 +199,21 @@
             this.label1.TabIndex = 14;
             this.label1.Text = "Buscar por Precio Maximo";
             // 
-            // textBox3
+            // txt_BuscarPrecioMaximo
             // 
-            this.textBox3.Location = new System.Drawing.Point(574, 267);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 23);
-            this.textBox3.TabIndex = 15;
+            this.txt_BuscarPrecioMaximo.Location = new System.Drawing.Point(574, 267);
+            this.txt_BuscarPrecioMaximo.Name = "txt_BuscarPrecioMaximo";
+            this.txt_BuscarPrecioMaximo.Size = new System.Drawing.Size(100, 23);
+            this.txt_BuscarPrecioMaximo.TabIndex = 15;
             // 
-            // dataGridView1
+            // dtgv_DatagridFiltrada
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(25, 331);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(345, 150);
-            this.dataGridView1.TabIndex = 16;
+            this.dtgv_DatagridFiltrada.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgv_DatagridFiltrada.Location = new System.Drawing.Point(25, 331);
+            this.dtgv_DatagridFiltrada.Name = "dtgv_DatagridFiltrada";
+            this.dtgv_DatagridFiltrada.RowTemplate.Height = 25;
+            this.dtgv_DatagridFiltrada.Size = new System.Drawing.Size(345, 150);
+            this.dtgv_DatagridFiltrada.TabIndex = 16;
             // 
             // btn_SalirStock
             // 
@@ -230,8 +231,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 502);
             this.Controls.Add(this.btn_SalirStock);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.dtgv_DatagridFiltrada);
+            this.Controls.Add(this.txt_BuscarPrecioMaximo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmb_BuscarCategoriaStock);
             this.Controls.Add(this.lbl_BusquedaCategoria);
@@ -250,7 +251,7 @@
             this.Name = "FrmAdminStock";
             this.Text = "Administrar Stock";
             this.Load += new System.EventHandler(this.FrmAdminStock_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgv_DatagridFiltrada)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -273,8 +274,8 @@
         private System.Windows.Forms.Label lbl_BusquedaCategoria;
         private System.Windows.Forms.ComboBox cmb_BuscarCategoriaStock;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox txt_BuscarPrecioMaximo;
+        private System.Windows.Forms.DataGridView dtgv_DatagridFiltrada;
         private System.Windows.Forms.Button btn_SalirStock;
     }
 }

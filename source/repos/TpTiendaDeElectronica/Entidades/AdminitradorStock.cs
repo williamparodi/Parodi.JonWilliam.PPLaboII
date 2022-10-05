@@ -4,6 +4,10 @@ namespace Entidades
 {
     public class AdminitradorStock : Venta
     {
+        public AdminitradorStock() : base()
+        {
+
+        }
         public AdminitradorStock(List<Productos> listaProductos) : base(listaProductos)
         {
 
@@ -69,21 +73,49 @@ namespace Entidades
 
         public void AgregarProductoAStock(Productos producto)
         {
-            List<Productos> listaStock = new List<Productos>();
-
             if (producto is not null)
             {
-                listaStock.Add(producto);
-
-                if (listaStock is not null)
-                {
-                    this.listaProductos = listaStock;
-                }
+                this.listaProductos.Add(producto);
             }
         }
 
+        public  List<Productos> FiltrarCategoria(string categoria)
+        {
+            List<Productos> auxListStock = new List<Productos>();
 
-        
+            if(!string.IsNullOrEmpty(categoria))
+            {
+                foreach(Productos producto in this.listaProductos)
+                {
+                    if(producto.Categoria.ToString() == categoria)
+                    {
+                        auxListStock.Add(producto);
+                    }
+                }
+            }
+
+            return auxListStock;
+        }
+
+        public List<Productos> FiltrarPorPrecioMaximo(string precio)
+        {
+            List<Productos> auxListaStock = new List<Productos>();
+            double precioAComparar;
+
+            if(double.TryParse(precio,out precioAComparar))
+            {
+                foreach (Productos producto in auxListaStock)
+                {
+                    if (precioAComparar >= producto.Precio)
+                    {
+                        auxListaStock.Add(producto);
+                    }
+                }
+            }
+           
+            return auxListaStock;
+        }
+
 
 
     }
