@@ -65,7 +65,8 @@
             this.cmb_Usuario.FormattingEnabled = true;
             this.cmb_Usuario.Items.AddRange(new object[] {
             "pablo@gmail.com",
-            "roberto@gmail.com"});
+            "roberto@gmail.com",
+            "contador@gmail.com"});
             this.cmb_Usuario.Location = new System.Drawing.Point(296, 135);
             this.cmb_Usuario.Name = "cmb_Usuario";
             this.cmb_Usuario.Size = new System.Drawing.Size(162, 23);

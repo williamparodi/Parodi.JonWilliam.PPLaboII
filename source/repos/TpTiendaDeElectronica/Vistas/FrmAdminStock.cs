@@ -23,7 +23,7 @@ namespace Vistas
         /// <param name="e"></param>
         private void FrmAdminStock_Load(object sender, EventArgs e)
         {
-            this.listaProductos = adminitradorStock.HarcodearLista();
+            this.listaProductos = adminitradorStock.HarcodearLista();///
             this.cmb_CategoriaStock.SelectedIndex = 0;
             this.cmb_BuscarCategoriaStock.SelectedIndex = 0;
             this.dtgv_DatagridFiltrada.DataSource = null;

@@ -15,6 +15,7 @@ namespace Vistas
     {
         private Vendedor vendedor = new Vendedor();
         private Dueño dueño = new Dueño();
+        private Contador contador = new Contador();
         public FrmLogin()
         {
             InitializeComponent();
@@ -44,6 +45,12 @@ namespace Vistas
                 frmMenuPrincipal.Show();
                 this.Hide();
             }
+            else if (cmb_Usuario.Text == contador.GetUsuario() && txt_Password.Text == contador.GetPassword())
+            {
+                FrmEstadisticas frmEstadisticas = new FrmEstadisticas();
+                frmEstadisticas.Show();
+                this.Hide();
+            }
             else
             {
                 MessageBox.Show(sb.ToString(),"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -67,6 +74,10 @@ namespace Vistas
             else if(cmb_Usuario.Text == dueño.GetUsuario())
             {
                 txt_Password.Text = dueño.GetPassword();
+            }
+            else if(cmb_Usuario.Text == contador.GetUsuario())
+            {
+                txt_Password.Text = contador.GetPassword();
             }
             else
             {

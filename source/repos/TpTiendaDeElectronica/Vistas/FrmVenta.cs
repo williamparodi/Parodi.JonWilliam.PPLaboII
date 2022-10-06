@@ -12,6 +12,9 @@ namespace Vistas
         private List<Productos> listaFiltrada = new List<Productos>();
         private Venta ventaFiltrada = new Venta();
         private AdminitradorStock adminitradorStock = new AdminitradorStock();
+        static int cantidadVentas;
+        static Productos productoConMasVentas = new Productos();
+
         private int fila = 0;
 
         /// <summary>
@@ -99,10 +102,14 @@ namespace Vistas
             {
                 FrmDetalleCompra frmDetalleCompra = new FrmDetalleCompra(listaFiltrada, this.txt_PrecioTotal.Text);
                 frmDetalleCompra.ShowDialog();
+                
                 if (frmDetalleCompra.confirma)
                 {
                     ventaFiltrada.DescontarUnidad(listaDeProductos, listaFiltrada);
-                    this.Show();
+                    cantidadVentas++;
+                    FrmEstadisticas frmEstadisticas = new FrmEstadisticas(cantidadVentas);
+                    frmEstadisticas.Show();
+                    //this.Show();
                     this.dtgv_CarroDeCompras.Columns.Clear();
                     this.listaFiltrada.Clear();
                     this.txt_PrecioTotal.Text = string.Empty;
