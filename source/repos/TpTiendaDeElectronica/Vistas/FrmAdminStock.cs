@@ -64,22 +64,7 @@ namespace Vistas
             this.Hide();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btn_BuscaPrecio_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(this.txt_BuscarPrecioMaximo.Text))
-            {
-                AdminitradorStock adminitradorStock = new AdminitradorStock(this.listaProductos);
-                List<Productos> listaProductos = new List<Productos>();
-                listaProductos = adminitradorStock.FiltrarPorPrecioMaximo(txt_BuscarPrecioMaximo.Text);
-               
-                this.dtgv_DatagridFiltrada.DataSource = listaProductos;
-            }
-        }
+       
     }
 
 }

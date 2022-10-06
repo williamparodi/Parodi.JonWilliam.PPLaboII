@@ -43,11 +43,8 @@
             this.lbl_ListaDeProductosStock = new System.Windows.Forms.Label();
             this.lbl_BusquedaCategoria = new System.Windows.Forms.Label();
             this.cmb_BuscarCategoriaStock = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txt_BuscarPrecioMaximo = new System.Windows.Forms.TextBox();
             this.dtgv_DatagridFiltrada = new System.Windows.Forms.DataGridView();
             this.btn_SalirStock = new System.Windows.Forms.Button();
-            this.btn_BuscaPrecio = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_DatagridFiltrada)).BeginInit();
             this.SuspendLayout();
             // 
@@ -192,23 +189,6 @@
             this.cmb_BuscarCategoriaStock.TabIndex = 13;
             this.cmb_BuscarCategoriaStock.SelectedIndexChanged += new System.EventHandler(this.cmb_BuscarCategoriaStock_SelectedIndexChanged);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(380, 271);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(173, 16);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Buscar por Precio Maximo";
-            // 
-            // txt_BuscarPrecioMaximo
-            // 
-            this.txt_BuscarPrecioMaximo.Location = new System.Drawing.Point(574, 267);
-            this.txt_BuscarPrecioMaximo.Name = "txt_BuscarPrecioMaximo";
-            this.txt_BuscarPrecioMaximo.Size = new System.Drawing.Size(100, 23);
-            this.txt_BuscarPrecioMaximo.TabIndex = 15;
-            // 
             // dtgv_DatagridFiltrada
             // 
             this.dtgv_DatagridFiltrada.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -229,27 +209,14 @@
             this.btn_SalirStock.UseVisualStyleBackColor = true;
             this.btn_SalirStock.Click += new System.EventHandler(this.btn_SalirStock_Click);
             // 
-            // btn_BuscaPrecio
-            // 
-            this.btn_BuscaPrecio.Location = new System.Drawing.Point(695, 267);
-            this.btn_BuscaPrecio.Name = "btn_BuscaPrecio";
-            this.btn_BuscaPrecio.Size = new System.Drawing.Size(63, 23);
-            this.btn_BuscaPrecio.TabIndex = 18;
-            this.btn_BuscaPrecio.Text = "Buscar";
-            this.btn_BuscaPrecio.UseVisualStyleBackColor = true;
-            this.btn_BuscaPrecio.Click += new System.EventHandler(this.btn_BuscaPrecio_Click);
-            // 
             // FrmAdminStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Thistle;
             this.ClientSize = new System.Drawing.Size(800, 502);
-            this.Controls.Add(this.btn_BuscaPrecio);
             this.Controls.Add(this.btn_SalirStock);
             this.Controls.Add(this.dtgv_DatagridFiltrada);
-            this.Controls.Add(this.txt_BuscarPrecioMaximo);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.cmb_BuscarCategoriaStock);
             this.Controls.Add(this.lbl_BusquedaCategoria);
             this.Controls.Add(this.lbl_ListaDeProductosStock);
@@ -290,10 +257,7 @@
         private System.Windows.Forms.Label lbl_ListaDeProductosStock;
         private System.Windows.Forms.Label lbl_BusquedaCategoria;
         private System.Windows.Forms.ComboBox cmb_BuscarCategoriaStock;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txt_BuscarPrecioMaximo;
         private System.Windows.Forms.DataGridView dtgv_DatagridFiltrada;
         private System.Windows.Forms.Button btn_SalirStock;
-        private System.Windows.Forms.Button btn_BuscaPrecio;
     }
 }

@@ -40,12 +40,12 @@ namespace Entidades
         /// Crea un string con los datos de la lista de Productos
         /// </summary>
         /// <returns></returns> un string con los datos de la lista
-        public  string MostrarListaProductos()
+        public  string MostrarListaProductos(List<Productos> lista)
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("Lista de Productos: ");
 
-            foreach(Productos p in listaProductos)
+            foreach(Productos p in lista)
             {
                 sb.AppendLine(p.MostrarProducto());
             }
@@ -161,8 +161,6 @@ namespace Entidades
                 }
             }
         }
-
-
 
     }
 }

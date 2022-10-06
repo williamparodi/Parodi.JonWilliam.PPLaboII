@@ -45,8 +45,6 @@
             this.Articulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmb_Categorias = new System.Windows.Forms.ComboBox();
             this.lbl_Categoria = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txt_PrecioMaximo = new System.Windows.Forms.TextBox();
             this.lbl_NombreProducto = new System.Windows.Forms.Label();
             this.txt_NombreProducto = new System.Windows.Forms.TextBox();
             this.btn_Agregar = new System.Windows.Forms.Button();
@@ -209,24 +207,6 @@
             this.lbl_Categoria.TabIndex = 13;
             this.lbl_Categoria.Text = "Categoria :";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(26, 305);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(112, 17);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "Precio Maximo :";
-            // 
-            // txt_PrecioMaximo
-            // 
-            this.txt_PrecioMaximo.Location = new System.Drawing.Point(163, 302);
-            this.txt_PrecioMaximo.Name = "txt_PrecioMaximo";
-            this.txt_PrecioMaximo.PlaceholderText = "0.00";
-            this.txt_PrecioMaximo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txt_PrecioMaximo.Size = new System.Drawing.Size(66, 25);
-            this.txt_PrecioMaximo.TabIndex = 15;
-            // 
             // lbl_NombreProducto
             // 
             this.lbl_NombreProducto.AutoSize = true;
@@ -371,8 +351,6 @@
             this.Controls.Add(this.btn_Agregar);
             this.Controls.Add(this.txt_NombreProducto);
             this.Controls.Add(this.lbl_NombreProducto);
-            this.Controls.Add(this.txt_PrecioMaximo);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.lbl_Categoria);
             this.Controls.Add(this.cmb_Categorias);
             this.Controls.Add(this.dtgvListaPorductos);
@@ -418,8 +396,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Articulo;
         private System.Windows.Forms.ComboBox cmb_Categorias;
         private System.Windows.Forms.Label lbl_Categoria;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txt_PrecioMaximo;
         private System.Windows.Forms.Label lbl_NombreProducto;
         private System.Windows.Forms.TextBox txt_NombreProducto;
         private System.Windows.Forms.Button btn_Agregar;

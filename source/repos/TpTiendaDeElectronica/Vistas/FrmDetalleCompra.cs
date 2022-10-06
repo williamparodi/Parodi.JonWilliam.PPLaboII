@@ -14,6 +14,8 @@ namespace Vistas
     public partial class FrmDetalleCompra : Form
     {
         public bool confirma;
+        static List<Productos> facturas = new List<Productos>();
+        public double precioTotal = 0; 
         public FrmDetalleCompra()
         {
             InitializeComponent();
@@ -27,12 +29,18 @@ namespace Vistas
         public FrmDetalleCompra(List<Productos> listaFiltrada,string precio) : this()
         {
             StringBuilder sb = new StringBuilder();
+            double precioASumar = 0;
             sb.AppendLine("Listado de Productos : ");
             foreach(Productos p in listaFiltrada)
             {
                 sb.AppendLine(p.MostrarProducto());
+                facturas.Add(p);
             }
             sb.AppendLine($"Precio Total :{precio}");
+            if(double.TryParse(precio,out precioASumar))
+            {
+                this.precioTotal += precioASumar;
+            }
             
             this.lbl_ListaProductos.Text = sb.ToString();
         }
@@ -65,5 +73,6 @@ namespace Vistas
             this.confirma = false;
             this.Hide();
         }
+
     }
 }

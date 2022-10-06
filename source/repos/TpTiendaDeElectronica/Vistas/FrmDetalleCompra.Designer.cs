@@ -33,6 +33,7 @@
             this.lbl_ListaProductos = new System.Windows.Forms.Label();
             this.btn_Aceptar = new System.Windows.Forms.Button();
             this.btn_Cancelar = new System.Windows.Forms.Button();
+            this.btn_HistorialFacturas = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbl_DetallesDeCompra
@@ -79,6 +80,16 @@
             this.btn_Cancelar.UseVisualStyleBackColor = true;
             this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
             // 
+            // btn_HistorialFacturas
+            // 
+            this.btn_HistorialFacturas.Font = new System.Drawing.Font("OpenSymbol", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_HistorialFacturas.Location = new System.Drawing.Point(26, 492);
+            this.btn_HistorialFacturas.Name = "btn_HistorialFacturas";
+            this.btn_HistorialFacturas.Size = new System.Drawing.Size(201, 37);
+            this.btn_HistorialFacturas.TabIndex = 4;
+            this.btn_HistorialFacturas.Text = "Historial Facturas";
+            this.btn_HistorialFacturas.UseVisualStyleBackColor = true;
+            // 
             // FrmDetalleCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -86,6 +97,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(951, 553);
+            this.Controls.Add(this.btn_HistorialFacturas);
             this.Controls.Add(this.btn_Cancelar);
             this.Controls.Add(this.btn_Aceptar);
             this.Controls.Add(this.lbl_ListaProductos);
@@ -107,5 +119,6 @@
         private System.Windows.Forms.Label lbl_ListaProductos;
         private System.Windows.Forms.Button btn_Aceptar;
         private System.Windows.Forms.Button btn_Cancelar;
+        private System.Windows.Forms.Button btn_HistorialFacturas;
     }
 }
