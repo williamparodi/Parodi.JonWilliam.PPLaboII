@@ -1,19 +1,14 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Entidades;
 
 namespace Vistas
 {
     public partial class FrmAdminStock : Form
     {
         private List<Productos> listaProductos = new List<Productos>();
+        private List<Productos> listaFiltrada = new List<Productos>();
         private AdminitradorStock adminitradorStock = new AdminitradorStock();
         private Productos nuevoProducto = new Productos();
         public FrmAdminStock()
@@ -23,7 +18,7 @@ namespace Vistas
 
         private void FrmAdminStock_Load(object sender, EventArgs e)
         {
-            adminitradorStock.ListaDeProductos = adminitradorStock.HarcodearLista();
+            this.listaProductos = adminitradorStock.HarcodearLista();
             this.cmb_CategoriaStock.SelectedIndex = 0;
             this.cmb_BuscarCategoriaStock.SelectedIndex = 0;
             this.dtgv_DatagridFiltrada.DataSource = null;
@@ -31,15 +26,17 @@ namespace Vistas
 
         private void cmb_BuscarCategoriaStock_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.adminitradorStock.ListaDeProductos = adminitradorStock.FiltrarCategoria(cmb_BuscarCategoriaStock.Text);
-            this.dtgv_DatagridFiltrada.DataSource = adminitradorStock.ListaDeProductos;
+            AdminitradorStock adminitradorStock = new AdminitradorStock(this.listaProductos);
+            this.listaFiltrada = adminitradorStock.FiltrarCategoria(cmb_BuscarCategoriaStock.Text);
+            this.dtgv_DatagridFiltrada.DataSource = this.listaFiltrada;
         }
 
         private void btn_AceptarStock_Click(object sender, EventArgs e)
         {
-            this.nuevoProducto = adminitradorStock.AgregarDatosAProducto(txt_NombreStock.Text, txt_CantidadStock.Text, txt_PrecioStock.Text,cmb_CategoriaStock.Text);
-            adminitradorStock.AgregarProductoAStock(this.nuevoProducto);   
+            this.nuevoProducto = adminitradorStock.AgregarDatosAProducto(txt_NombreStock.Text, txt_CantidadStock.Text, txt_PrecioStock.Text, cmb_CategoriaStock.Text);
+            this.listaProductos.Add(this.nuevoProducto);
         }
+
 
         private void btn_SalirStock_Click(object sender, EventArgs e)
         {
@@ -47,5 +44,19 @@ namespace Vistas
             frmMenuPrincipal.Show();
             this.Hide();
         }
+
+
+        private void btn_BuscaPrecio_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(this.txt_BuscarPrecioMaximo.Text))
+            {
+                AdminitradorStock adminitradorStock = new AdminitradorStock(this.listaProductos);
+                List<Productos> listaProductos = new List<Productos>();
+                listaProductos = adminitradorStock.FiltrarPorPrecioMaximo(txt_BuscarPrecioMaximo.Text);
+               
+                this.dtgv_DatagridFiltrada.DataSource = listaProductos;
+            }
+        }
     }
+
 }

@@ -6,15 +6,29 @@ namespace Entidades
     {
         private List<Productos> listaProductos;
         private Productos producto;
+
+        /// <summary>
+        /// Contructor que instancia una lista 
+        /// </summary>
         public AdminitradorStock() 
         {
             this.listaProductos = new List<Productos>();
         }
+
+        /// <summary>
+        /// Contructor con sobrecarga
+        /// </summary>
+        /// <param name="listaProductos"></param>
         public AdminitradorStock(List<Productos> listaProductos)
         {
             this.listaProductos = listaProductos;
         }
 
+        /// <summary>
+        /// Agrega nombre al producto validando que no sea una cadena vacio
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <returns></returns> el producto
         public Productos AgregarNombre(string nombre)
         {
             Productos producto = new Productos();
@@ -26,18 +40,29 @@ namespace Entidades
             return producto;
         }
 
+        /// <summary>
+        /// Propiedad que setea y retorna una lista 
+        /// </summary>
         public List<Productos> ListaDeProductos
         {
             get { return this.listaProductos; }
             set { this.listaProductos = value; }
         }
 
+        /// <summary>
+        /// Propiedad que seta y retorna un producto
+        /// </summary>
         public Productos Productos
         {
             get { return this.producto; }
             set { this.producto = value; }
         }
 
+        /// <summary>
+        /// Agrega una cantidad y valida que no sea una cadena vacia al atributo de producto
+        /// </summary>
+        /// <param name="cantidad"></param>
+        /// <returns></returns> Producto
         public Productos AgregarCantidad(string cantidad)
         {
             int cantidadASumar = 0;
@@ -52,9 +77,13 @@ namespace Entidades
             return producto;
         }
 
+        /// <summary>
+        /// Agrega un precio al preducto y valida que no sea una cadena vacia y que sea un numero
+        /// </summary>
+        /// <param name="precio"></param>
+        /// <returns></returns> Producto
         public Productos AgregarPrecio(string precio)
         {
-            
             double precioASumar = 0;
 
             if (!string.IsNullOrEmpty(precio))
@@ -67,6 +96,14 @@ namespace Entidades
             return producto;
         }
 
+        /// <summary>
+        /// Agregalos campos al prod
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="cantidad"></param>
+        /// <param name="precio"></param>
+        /// <param name="categoria"></param>
+        /// <returns></returns>
         public Productos AgregarDatosAProducto(string nombre, string cantidad, string precio,string categoria)
         {
             this.producto = AgregarNombre(nombre);

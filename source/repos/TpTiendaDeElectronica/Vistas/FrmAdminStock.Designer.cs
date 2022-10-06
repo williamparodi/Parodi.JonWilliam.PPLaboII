@@ -47,6 +47,7 @@
             this.txt_BuscarPrecioMaximo = new System.Windows.Forms.TextBox();
             this.dtgv_DatagridFiltrada = new System.Windows.Forms.DataGridView();
             this.btn_SalirStock = new System.Windows.Forms.Button();
+            this.btn_BuscaPrecio = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_DatagridFiltrada)).BeginInit();
             this.SuspendLayout();
             // 
@@ -228,12 +229,23 @@
             this.btn_SalirStock.UseVisualStyleBackColor = true;
             this.btn_SalirStock.Click += new System.EventHandler(this.btn_SalirStock_Click);
             // 
+            // btn_BuscaPrecio
+            // 
+            this.btn_BuscaPrecio.Location = new System.Drawing.Point(695, 267);
+            this.btn_BuscaPrecio.Name = "btn_BuscaPrecio";
+            this.btn_BuscaPrecio.Size = new System.Drawing.Size(63, 23);
+            this.btn_BuscaPrecio.TabIndex = 18;
+            this.btn_BuscaPrecio.Text = "Buscar";
+            this.btn_BuscaPrecio.UseVisualStyleBackColor = true;
+            this.btn_BuscaPrecio.Click += new System.EventHandler(this.btn_BuscaPrecio_Click);
+            // 
             // FrmAdminStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Thistle;
             this.ClientSize = new System.Drawing.Size(800, 502);
+            this.Controls.Add(this.btn_BuscaPrecio);
             this.Controls.Add(this.btn_SalirStock);
             this.Controls.Add(this.dtgv_DatagridFiltrada);
             this.Controls.Add(this.txt_BuscarPrecioMaximo);
@@ -282,5 +294,6 @@
         private System.Windows.Forms.TextBox txt_BuscarPrecioMaximo;
         private System.Windows.Forms.DataGridView dtgv_DatagridFiltrada;
         private System.Windows.Forms.Button btn_SalirStock;
+        private System.Windows.Forms.Button btn_BuscaPrecio;
     }
 }
