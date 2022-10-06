@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmVenta));
             this.lbl_NombreEmpresa = new System.Windows.Forms.Label();
             this.lbl_Direccion = new System.Windows.Forms.Label();
             this.lbl_Fecha = new System.Windows.Forms.Label();
@@ -65,7 +66,7 @@
             // lbl_NombreEmpresa
             // 
             this.lbl_NombreEmpresa.AutoSize = true;
-            this.lbl_NombreEmpresa.BackColor = System.Drawing.Color.DarkGray;
+            this.lbl_NombreEmpresa.BackColor = System.Drawing.Color.PaleTurquoise;
             this.lbl_NombreEmpresa.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lbl_NombreEmpresa.Location = new System.Drawing.Point(26, 19);
             this.lbl_NombreEmpresa.Name = "lbl_NombreEmpresa";
@@ -76,7 +77,7 @@
             // lbl_Direccion
             // 
             this.lbl_Direccion.AutoSize = true;
-            this.lbl_Direccion.BackColor = System.Drawing.Color.DarkGray;
+            this.lbl_Direccion.BackColor = System.Drawing.Color.PaleTurquoise;
             this.lbl_Direccion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lbl_Direccion.Font = new System.Drawing.Font("Sitka Subheading", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_Direccion.Location = new System.Drawing.Point(26, 58);
@@ -341,7 +342,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightCoral;
+            this.BackColor = System.Drawing.Color.SeaShell;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1177, 743);
             this.Controls.Add(this.txt_PrecioTotal);
             this.Controls.Add(this.lbl_PrecioTotal);
@@ -372,6 +375,7 @@
             this.Controls.Add(this.lbl_Direccion);
             this.Controls.Add(this.lbl_NombreEmpresa);
             this.Font = new System.Drawing.Font("Segoe UI Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmVenta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Venta";

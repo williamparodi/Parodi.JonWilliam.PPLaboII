@@ -21,36 +21,19 @@ namespace Vistas
 
         private void FrmVenta_Load(object sender, EventArgs e)
         {
-            /*
-            Productos listaProductos = new Productos(ECategorias.Microprocesador, "Ryzen 5", 55666, 75);
-            Productos listaProductos1 = new Productos(ECategorias.Mother, "Asus", 2323, 75);
-            Productos listaProductos2 = new Productos(ECategorias.Gabinete, "Terma", 65652, 75);
-            Productos listaProductos3 = new Productos(ECategorias.Microprocesador, "Ryzen 5", 9874, 95);
-
-            this.listaDeProductos.Add(listaProductos);
-            this.listaDeProductos.Add(listaProductos1);
-            this.listaDeProductos.Add(listaProductos2);
-            this.listaDeProductos.Add(listaProductos3);
-            */
             this.listaDeProductos = adminitradorStock.HarcodearLista();
             this.dtgvListaPorductos.DataSource = null;
             this.dtgvListaPorductos.DataSource = listaDeProductos;
             this.cmb_Categorias.SelectedIndex = 0;
             this.cmb_FormaDePago.SelectedIndex = 0;
             this.txt_Fecha.Text = DateTime.Now.ToString();
-
         }
 
         private void cmb_Categorias_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            Venta venta = new Venta(listaDeProductos);
-
-            this.ventaFiltrada = venta.FiltraPorCategoria(cmb_Categorias.Text, venta);
-            //this.listaFiltrada = adminitradorStock.FiltrarCategoria(cmb_Categorias.Text);
-            this.dtgvListaPorductos.DataSource = ventaFiltrada.ListaProductos;
-            //this.dtgvListaPorductos.DataSource = listaFiltrada;
-
+            AdminitradorStock adminitrador = new AdminitradorStock(listaDeProductos);
+            this.adminitradorStock.ListaDeProductos = adminitrador.FiltrarCategoria(cmb_Categorias.Text);
+            this.dtgvListaPorductos.DataSource = adminitradorStock.ListaDeProductos;
         }
 
         private void dtgvListaPorductos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -58,7 +41,7 @@ namespace Vistas
             this.fila = e.RowIndex;
             if (fila != -1)
             {
-                this.listaFiltrada.Add(ventaFiltrada.ListaProductos[fila]);
+                this.listaFiltrada.Add(adminitradorStock.ListaDeProductos[fila]);
                 
             }
         }
@@ -96,8 +79,7 @@ namespace Vistas
                 else
                 {
                     this.Show();
-                }
-                
+                }  
             }
             else
             {

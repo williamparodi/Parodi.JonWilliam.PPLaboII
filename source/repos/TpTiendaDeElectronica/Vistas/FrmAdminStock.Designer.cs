@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAdminStock));
             this.lbl_CategoriaStock = new System.Windows.Forms.Label();
             this.cmb_CategoriaStock = new System.Windows.Forms.ComboBox();
             this.lbl_NombreStock = new System.Windows.Forms.Label();
@@ -251,6 +252,7 @@
             this.Controls.Add(this.lbl_NombreStock);
             this.Controls.Add(this.cmb_CategoriaStock);
             this.Controls.Add(this.lbl_CategoriaStock);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmAdminStock";
             this.Text = "Administrar Stock";
             this.Load += new System.EventHandler(this.FrmAdminStock_Load);
