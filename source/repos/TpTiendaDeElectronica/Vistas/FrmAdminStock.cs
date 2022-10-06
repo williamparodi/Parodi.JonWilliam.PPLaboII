@@ -16,6 +16,11 @@ namespace Vistas
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Al cargar el form setea valores
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmAdminStock_Load(object sender, EventArgs e)
         {
             this.listaProductos = adminitradorStock.HarcodearLista();
@@ -24,6 +29,11 @@ namespace Vistas
             this.dtgv_DatagridFiltrada.DataSource = null;
         }
 
+        /// <summary>
+        /// Muestra la lista en el datagrid de acuerdo a la categoria elegida en el combobox 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param> 
         private void cmb_BuscarCategoriaStock_SelectedIndexChanged(object sender, EventArgs e)
         {
             AdminitradorStock adminitradorStock = new AdminitradorStock(this.listaProductos);
@@ -31,13 +41,22 @@ namespace Vistas
             this.dtgv_DatagridFiltrada.DataSource = this.listaFiltrada;
         }
 
+        /// <summary>
+        /// Agrega con un producto a la lista con sus campos al tocar el boton aceptar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_AceptarStock_Click(object sender, EventArgs e)
         {
             this.nuevoProducto = adminitradorStock.AgregarDatosAProducto(txt_NombreStock.Text, txt_CantidadStock.Text, txt_PrecioStock.Text, cmb_CategoriaStock.Text);
             this.listaProductos.Add(this.nuevoProducto);
         }
 
-
+        /// <summary>
+        /// Sale del form actual y muestra el menu principal al tocar el boton salir
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_SalirStock_Click(object sender, EventArgs e)
         {
             FrmMenuPrincipal frmMenuPrincipal = new FrmMenuPrincipal();
@@ -45,7 +64,11 @@ namespace Vistas
             this.Hide();
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_BuscaPrecio_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(this.txt_BuscarPrecioMaximo.Text))

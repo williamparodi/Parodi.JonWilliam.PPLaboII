@@ -19,6 +19,11 @@ namespace Vistas
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Crea un string con los datos del producto de la lista con el detalle de compra
+        /// </summary>
+        /// <param name="listaFiltrada"></param>
+        /// <param name="precio"></param>
         public FrmDetalleCompra(List<Productos> listaFiltrada,string precio) : this()
         {
             StringBuilder sb = new StringBuilder();
@@ -32,6 +37,11 @@ namespace Vistas
             this.lbl_ListaProductos.Text = sb.ToString();
         }
         
+        /// <summary>
+        /// Al apretar el boton aceptar genera un mensaje de venta exitosa y esconde la visibilidad del form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_Aceptar_Click(object sender, EventArgs e)
         {
             StringBuilder sb = new StringBuilder("");
@@ -42,6 +52,11 @@ namespace Vistas
             this.Hide();
         }
 
+        /// <summary>
+        /// Al apretar el boton cancelar muestra un mensaje de venta cancelada y esconde la visibilidad del form 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_Cancelar_Click(object sender, EventArgs e)
         {
             StringBuilder sb = new StringBuilder("");

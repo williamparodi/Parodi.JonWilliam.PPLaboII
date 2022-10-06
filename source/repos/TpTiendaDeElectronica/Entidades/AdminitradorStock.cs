@@ -97,13 +97,13 @@ namespace Entidades
         }
 
         /// <summary>
-        /// Agregalos campos al prod
+        /// Agregalos campos al producto 
         /// </summary>
         /// <param name="nombre"></param>
         /// <param name="cantidad"></param>
         /// <param name="precio"></param>
         /// <param name="categoria"></param>
-        /// <returns></returns>
+        /// <returns></returns> producto
         public Productos AgregarDatosAProducto(string nombre, string cantidad, string precio,string categoria)
         {
             this.producto = AgregarNombre(nombre);
@@ -134,6 +134,10 @@ namespace Entidades
             return producto;
         }
 
+        /// <summary>
+        /// Agrega el producto a la lista validando que no sea nulo
+        /// </summary>
+        /// <param name="producto"></param>
         public void AgregarProductoAStock(Productos producto)
         {
             if (producto is not null)
@@ -142,6 +146,11 @@ namespace Entidades
             }
         }
 
+        /// <summary>
+        /// Filtra una lista por categoria 
+        /// </summary>
+        /// <param name="categoria"></param>
+        /// <returns></returns> La lista filtrada
         public  List<Productos> FiltrarCategoria(string categoria)
         {
             List<Productos> auxListStock = new List<Productos>();
@@ -160,6 +169,11 @@ namespace Entidades
             return auxListStock;
         }
 
+        /// <summary>
+        /// Filtra una lista por nombre
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <returns></returns> lista filrada 
         public List<Productos> FiltrarPorNombre(string nombre)
         {
             List<Productos> auxListStock = new List<Productos>();
@@ -178,6 +192,11 @@ namespace Entidades
              return auxListStock;
         }
 
+        /// <summary>
+        /// Filtra la lista por precio maximo
+        /// </summary>
+        /// <param name="precio"></param>
+        /// <returns></returns> lista filtrada
         public List<Productos> FiltrarPorPrecioMaximo(string precio)
         {
             List<Productos> auxListaStock = new List<Productos>();
@@ -197,6 +216,10 @@ namespace Entidades
             return auxListaStock;
         }
 
+        /// <summary>
+        /// Lista harcodeada para probar el programa
+        /// </summary>
+        /// <returns></returns> lista con datos cargados
         public List<Productos> HarcodearLista()
         {
             List<Productos> listaHardcodeada = new List<Productos>();

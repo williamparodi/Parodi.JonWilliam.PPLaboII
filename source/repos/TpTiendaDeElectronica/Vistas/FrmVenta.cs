@@ -14,12 +14,20 @@ namespace Vistas
         private AdminitradorStock adminitradorStock = new AdminitradorStock();
         private int fila = 0;
 
+        /// <summary>
+        /// Constructor por defecto y setea la hora al horario actual
+        /// </summary>
         public FrmVenta()
         {
             InitializeComponent();
             this.txt_Fecha.Text = DateTime.Now.ToString();
         }
 
+        /// <summary>
+        /// Setea valores al cargar el form y carga la lista harcodeada
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmVenta_Load(object sender, EventArgs e)
         {
             this.listaDeProductos = adminitradorStock.HarcodearLista();
@@ -27,6 +35,11 @@ namespace Vistas
             this.cmb_FormaDePago.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// Al seleccionar una categoria filtra y muestra en el datagrid la lista
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmb_Categorias_SelectedIndexChanged(object sender, EventArgs e)
         {
             AdminitradorStock adminitrador = new AdminitradorStock(listaDeProductos);
@@ -34,6 +47,11 @@ namespace Vistas
             this.dtgvListaPorductos.DataSource = adminitradorStock.ListaDeProductos;
         }
 
+        /// <summary>
+        /// Al hacer click en una celda agrega ese producto a la lista 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dtgvListaPorductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             this.fila = e.RowIndex;
@@ -43,6 +61,11 @@ namespace Vistas
             }
         }
 
+        /// <summary>
+        /// Al tocar el boton aceptar muestra en el datagrid de compras los items seleccionados y calcula y muestra el precio total
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_Agregar_Click(object sender, EventArgs e)
         {
             this.dtgv_CarroDeCompras.DataSource = null;
@@ -50,6 +73,11 @@ namespace Vistas
             this.txt_PrecioTotal.Text = ventaFiltrada.CalcularPago(cmb_FormaDePago.Text, listaFiltrada).ToString();
         }
 
+        /// <summary>
+        /// Al tocar el boton borrar limpia los campos del datagrid del carro, la lista y el precio
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_Borrar_Click(object sender, EventArgs e)
         {
             dtgv_CarroDeCompras.Columns.Clear();
@@ -57,6 +85,11 @@ namespace Vistas
             this.txt_PrecioTotal.Text = string.Empty;
         }
 
+        /// <summary>
+        /// Al tocar aceptar la venta se fija si se cumplen las condiciones  
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_RealizarVenta_Click(object sender, EventArgs e)
         {
             StringBuilder sb = new StringBuilder("");
@@ -86,6 +119,11 @@ namespace Vistas
 
         }
 
+        /// <summary>
+        /// Al tocar el boton nombre filtra y busca si esta ese nombre en la lista y lo muestra en el datagrid
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_BuscarNombre_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txt_NombreProducto.Text))
@@ -101,6 +139,11 @@ namespace Vistas
             }
         }
 
+        /// <summary>
+        /// Al elegir una forma de pago en el combobox de forma de pago setea el valor en el textbox 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmb_FormaDePago_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.txt_PrecioTotal.Text = ventaFiltrada.CalcularPago(cmb_FormaDePago.Text, listaFiltrada).ToString();
