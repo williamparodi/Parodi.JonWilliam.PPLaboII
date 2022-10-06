@@ -10,7 +10,6 @@ namespace Vistas
     {
         private List<Productos> listaDeProductos = new List<Productos>();
         private List<Productos> listaFiltrada = new List<Productos>();
-        private List<Productos> listaFiltradaNombre = new List<Productos>();
         private Venta ventaFiltrada = new Venta();
         private AdminitradorStock adminitradorStock = new AdminitradorStock();
         private int fila = 0;
@@ -25,10 +24,7 @@ namespace Vistas
         {
             this.listaDeProductos = adminitradorStock.HarcodearLista();
             this.dtgvListaPorductos.DataSource = null;
-            this.dtgvListaPorductos.DataSource = listaDeProductos;
-            //this.cmb_Categorias.SelectedIndex = 0;
             this.cmb_FormaDePago.SelectedIndex = 0;
-            
         }
 
         private void cmb_Categorias_SelectedIndexChanged(object sender, EventArgs e)
@@ -95,10 +91,10 @@ namespace Vistas
             if (!string.IsNullOrEmpty(txt_NombreProducto.Text))
             {
                 AdminitradorStock adminitrador = new AdminitradorStock(listaDeProductos);
-                
+
                 this.adminitradorStock.ListaDeProductos = adminitrador.FiltrarPorNombre(txt_NombreProducto.Text);
-                
-                if (this.adminitradorStock.ListaDeProductos.Count >0)
+
+                if (this.adminitradorStock.ListaDeProductos.Count > 0)
                 {
                     this.dtgvListaPorductos.DataSource = adminitradorStock.ListaDeProductos;
                 }

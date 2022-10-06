@@ -13,7 +13,7 @@ namespace Vistas
 {
     public partial class FrmAdminStock : Form
     {
-        protected List<Productos> listaFiltrada = new List<Productos>();
+        private List<Productos> listaProductos = new List<Productos>();
         private AdminitradorStock adminitradorStock = new AdminitradorStock();
         private Productos nuevoProducto = new Productos();
         public FrmAdminStock()
@@ -23,16 +23,16 @@ namespace Vistas
 
         private void FrmAdminStock_Load(object sender, EventArgs e)
         {
+            adminitradorStock.ListaDeProductos = adminitradorStock.HarcodearLista();
             this.cmb_CategoriaStock.SelectedIndex = 0;
             this.cmb_BuscarCategoriaStock.SelectedIndex = 0;
-            this.listaFiltrada = adminitradorStock.HarcodearLista();
             this.dtgv_DatagridFiltrada.DataSource = null;
         }
 
         private void cmb_BuscarCategoriaStock_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.listaFiltrada = adminitradorStock.FiltrarCategoria(cmb_BuscarCategoriaStock.Text);
-            this.dtgv_DatagridFiltrada.DataSource = listaFiltrada;
+            this.adminitradorStock.ListaDeProductos = adminitradorStock.FiltrarCategoria(cmb_BuscarCategoriaStock.Text);
+            this.dtgv_DatagridFiltrada.DataSource = adminitradorStock.ListaDeProductos;
         }
 
         private void btn_AceptarStock_Click(object sender, EventArgs e)
