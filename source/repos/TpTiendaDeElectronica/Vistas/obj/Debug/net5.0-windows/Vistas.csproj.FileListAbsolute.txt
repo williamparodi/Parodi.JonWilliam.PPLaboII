@@ -7,8 +7,10 @@ C:\Users\Willy\source\repos\TpTiendaDeElectronica\Vistas\bin\Debug\net5.0-window
 C:\Users\Willy\source\repos\TpTiendaDeElectronica\Vistas\bin\Debug\net5.0-windows\Entidades.dll
 C:\Users\Willy\source\repos\TpTiendaDeElectronica\Vistas\bin\Debug\net5.0-windows\Entidades.pdb
 C:\Users\Willy\source\repos\TpTiendaDeElectronica\Vistas\obj\Debug\net5.0-windows\Vistas.csproj.AssemblyReference.cache
+C:\Users\Willy\source\repos\TpTiendaDeElectronica\Vistas\obj\Debug\net5.0-windows\Vistas.FrmAdminStock.resources
 C:\Users\Willy\source\repos\TpTiendaDeElectronica\Vistas\obj\Debug\net5.0-windows\Vistas.FrmDetalleCompra.resources
 C:\Users\Willy\source\repos\TpTiendaDeElectronica\Vistas\obj\Debug\net5.0-windows\Vistas.FrmLogin.resources
+C:\Users\Willy\source\repos\TpTiendaDeElectronica\Vistas\obj\Debug\net5.0-windows\Vistas.FrmMenuPrincipal.resources
 C:\Users\Willy\source\repos\TpTiendaDeElectronica\Vistas\obj\Debug\net5.0-windows\Vistas.FrmVenta.resources
 C:\Users\Willy\source\repos\TpTiendaDeElectronica\Vistas\obj\Debug\net5.0-windows\Vistas.Properties.Resources.resources
 C:\Users\Willy\source\repos\TpTiendaDeElectronica\Vistas\obj\Debug\net5.0-windows\Vistas.csproj.GenerateResource.cache
@@ -22,5 +24,3 @@ C:\Users\Willy\source\repos\TpTiendaDeElectronica\Vistas\obj\Debug\net5.0-window
 C:\Users\Willy\source\repos\TpTiendaDeElectronica\Vistas\obj\Debug\net5.0-windows\Vistas.pdb
 C:\Users\Willy\source\repos\TpTiendaDeElectronica\Vistas\obj\Debug\net5.0-windows\Vistas.genruntimeconfig.cache
 C:\Users\Willy\source\repos\TpTiendaDeElectronica\Vistas\obj\Debug\net5.0-windows\ref\Vistas.dll
-C:\Users\Willy\source\repos\TpTiendaDeElectronica\Vistas\obj\Debug\net5.0-windows\Vistas.FrmMenuPrincipal.resources
-C:\Users\Willy\source\repos\TpTiendaDeElectronica\Vistas\obj\Debug\net5.0-windows\Vistas.FrmAdminStock.resources

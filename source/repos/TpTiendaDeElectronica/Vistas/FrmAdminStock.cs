@@ -25,14 +25,7 @@ namespace Vistas
         {
             this.cmb_CategoriaStock.SelectedIndex = 0;
             this.cmb_BuscarCategoriaStock.SelectedIndex = 0;
-            Productos listaProductos = new Productos(ECategorias.Microprocesador, "Ryzen 5", 55666, 75);
-            Productos listaProductos1 = new Productos(ECategorias.Mother, "Asus", 2323, 75);
-            Productos listaProductos2 = new Productos(ECategorias.Gabinete, "Terma", 65652, 75);
-            Productos listaProductos3 = new Productos(ECategorias.Microprocesador, "Ryzen 5", 9874, 95);
-            adminitradorStock.AgregarProductoAStock(listaProductos);
-            adminitradorStock.AgregarProductoAStock(listaProductos1);
-            adminitradorStock.AgregarProductoAStock(listaProductos2);
-            adminitradorStock.AgregarProductoAStock(listaProductos3);
+            this.listaFiltrada = adminitradorStock.HarcodearLista();
             this.dtgv_DatagridFiltrada.DataSource = null;
         }
 
@@ -44,10 +37,8 @@ namespace Vistas
 
         private void btn_AceptarStock_Click(object sender, EventArgs e)
         {
-            
             this.nuevoProducto = adminitradorStock.AgregarDatosAProducto(txt_NombreStock.Text, txt_CantidadStock.Text, txt_PrecioStock.Text,cmb_CategoriaStock.Text);
-            adminitradorStock.AgregarProductoAStock(this.nuevoProducto);
-            
+            adminitradorStock.AgregarProductoAStock(this.nuevoProducto);   
         }
 
         private void btn_SalirStock_Click(object sender, EventArgs e)

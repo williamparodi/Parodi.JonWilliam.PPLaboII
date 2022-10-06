@@ -38,21 +38,6 @@ namespace Entidades
 
             return sb.ToString();
         }
-      
-        public Venta FiltraPorCategoria(string categoria, Venta venta)
-        {
-            Venta auxlista = new Venta();
-
-            foreach (Productos cat in venta.listaProductos)
-            {
-                if (cat.Categoria.ToString() == categoria)
-                {
-                    auxlista.listaProductos.Add(cat);
-                }
-            }
-
-            return auxlista;
-        }
 
         //Filtrar por precio
         public Venta FiltraPorPrecio(double precio, Venta venta)
@@ -64,22 +49,6 @@ namespace Entidades
                 if (precio >= pre.Precio)
                 {
                     auxlista.listaProductos.Add(pre);
-                }
-            }
-
-            return auxlista;
-        }
-
-        //Buscar nombre
-        public Venta BuscaPorNombre(string nombre, Venta venta)
-        {
-            Venta auxlista = new Venta();
-
-            foreach (Productos cat in venta.listaProductos)
-            {
-                if (cat.Nombre == nombre)
-                {
-                    auxlista.listaProductos.Add(cat);
                 }
             }
 

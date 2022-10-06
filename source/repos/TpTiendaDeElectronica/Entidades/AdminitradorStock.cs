@@ -91,8 +91,7 @@ namespace Entidades
                     this.producto.Categoria = ECategorias.Monitor;   
                     break;
                 default:
-                    break;
-                    
+                    break; 
             }
             
             return producto;
@@ -124,6 +123,24 @@ namespace Entidades
             return auxListStock;
         }
 
+        public List<Productos> FiltrarPorNombre(string nombre)
+        {
+            List<Productos> auxListStock = new List<Productos>();
+
+            if(!string.IsNullOrEmpty(nombre))
+            {
+                foreach (Productos producto in this.listaProductos)
+                {
+                    if (producto.Nombre.ToLower() == nombre.ToLower())
+                    {
+                        auxListStock.Add(producto);
+                    }
+                }
+            }
+           
+             return auxListStock;
+        }
+
         public List<Productos> FiltrarPorPrecioMaximo(string precio)
         {
             List<Productos> auxListaStock = new List<Productos>();
@@ -146,15 +163,31 @@ namespace Entidades
         public List<Productos> HarcodearLista()
         {
             List<Productos> listaHardcodeada = new List<Productos>();
+
             Productos productos = new Productos(ECategorias.Microprocesador, "Ryzen 5", 55666, 75);
             Productos productos1 = new Productos(ECategorias.Mother, "Asus", 2323, 75);
             Productos productos2 = new Productos(ECategorias.Gabinete, "Terma", 65652, 75);
             Productos productos3 = new Productos(ECategorias.Microprocesador, "Ryzen 5", 9874, 95);
+            Productos productos4 = new Productos(ECategorias.Monitor, "Dell", 45555, 10);
+            Productos productos5 = new Productos(ECategorias.Monitor, "Samsung", 15655, 10);
+            Productos productos6 = new Productos(ECategorias.Perisfericos, "Teclado", 98885, 15);
+            Productos productos7 = new Productos(ECategorias.Perisfericos, "Redragon", 10800, 15);
+            Productos productos8 = new Productos(ECategorias.Gabinete, "CoolerMaster", 98885, 35);
+            Productos productos9 = new Productos(ECategorias.Mother, "Asrock", 35566, 80);
+            Productos productos10 = new Productos(ECategorias.Microprocesador, "Intel", 60000, 10);
+
             listaHardcodeada.Add(productos);
             listaHardcodeada.Add(productos1);
             listaHardcodeada.Add(productos2);
             listaHardcodeada.Add(productos3);
-
+            listaHardcodeada.Add(productos4);
+            listaHardcodeada.Add(productos5);
+            listaHardcodeada.Add(productos6);
+            listaHardcodeada.Add(productos7); 
+            listaHardcodeada.Add(productos8);
+            listaHardcodeada.Add(productos9);
+            listaHardcodeada.Add(productos10);
+            
             return listaHardcodeada;
             
         }

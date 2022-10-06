@@ -59,6 +59,7 @@
             this.lbl_FormaDePago = new System.Windows.Forms.Label();
             this.lbl_PrecioTotal = new System.Windows.Forms.Label();
             this.txt_PrecioTotal = new System.Windows.Forms.TextBox();
+            this.btn_BuscarNombre = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvListaPorductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_CarroDeCompras)).BeginInit();
             this.SuspendLayout();
@@ -170,7 +171,7 @@
             this.dtgvListaPorductos.Location = new System.Drawing.Point(26, 372);
             this.dtgvListaPorductos.Name = "dtgvListaPorductos";
             this.dtgvListaPorductos.RowTemplate.Height = 25;
-            this.dtgvListaPorductos.Size = new System.Drawing.Size(395, 190);
+            this.dtgvListaPorductos.Size = new System.Drawing.Size(407, 190);
             this.dtgvListaPorductos.TabIndex = 11;
             this.dtgvListaPorductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvListaPorductos_CellClick);
             // 
@@ -268,7 +269,7 @@
             this.dtgv_CarroDeCompras.Location = new System.Drawing.Point(645, 372);
             this.dtgv_CarroDeCompras.Name = "dtgv_CarroDeCompras";
             this.dtgv_CarroDeCompras.RowTemplate.Height = 25;
-            this.dtgv_CarroDeCompras.Size = new System.Drawing.Size(386, 190);
+            this.dtgv_CarroDeCompras.Size = new System.Drawing.Size(400, 190);
             this.dtgv_CarroDeCompras.TabIndex = 20;
             // 
             // lbl_Productos
@@ -309,6 +310,7 @@
             this.cmb_FormaDePago.Name = "cmb_FormaDePago";
             this.cmb_FormaDePago.Size = new System.Drawing.Size(121, 25);
             this.cmb_FormaDePago.TabIndex = 24;
+            this.cmb_FormaDePago.SelectedIndexChanged += new System.EventHandler(this.cmb_FormaDePago_SelectedIndexChanged);
             // 
             // lbl_FormaDePago
             // 
@@ -338,6 +340,16 @@
             this.txt_PrecioTotal.Size = new System.Drawing.Size(100, 25);
             this.txt_PrecioTotal.TabIndex = 27;
             // 
+            // btn_BuscarNombre
+            // 
+            this.btn_BuscarNombre.Location = new System.Drawing.Point(250, 257);
+            this.btn_BuscarNombre.Name = "btn_BuscarNombre";
+            this.btn_BuscarNombre.Size = new System.Drawing.Size(75, 25);
+            this.btn_BuscarNombre.TabIndex = 28;
+            this.btn_BuscarNombre.Text = "Buscar";
+            this.btn_BuscarNombre.UseVisualStyleBackColor = true;
+            this.btn_BuscarNombre.Click += new System.EventHandler(this.btn_BuscarNombre_Click);
+            // 
             // FrmVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -346,6 +358,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1177, 743);
+            this.Controls.Add(this.btn_BuscarNombre);
             this.Controls.Add(this.txt_PrecioTotal);
             this.Controls.Add(this.lbl_PrecioTotal);
             this.Controls.Add(this.lbl_FormaDePago);
@@ -419,5 +432,6 @@
         private System.Windows.Forms.Label lbl_FormaDePago;
         private System.Windows.Forms.Label lbl_PrecioTotal;
         private System.Windows.Forms.TextBox txt_PrecioTotal;
+        private System.Windows.Forms.Button btn_BuscarNombre;
     }
 }
