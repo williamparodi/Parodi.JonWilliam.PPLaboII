@@ -20,6 +20,12 @@ namespace Vistas
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Al apretar el boton login se fija que sea correcto el usuario y contraseña y dependiendo del usuario se
+        /// despliegan diferentes forms
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_Login_Click(object sender, EventArgs e)
         {  
             StringBuilder sb = new StringBuilder();
@@ -47,6 +53,11 @@ namespace Vistas
 
         }
 
+        /// <summary>
+        /// Obtiene los datos ingresados de pass en los text box de usuario y password
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txt_Password_Click(object sender, EventArgs e)
         {
             if(cmb_Usuario.Text == vendedor.GetUsuario())
