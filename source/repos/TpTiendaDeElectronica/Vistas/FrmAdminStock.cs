@@ -13,7 +13,7 @@ namespace Vistas
 {
     public partial class FrmAdminStock : Form
     {
-        private List<Productos> listaFiltrada = new List<Productos>();
+        protected List<Productos> listaFiltrada = new List<Productos>();
         private AdminitradorStock adminitradorStock = new AdminitradorStock();
         private Productos nuevoProducto = new Productos();
         public FrmAdminStock()
@@ -47,8 +47,14 @@ namespace Vistas
             
             this.nuevoProducto = adminitradorStock.AgregarDatosAProducto(txt_NombreStock.Text, txt_CantidadStock.Text, txt_PrecioStock.Text,cmb_CategoriaStock.Text);
             adminitradorStock.AgregarProductoAStock(this.nuevoProducto);
-           
             
+        }
+
+        private void btn_SalirStock_Click(object sender, EventArgs e)
+        {
+            FrmMenuPrincipal frmMenuPrincipal = new FrmMenuPrincipal();
+            frmMenuPrincipal.Show();
+            this.Hide();
         }
     }
 }

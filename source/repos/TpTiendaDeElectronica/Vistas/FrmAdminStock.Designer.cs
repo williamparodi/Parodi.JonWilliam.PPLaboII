@@ -225,6 +225,7 @@
             this.btn_SalirStock.TabIndex = 17;
             this.btn_SalirStock.Text = "Salir";
             this.btn_SalirStock.UseVisualStyleBackColor = true;
+            this.btn_SalirStock.Click += new System.EventHandler(this.btn_SalirStock_Click);
             // 
             // FrmAdminStock
             // 

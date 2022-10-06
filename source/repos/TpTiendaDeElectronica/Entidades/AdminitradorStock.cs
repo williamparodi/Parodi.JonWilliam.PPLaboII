@@ -143,7 +143,21 @@ namespace Entidades
             return auxListaStock;
         }
 
+        public List<Productos> HarcodearLista()
+        {
+            List<Productos> listaHardcodeada = new List<Productos>();
+            Productos productos = new Productos(ECategorias.Microprocesador, "Ryzen 5", 55666, 75);
+            Productos productos1 = new Productos(ECategorias.Mother, "Asus", 2323, 75);
+            Productos productos2 = new Productos(ECategorias.Gabinete, "Terma", 65652, 75);
+            Productos productos3 = new Productos(ECategorias.Microprocesador, "Ryzen 5", 9874, 95);
+            listaHardcodeada.Add(productos);
+            listaHardcodeada.Add(productos1);
+            listaHardcodeada.Add(productos2);
+            listaHardcodeada.Add(productos3);
 
+            return listaHardcodeada;
+            
+        }
 
     }
 }

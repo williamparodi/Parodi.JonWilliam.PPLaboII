@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Venta : Productos
+    public class Venta 
     {
         protected List<Productos> listaProductos;
 

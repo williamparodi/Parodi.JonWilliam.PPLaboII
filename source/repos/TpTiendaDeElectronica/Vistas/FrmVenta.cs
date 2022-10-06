@@ -11,6 +11,7 @@ namespace Vistas
         private List<Productos> listaDeProductos = new List<Productos>();
         private List<Productos> listaFiltrada = new List<Productos>();
         private Venta ventaFiltrada = new Venta();
+        private AdminitradorStock adminitradorStock = new AdminitradorStock();
         private int fila = 0;
         
         public FrmVenta()
@@ -20,7 +21,7 @@ namespace Vistas
 
         private void FrmVenta_Load(object sender, EventArgs e)
         {
-
+            /*
             Productos listaProductos = new Productos(ECategorias.Microprocesador, "Ryzen 5", 55666, 75);
             Productos listaProductos1 = new Productos(ECategorias.Mother, "Asus", 2323, 75);
             Productos listaProductos2 = new Productos(ECategorias.Gabinete, "Terma", 65652, 75);
@@ -30,7 +31,8 @@ namespace Vistas
             this.listaDeProductos.Add(listaProductos1);
             this.listaDeProductos.Add(listaProductos2);
             this.listaDeProductos.Add(listaProductos3);
-
+            */
+            this.listaDeProductos = adminitradorStock.HarcodearLista();
             this.dtgvListaPorductos.DataSource = null;
             this.dtgvListaPorductos.DataSource = listaDeProductos;
             this.cmb_Categorias.SelectedIndex = 0;
@@ -41,10 +43,13 @@ namespace Vistas
 
         private void cmb_Categorias_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             Venta venta = new Venta(listaDeProductos);
-            
+
             this.ventaFiltrada = venta.FiltraPorCategoria(cmb_Categorias.Text, venta);
+            //this.listaFiltrada = adminitradorStock.FiltrarCategoria(cmb_Categorias.Text);
             this.dtgvListaPorductos.DataSource = ventaFiltrada.ListaProductos;
+            //this.dtgvListaPorductos.DataSource = listaFiltrada;
 
         }
 
@@ -54,6 +59,7 @@ namespace Vistas
             if (fila != -1)
             {
                 this.listaFiltrada.Add(ventaFiltrada.ListaProductos[fila]);
+                
             }
         }
 
@@ -70,7 +76,6 @@ namespace Vistas
             this.listaFiltrada.Clear();
         }
         
-       
         private void btn_RealizarVenta_Click(object sender, EventArgs e)
         {
             StringBuilder sb = new StringBuilder("");
