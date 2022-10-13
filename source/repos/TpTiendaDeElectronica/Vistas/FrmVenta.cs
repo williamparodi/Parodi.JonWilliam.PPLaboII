@@ -10,20 +10,22 @@ namespace Vistas
     {
         private List<Productos> listaDeProductos = new List<Productos>();
         private List<Productos> listaFiltrada = new List<Productos>();
+        private List<Productos> listaCompleta = new List<Productos>();
         private Venta ventaFiltrada = new Venta();
         private AdminitradorStock adminitradorStock = new AdminitradorStock();
         static int cantidadVentas;
-        static Productos productoConMasVentas = new Productos();
-
+        private double gananciaTotal;
         private int fila = 0;
 
         /// <summary>
         /// Constructor por defecto y setea la hora al horario actual
         /// </summary>
-        public FrmVenta()
+        public FrmVenta(List<Productos> listaDeProductos)
         {
             InitializeComponent();
             this.txt_Fecha.Text = DateTime.Now.ToString();
+            this.listaDeProductos = listaDeProductos;
+            this.gananciaTotal = 0;
         }
 
         /// <summary>
@@ -33,7 +35,6 @@ namespace Vistas
         /// <param name="e"></param>
         private void FrmVenta_Load(object sender, EventArgs e)
         {
-            this.listaDeProductos = adminitradorStock.HarcodearLista();
             this.dtgvListaPorductos.DataSource = null;
             this.cmb_FormaDePago.SelectedIndex = 0;
         }
@@ -101,15 +102,17 @@ namespace Vistas
             if (ventaFiltrada.ConfirmaVenta(listaFiltrada) && listaFiltrada is not null)
             {
                 FrmDetalleCompra frmDetalleCompra = new FrmDetalleCompra(listaFiltrada, this.txt_PrecioTotal.Text);
-                frmDetalleCompra.ShowDialog();
-                
+                frmDetalleCompra.ShowDialog();            
+
                 if (frmDetalleCompra.confirma)
                 {
                     ventaFiltrada.DescontarUnidad(listaDeProductos, listaFiltrada);
+                    this.gananciaTotal += double.Parse(this.txt_PrecioTotal.Text);
                     cantidadVentas++;
-                    FrmEstadisticas frmEstadisticas = new FrmEstadisticas(cantidadVentas);
+                    AgregaAListaCompleta(listaFiltrada);
+                    FrmEstadisticas frmEstadisticas = new FrmEstadisticas(listaCompleta, cantidadVentas, gananciaTotal);
                     frmEstadisticas.Show();
-                    //this.Show();
+                    this.Show();
                     this.dtgv_CarroDeCompras.Columns.Clear();
                     this.listaFiltrada.Clear();
                     this.txt_PrecioTotal.Text = string.Empty;
@@ -155,5 +158,21 @@ namespace Vistas
         {
             this.txt_PrecioTotal.Text = ventaFiltrada.CalcularPago(cmb_FormaDePago.Text, listaFiltrada).ToString();
         }
+
+        public void AgregaAListaCompleta(List<Productos> listaProductos)
+        {
+            if(listaProductos is not null)
+            {
+                foreach(Productos prod in listaProductos)
+                {
+                    this.listaCompleta.Add(prod);
+                }
+            }
+        }
+      
+
+
     }
 }
+
+       

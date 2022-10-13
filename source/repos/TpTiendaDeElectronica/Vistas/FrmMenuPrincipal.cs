@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Entidades;
 
 namespace Vistas
 {
     public partial class FrmMenuPrincipal : Form
     {
-        public FrmMenuPrincipal()
+        private List<Productos> listaDeProductos;
+        public FrmMenuPrincipal(List<Productos> listaDeProductos)
         {
             InitializeComponent();
+            this.listaDeProductos = listaDeProductos;
         }
 
         /// <summary>
@@ -24,7 +27,7 @@ namespace Vistas
         /// <param name="e"></param>
         private void btn_venta_Click(object sender, EventArgs e)
         {
-            FrmVenta frmVenta = new FrmVenta();
+            FrmVenta frmVenta = new FrmVenta(listaDeProductos);
             frmVenta.Show();
             this.Hide();
         }
@@ -36,7 +39,7 @@ namespace Vistas
         /// <param name="e"></param>
         private void btn_Admin_Click(object sender, EventArgs e)
         {
-            FrmAdminStock frmAdminStock = new FrmAdminStock();
+            FrmAdminStock frmAdminStock = new FrmAdminStock(listaDeProductos);
             frmAdminStock.Show();
             this.Hide();
         }

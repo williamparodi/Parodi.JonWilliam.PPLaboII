@@ -16,9 +16,26 @@ namespace Vistas
         private Vendedor vendedor = new Vendedor();
         private Dueño dueño = new Dueño();
         private Contador contador = new Contador();
+        private AdminitradorStock administradorStock = new AdminitradorStock();
+        private List<Productos> listaDeProductos;
+        private List<Productos> listaProductosVendidos;
+        private double gananciaTotal;
+        private int cantidadVentas;
+  
         public FrmLogin()
         {
             InitializeComponent();
+            this.listaDeProductos = administradorStock.HarcodearLista();///la hardcodeo aca para y la voy pasando
+            this.cantidadVentas = 0;
+            this.gananciaTotal = 0;
+            this.listaProductosVendidos = new List<Productos>();
+        }
+
+        public FrmLogin(List<Productos> listaProductosVendidos,int cantidadVentas,double gananciaTotal) : this()
+        {
+            this.listaProductosVendidos = listaProductosVendidos;
+            this.cantidadVentas = cantidadVentas;
+            this.gananciaTotal = gananciaTotal;
         }
 
         /// <summary>
@@ -35,19 +52,19 @@ namespace Vistas
 
             if (cmb_Usuario.Text == vendedor.GetUsuario() && txt_Password.Text == vendedor.GetPassword())
             {
-                FrmVenta venta = new FrmVenta();
+                FrmVenta venta = new FrmVenta(listaDeProductos);
                 venta.Show();
                 this.Hide();
             }
             else if(cmb_Usuario.Text == dueño.GetUsuario() && txt_Password.Text == dueño.GetPassword())
             {
-                FrmMenuPrincipal frmMenuPrincipal = new FrmMenuPrincipal();
+                FrmMenuPrincipal frmMenuPrincipal = new FrmMenuPrincipal(listaDeProductos);
                 frmMenuPrincipal.Show();
                 this.Hide();
             }
             else if (cmb_Usuario.Text == contador.GetUsuario() && txt_Password.Text == contador.GetPassword())
             {
-                FrmEstadisticas frmEstadisticas = new FrmEstadisticas();
+                FrmEstadisticas frmEstadisticas = new FrmEstadisticas(listaProductosVendidos, cantidadVentas, gananciaTotal);
                 frmEstadisticas.Show();
                 this.Hide();
             }
