@@ -19,9 +19,10 @@ namespace Vistas
         private AdminitradorStock administradorStock = new AdminitradorStock();
         private List<Productos> listaDeProductos;
         private List<Productos> listaProductosVendidos;
+        private List<Productos> listaActualizada;
         private double gananciaTotal;
         private int cantidadVentas;
-  
+        static bool flag = false;
         public FrmLogin()
         {
             InitializeComponent();
@@ -29,6 +30,7 @@ namespace Vistas
             this.cantidadVentas = 0;
             this.gananciaTotal = 0;
             this.listaProductosVendidos = new List<Productos>();
+            this.listaActualizada = new List<Productos>();
         }
 
         public FrmLogin(List<Productos> listaProductosVendidos,int cantidadVentas,double gananciaTotal) : this()
@@ -37,6 +39,12 @@ namespace Vistas
             this.cantidadVentas = cantidadVentas;
             this.gananciaTotal = gananciaTotal;
         }
+
+        public FrmLogin(List<Productos> listaProductosVendidos, int cantidadVentas, double gananciaTotal, List<Productos> listaActualizada) : this(listaProductosVendidos,cantidadVentas,gananciaTotal)
+        {
+            this.listaActualizada = listaActualizada;
+        }
+
 
         /// <summary>
         /// Al apretar el boton login se fija que sea correcto el usuario y contraseña y dependiendo del usuario se
@@ -52,15 +60,37 @@ namespace Vistas
 
             if (cmb_Usuario.Text == vendedor.GetUsuario() && txt_Password.Text == vendedor.GetPassword())
             {
-                FrmVenta venta = new FrmVenta(listaDeProductos);
-                venta.Show();
-                this.Hide();
+                if(!flag)
+                {
+                    FrmVenta venta = new FrmVenta(listaDeProductos);
+                    venta.Show();
+                    this.Hide();
+                    flag = true;
+                }
+                else
+                {
+                    FrmVenta venta = new FrmVenta(listaActualizada);
+                    venta.Show();
+                    this.Hide();
+                }
+                
             }
             else if(cmb_Usuario.Text == dueño.GetUsuario() && txt_Password.Text == dueño.GetPassword())
             {
-                FrmMenuPrincipal frmMenuPrincipal = new FrmMenuPrincipal(listaDeProductos);
-                frmMenuPrincipal.Show();
-                this.Hide();
+                if(!flag)
+                {
+                    FrmMenuPrincipal frmMenuPrincipal = new FrmMenuPrincipal(listaDeProductos);
+                    frmMenuPrincipal.Show();
+                    this.Hide();
+                    flag= true;
+                }
+                else
+                {
+                    FrmMenuPrincipal frmMenuPrincipal = new FrmMenuPrincipal(listaActualizada);
+                    frmMenuPrincipal.Show();
+                    this.Hide();
+                }
+                
             }
             else if (cmb_Usuario.Text == contador.GetUsuario() && txt_Password.Text == contador.GetPassword())
             {

@@ -11,7 +11,7 @@ namespace Vistas
         private List<Productos> listaFiltrada = new List<Productos>();
         private AdminitradorStock adminitradorStock;
         private Productos nuevoProducto = new Productos();
-        
+
         public FrmAdminStock(List<Productos> listaDeProductos)
         {
             InitializeComponent();
@@ -51,8 +51,32 @@ namespace Vistas
         /// <param name="e"></param>
         private void btn_AceptarStock_Click(object sender, EventArgs e)
         {
-            this.nuevoProducto = adminitradorStock.AgregarDatosAProducto(txt_NombreStock.Text, txt_CantidadStock.Text, txt_PrecioStock.Text, cmb_CategoriaStock.Text);
-            this.listaDeProductos.Add(this.nuevoProducto);
+            bool flag = false;
+            
+            try
+            {
+                ValidarDatosIngresados(txt_CantidadStock.Text, txt_PrecioStock.Text, txt_NombreStock.Text);
+                foreach (Productos p in this.listaDeProductos)
+                {
+                    if (p.Nombre == txt_NombreStock.Text)
+                    {
+                        MessageBox.Show("Ya hay un producto igual se modifico precio y cantidad", "Modificacion de producto en stock", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        p.Cantidad = int.Parse(txt_CantidadStock.Text);
+                        p.Precio = double.Parse(txt_PrecioStock.Text);
+                        flag = true;
+                    }
+                }
+                if(!flag)
+                {
+                    this.nuevoProducto = adminitradorStock.AgregarDatosAProducto(txt_NombreStock.Text, txt_CantidadStock.Text, txt_PrecioStock.Text, cmb_CategoriaStock.Text);
+                    this.listaDeProductos.Add(this.nuevoProducto);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         /// <summary>
@@ -73,7 +97,35 @@ namespace Vistas
             this.dtgv_DatagridFiltrada.DataSource = this.listaFiltrada;
         }
 
-       
+        public void ValidarDatosIngresados(string cantidad, string precio, string nombre)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(cantidad))
+                {
+                    throw new ExepcionesPropias("Cantidad no ingresada");
+                }
+                else if (string.IsNullOrEmpty(precio))
+                {
+                    throw new ExepcionesPropias("Precio no ingresado");
+                }
+                else if (string.IsNullOrEmpty(nombre))
+                {
+                    throw new ExepcionesPropias("Nombre no ingresado");
+                }
+                int.Parse(cantidad);
+                double.Parse(precio);
+            }
+            catch (FormatException ex)
+            {
+                throw new ExepcionesPropias("Dato no valido", ex);
+            }
+            catch (Exception ex)
+            {
+                throw new ExepcionesPropias(ex.Message);
+            }
+        }
+
     }
 
 }

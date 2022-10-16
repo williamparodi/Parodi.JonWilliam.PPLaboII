@@ -2,7 +2,7 @@
 
 namespace Entidades
 {
-    public class AdminitradorStock 
+    public class AdminitradorStock
     {
         private List<Productos> listaProductos;
         private Productos producto;
@@ -10,7 +10,7 @@ namespace Entidades
         /// <summary>
         /// Contructor que instancia una lista 
         /// </summary>
-        public AdminitradorStock() 
+        public AdminitradorStock()
         {
             this.listaProductos = new List<Productos>();
         }
@@ -35,7 +35,7 @@ namespace Entidades
 
             if (!string.IsNullOrEmpty(nombre))
             {
-                producto.Nombre = nombre;
+                this.listaProductos.Add(producto);
             }
             return producto;
         }
@@ -104,13 +104,13 @@ namespace Entidades
         /// <param name="precio"></param>
         /// <param name="categoria"></param>
         /// <returns></returns> producto
-        public Productos AgregarDatosAProducto(string nombre, string cantidad, string precio,string categoria)
+        public Productos AgregarDatosAProducto(string nombre, string cantidad, string precio, string categoria)
         {
             this.producto = AgregarNombre(nombre);
             this.producto = AgregarCantidad(cantidad);
             this.producto = AgregarPrecio(precio);
 
-            switch(categoria)
+            switch (categoria)
             {
                 case "Mother":
                     this.producto.Categoria = ECategorias.Mother;
@@ -125,12 +125,12 @@ namespace Entidades
                     this.producto.Categoria = ECategorias.Gabinete;
                     break;
                 case "Monitor":
-                    this.producto.Categoria = ECategorias.Monitor;   
+                    this.producto.Categoria = ECategorias.Monitor;
                     break;
                 default:
-                    break; 
+                    break;
             }
-            
+
             return producto;
         }
 
@@ -151,15 +151,15 @@ namespace Entidades
         /// </summary>
         /// <param name="categoria"></param>
         /// <returns></returns> La lista filtrada
-        public  List<Productos> FiltrarCategoria(string categoria)
+        public List<Productos> FiltrarCategoria(string categoria)
         {
             List<Productos> auxListStock = new List<Productos>();
 
-            if(!string.IsNullOrEmpty(categoria))
+            if (!string.IsNullOrEmpty(categoria))
             {
-                foreach(Productos producto in this.listaProductos)
+                foreach (Productos producto in this.listaProductos)
                 {
-                    if(producto.Categoria.ToString() == categoria)
+                    if (producto.Categoria.ToString() == categoria)
                     {
                         auxListStock.Add(producto);
                     }
@@ -178,7 +178,7 @@ namespace Entidades
         {
             List<Productos> auxListStock = new List<Productos>();
 
-            if(!string.IsNullOrEmpty(nombre))
+            if (!string.IsNullOrEmpty(nombre))
             {
                 foreach (Productos producto in this.listaProductos)
                 {
@@ -188,8 +188,8 @@ namespace Entidades
                     }
                 }
             }
-           
-             return auxListStock;
+
+            return auxListStock;
         }
 
         /// <summary>
@@ -202,7 +202,7 @@ namespace Entidades
             List<Productos> auxListaStock = new List<Productos>();
             double precioAComparar;
 
-            if(double.TryParse(precio,out precioAComparar))
+            if (double.TryParse(precio, out precioAComparar))
             {
                 foreach (Productos producto in auxListaStock)
                 {
@@ -212,7 +212,7 @@ namespace Entidades
                     }
                 }
             }
-           
+
             return auxListaStock;
         }
 
@@ -227,7 +227,7 @@ namespace Entidades
             Productos productos = new Productos(ECategorias.Microprocesador, "Ryzen 5", 55666, 75);
             Productos productos1 = new Productos(ECategorias.Mother, "Asus", 2323, 75);
             Productos productos2 = new Productos(ECategorias.Gabinete, "Terma", 65652, 75);
-            Productos productos3 = new Productos(ECategorias.Microprocesador, "Ryzen 5", 9874, 95);
+            Productos productos3 = new Productos(ECategorias.Microprocesador, "Ryzen 7", 9874, 95);
             Productos productos4 = new Productos(ECategorias.Monitor, "Dell", 45555, 10);
             Productos productos5 = new Productos(ECategorias.Monitor, "Samsung", 15655, 10);
             Productos productos6 = new Productos(ECategorias.Perisfericos, "Teclado", 98885, 15);
@@ -243,13 +243,13 @@ namespace Entidades
             listaHardcodeada.Add(productos4);
             listaHardcodeada.Add(productos5);
             listaHardcodeada.Add(productos6);
-            listaHardcodeada.Add(productos7); 
+            listaHardcodeada.Add(productos7);
             listaHardcodeada.Add(productos8);
             listaHardcodeada.Add(productos9);
             listaHardcodeada.Add(productos10);
-            
+
             return listaHardcodeada;
-            
+
         }
 
     }

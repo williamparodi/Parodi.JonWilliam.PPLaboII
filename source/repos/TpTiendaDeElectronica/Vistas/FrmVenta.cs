@@ -12,6 +12,7 @@ namespace Vistas
         private List<Productos> listaDeProductos = new List<Productos>();
         private List<Productos> listaFiltrada = new List<Productos>();
         private List<Productos> listaCompleta = new List<Productos>();
+        static List<Productos> listaActualizada = new List<Productos>();
         private Venta ventaFiltrada = new Venta();
         private AdminitradorStock adminitradorStock = new AdminitradorStock();
         static int cantidadVentas;
@@ -111,6 +112,7 @@ namespace Vistas
                     this.gananciaTotal += double.Parse(this.txt_PrecioTotal.Text);
                     cantidadVentas++;
                     AgregaAListaCompleta(listaFiltrada);
+                    listaActualizada = listaDeProductos;
                     FrmEstadisticas frmEstadisticas = new FrmEstadisticas(listaCompleta, cantidadVentas, gananciaTotal);
                     this.Show();
                     this.dtgv_CarroDeCompras.Columns.Clear();
@@ -172,7 +174,7 @@ namespace Vistas
 
         private void btn_SalirAlLogin_Click(object sender, EventArgs e)
         {
-            FrmLogin frmLogin = new FrmLogin(listaCompleta, cantidadVentas, gananciaTotal);
+            FrmLogin frmLogin = new FrmLogin(listaCompleta, cantidadVentas, gananciaTotal,listaActualizada);
             this.Close();
             frmLogin.Show();
         }
