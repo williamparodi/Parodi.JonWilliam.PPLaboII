@@ -58,6 +58,7 @@
             this.lbl_PrecioTotal = new System.Windows.Forms.Label();
             this.txt_PrecioTotal = new System.Windows.Forms.TextBox();
             this.btn_BuscarNombre = new System.Windows.Forms.Button();
+            this.btn_SalirAlLogin = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvListaPorductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_CarroDeCompras)).BeginInit();
             this.SuspendLayout();
@@ -330,6 +331,16 @@
             this.btn_BuscarNombre.UseVisualStyleBackColor = true;
             this.btn_BuscarNombre.Click += new System.EventHandler(this.btn_BuscarNombre_Click);
             // 
+            // btn_SalirAlLogin
+            // 
+            this.btn_SalirAlLogin.Location = new System.Drawing.Point(26, 666);
+            this.btn_SalirAlLogin.Name = "btn_SalirAlLogin";
+            this.btn_SalirAlLogin.Size = new System.Drawing.Size(119, 33);
+            this.btn_SalirAlLogin.TabIndex = 29;
+            this.btn_SalirAlLogin.Text = "Salir ";
+            this.btn_SalirAlLogin.UseVisualStyleBackColor = true;
+            this.btn_SalirAlLogin.Click += new System.EventHandler(this.btn_SalirAlLogin_Click);
+            // 
             // FrmVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -338,6 +349,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1177, 743);
+            this.Controls.Add(this.btn_SalirAlLogin);
             this.Controls.Add(this.btn_BuscarNombre);
             this.Controls.Add(this.txt_PrecioTotal);
             this.Controls.Add(this.lbl_PrecioTotal);
@@ -409,5 +421,6 @@
         private System.Windows.Forms.Label lbl_PrecioTotal;
         private System.Windows.Forms.TextBox txt_PrecioTotal;
         private System.Windows.Forms.Button btn_BuscarNombre;
+        private System.Windows.Forms.Button btn_SalirAlLogin;
     }
 }

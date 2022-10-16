@@ -1,6 +1,7 @@
 ﻿using Entidades;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -99,7 +100,7 @@ namespace Vistas
             StringBuilder sb = new StringBuilder("");
             sb.AppendLine("No hay stock suficiente");
 
-            if (ventaFiltrada.ConfirmaVenta(listaFiltrada) && listaFiltrada is not null)
+            if (ventaFiltrada.ConfirmaVenta(listaFiltrada) && listaFiltrada is not null && listaFiltrada.Count>0)// aca agregar agrgar count >0
             {
                 FrmDetalleCompra frmDetalleCompra = new FrmDetalleCompra(listaFiltrada, this.txt_PrecioTotal.Text);
                 frmDetalleCompra.ShowDialog();            
@@ -111,7 +112,6 @@ namespace Vistas
                     cantidadVentas++;
                     AgregaAListaCompleta(listaFiltrada);
                     FrmEstadisticas frmEstadisticas = new FrmEstadisticas(listaCompleta, cantidadVentas, gananciaTotal);
-                    frmEstadisticas.Show();
                     this.Show();
                     this.dtgv_CarroDeCompras.Columns.Clear();
                     this.listaFiltrada.Clear();
@@ -169,9 +169,13 @@ namespace Vistas
                 }
             }
         }
-      
 
-
+        private void btn_SalirAlLogin_Click(object sender, EventArgs e)
+        {
+            FrmLogin frmLogin = new FrmLogin(listaCompleta, cantidadVentas, gananciaTotal);
+            this.Close();
+            frmLogin.Show();
+        }
     }
 }
 

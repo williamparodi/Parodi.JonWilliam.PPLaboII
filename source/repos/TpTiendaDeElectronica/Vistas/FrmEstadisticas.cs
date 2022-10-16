@@ -221,16 +221,7 @@ namespace Vistas
             }
         }
     }
-    /*
-    public int ProductoMasVendidoCatMicro(List<Productos> listaProductos)
-    {
-        var query = listaProductos.GroupBy(x => x)
-                                   .Where(x => x.Count() > 1)
-                                   .Select(x => x)
-                                   .ToList();
-
-    }
-    */
+  
 
 
 }
