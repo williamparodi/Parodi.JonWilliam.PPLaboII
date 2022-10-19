@@ -17,6 +17,10 @@ namespace Vistas
         private double promedioPerisferico;
         private double promedioMother;
         private Productos productoMasVendidoCatMirco;
+        private Productos productoMasVendidoCatGabinete;
+        private Productos productoMasVendidoCatMother;
+        private Productos productoMasVendidoCatPerisfericos;
+        private Productos productoMasVendidoCatMonitor;
 
         public FrmEstadisticas(List<Productos> listaDeProductos)
         {
@@ -30,6 +34,10 @@ namespace Vistas
             this.promedioPerisferico = 0;
             this.promedioMother = 0;
             this.productoMasVendidoCatMirco = new Productos();
+            this.productoMasVendidoCatGabinete = new Productos();
+            this.productoMasVendidoCatMother = new Productos();
+            this.productoMasVendidoCatPerisfericos = new Productos();
+            this.productoMasVendidoCatMonitor = new Productos();
         }
 
         public FrmEstadisticas(List<Productos> listaDeProductos, int cantidadVentas, double gananciaTotal) : this(listaDeProductos)
@@ -52,6 +60,7 @@ namespace Vistas
             this.txt_PromedioPerisferico.Text = this.promedioPerisferico.ToString();
             this.txt_PromedioMother.Text = this.promedioMother.ToString();
 
+            MuestraMasVendidosTag(listaDeProductos);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -190,40 +199,153 @@ namespace Vistas
             return promedio;
         }
 
-        public void CalcularTodosLosPromedios(List<Productos> listaProductos, double promMicro,
-            double promMonitor, double promGabinete, double promPerisferico, double promMother)
+        public Productos SacaProdMasVendioCatMirco(List<Productos> listaProducto)
         {
-            if (listaProductos is not null)
+            
+            List<Productos> lista2 = new List<Productos>();
+            Productos producto = new Productos();
+
+            foreach (Productos p in listaProducto)
             {
-                foreach (Productos producto in listaProductos)
+                if (p.Categoria == ECategorias.Microprocesador)
                 {
-                    switch (producto.Categoria)
-                    {
-                        case ECategorias.Monitor:
-                            promMonitor = PromedioMonitor(listaProductos);
-                            break;
-                        case ECategorias.Gabinete:
-                            promGabinete = PromedioGabinete(listaProductos);
-                            break;
-                        case ECategorias.Microprocesador:
-                            promMicro = PromedioMicroProcesador(listaProductos);
-                            break;
-                        case ECategorias.Perisfericos:
-                            promPerisferico = PromedioPerisfericos(listaProductos);
-                            break;
-                        case ECategorias.Mother:
-                            promMother = PromedioMother(listaProductos);
-                            break;
-                        default:
-                            break;
-                    }
+                    lista2.Add(p);
                 }
             }
+
+
+            if (lista2.Count > 0)
+            {
+                lista2.GroupBy(x => x);
+                producto = lista2.First();
+            }
+
+            return producto;
+        }
+
+        public Productos SacaProdMasVendioCatGabinte(List<Productos> listaProducto)
+        {
+            List<Productos> lista2 = new List<Productos>();
+            Productos producto = new Productos();
+
+            foreach (Productos p in listaProducto)
+            {
+                if (p.Categoria == ECategorias.Gabinete)
+                {
+                    lista2.Add(p);
+                }
+            }
+
+
+            if (lista2.Count > 0)
+            {
+                lista2.GroupBy(x => x);
+                producto = lista2.First();
+            }
+
+            return producto;
+        }
+
+        public Productos SacaProdMasVendioMother(List<Productos> listaProducto)
+        {
+            List<Productos> lista2 = new List<Productos>();
+            Productos producto = new Productos();
+
+            foreach (Productos p in listaProducto)
+            {
+                if (p.Categoria == ECategorias.Mother)
+                {
+                    lista2.Add(p);
+                }
+            }
+
+            if (lista2.Count > 0)
+            {
+                lista2.GroupBy(x => x);
+                producto = lista2.First();
+            }
+
+            return producto;
+        }
+
+        public Productos SacaProdMasVendioCatMonitor(List<Productos> listaProducto)
+        {
+
+            List<Productos> lista2 = new List<Productos>();
+            Productos producto = new Productos();
+
+            foreach (Productos p in listaProducto)
+            {
+                if (p.Categoria == ECategorias.Monitor)
+                {
+                    lista2.Add(p);
+                }
+            }
+
+
+            if (lista2.Count > 0)
+            {
+                lista2.GroupBy(x => x);
+                producto = lista2.First();
+            }
+
+            return producto;
+        }
+
+        public Productos SacaProdMasVendioCatPerisfericos(List<Productos> listaProducto)
+        {
+            List<Productos> lista2 = new List<Productos>();
+            Productos producto = new Productos();
+
+            foreach (Productos p in listaProducto)
+            {
+                if (p.Categoria == ECategorias.Perisfericos)
+                {
+                    lista2.Add(p);
+                }
+            }
+
+            if (lista2.Count > 0)
+            {
+                lista2.GroupBy(x => x);
+                producto = lista2.First();
+            }
+
+            return producto;
+        }
+
+        public void MuestraMasVendidosTag(List<Productos> listaProductos)
+        {
+            List<Productos> listaMasVendido = new List<Productos>();
+            List<Productos> auxLista = new List<Productos>();
+            if (listaProductos is not null)
+            {
+                productoMasVendidoCatMonitor = SacaProdMasVendioCatMonitor(listaProductos);
+                productoMasVendidoCatGabinete = SacaProdMasVendioCatGabinte(listaProductos);
+                productoMasVendidoCatMirco = SacaProdMasVendioCatMirco(listaProductos);
+                productoMasVendidoCatPerisfericos = SacaProdMasVendioCatPerisfericos(listaProductos);
+                productoMasVendidoCatMother = SacaProdMasVendioMother(listaProductos);
+                auxLista.Add(productoMasVendidoCatMonitor);
+                auxLista.Add(productoMasVendidoCatGabinete);
+                auxLista.Add(productoMasVendidoCatMirco);
+                auxLista.Add(productoMasVendidoCatPerisfericos);
+                auxLista.Add(productoMasVendidoCatMother);
+
+                foreach(Productos p in auxLista)
+                {
+                    if(p.Cantidad >0)
+                    {
+                        listaMasVendido.Add(p);
+                    }
+                }
+
+                this.dataGridView1.DataSource = null;
+                this.dataGridView1.DataSource = listaMasVendido;
+
+            }
+
         }
     }
-  
-
-
 }
 
 

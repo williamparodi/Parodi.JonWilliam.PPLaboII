@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Net.Http.Headers;
 
 namespace Entidades
 {
@@ -24,21 +25,6 @@ namespace Entidades
             this.listaProductos = listaProductos;
         }
 
-        /// <summary>
-        /// Agrega nombre al producto validando que no sea una cadena vacio
-        /// </summary>
-        /// <param name="nombre"></param>
-        /// <returns></returns> el producto
-        public Productos AgregarNombre(string nombre)
-        {
-            Productos producto = new Productos();
-
-            if (!string.IsNullOrEmpty(nombre))
-            {
-                this.listaProductos.Add(producto);
-            }
-            return producto;
-        }
 
         /// <summary>
         /// Propiedad que setea y retorna una lista 
@@ -56,6 +42,20 @@ namespace Entidades
         {
             get { return this.producto; }
             set { this.producto = value; }
+        }
+
+        /// <summary>
+        /// Agrega nombre al producto validando que no sea una cadena vacio
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <returns></returns> el producto
+        public Productos AgregarNombre(string nombre)
+        {    
+            if (nombre != "")
+            {
+                this.producto.Nombre = nombre;
+            }
+            return producto;
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace Entidades
                 case "Mother":
                     this.producto.Categoria = ECategorias.Mother;
                     break;
-                case "MicroProcesador":
+                case "Microprocesador":
                     this.producto.Categoria = ECategorias.Microprocesador;
                     break;
                 case "Perisfericos":

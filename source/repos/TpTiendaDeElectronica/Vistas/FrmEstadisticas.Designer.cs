@@ -43,6 +43,9 @@
             this.txt_PromedioMonitor = new System.Windows.Forms.TextBox();
             this.lbl_Promedio = new System.Windows.Forms.Label();
             this.txt_PromedioGabinete = new System.Windows.Forms.TextBox();
+            this.lbl_MasVendidoCat = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // txt_CantidadVentas
@@ -167,11 +170,36 @@
             this.txt_PromedioGabinete.Size = new System.Drawing.Size(100, 23);
             this.txt_PromedioGabinete.TabIndex = 14;
             // 
+            // lbl_MasVendidoCat
+            // 
+            this.lbl_MasVendidoCat.AutoSize = true;
+            this.lbl_MasVendidoCat.Location = new System.Drawing.Point(417, 19);
+            this.lbl_MasVendidoCat.Name = "lbl_MasVendidoCat";
+            this.lbl_MasVendidoCat.Size = new System.Drawing.Size(257, 15);
+            this.lbl_MasVendidoCat.TabIndex = 16;
+            this.lbl_MasVendidoCat.Text = "Listado de producto mas vendido por categoria";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(421, 49);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowTemplate.Height = 25;
+            this.dataGridView1.Size = new System.Drawing.Size(317, 239);
+            this.dataGridView1.TabIndex = 17;
+            // 
             // FrmEstadisticas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 530);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.lbl_MasVendidoCat);
             this.Controls.Add(this.txt_PromedioGabinete);
             this.Controls.Add(this.lbl_Promedio);
             this.Controls.Add(this.txt_PromedioMonitor);
@@ -189,6 +217,7 @@
             this.Controls.Add(this.txt_CantidadVentas);
             this.Name = "FrmEstadisticas";
             this.Text = "Estadisticas";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -211,5 +240,7 @@
         private System.Windows.Forms.TextBox txt_PromedioMonitor;
         private System.Windows.Forms.Label lbl_Promedio;
         private System.Windows.Forms.TextBox txt_PromedioGabinete;
+        private System.Windows.Forms.Label lbl_MasVendidoCat;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

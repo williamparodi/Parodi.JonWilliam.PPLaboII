@@ -33,7 +33,8 @@ namespace Vistas
             sb.AppendLine("Listado de Productos : ");
             foreach(Productos p in listaFiltrada)
             {
-                sb.AppendLine(p.MostrarProducto());
+                sb.Append(p.MostrarProducto());
+                sb.AppendLine($" Cantidad : {p.Cantidad}");
                 facturas.Add(p);
             }
             sb.AppendLine($"Precio Total :{precio}");

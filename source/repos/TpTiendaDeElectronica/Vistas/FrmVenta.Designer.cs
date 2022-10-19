@@ -166,9 +166,14 @@
             // 
             // dtgvListaPorductos
             // 
+            this.dtgvListaPorductos.AllowUserToAddRows = false;
+            this.dtgvListaPorductos.AllowUserToDeleteRows = false;
+            this.dtgvListaPorductos.AllowUserToResizeColumns = false;
+            this.dtgvListaPorductos.AllowUserToResizeRows = false;
             this.dtgvListaPorductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvListaPorductos.Location = new System.Drawing.Point(26, 372);
             this.dtgvListaPorductos.Name = "dtgvListaPorductos";
+            this.dtgvListaPorductos.ReadOnly = true;
             this.dtgvListaPorductos.RowTemplate.Height = 25;
             this.dtgvListaPorductos.Size = new System.Drawing.Size(407, 190);
             this.dtgvListaPorductos.TabIndex = 11;
@@ -249,6 +254,7 @@
             this.dtgv_CarroDeCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgv_CarroDeCompras.Location = new System.Drawing.Point(645, 372);
             this.dtgv_CarroDeCompras.Name = "dtgv_CarroDeCompras";
+            this.dtgv_CarroDeCompras.ReadOnly = true;
             this.dtgv_CarroDeCompras.RowTemplate.Height = 25;
             this.dtgv_CarroDeCompras.Size = new System.Drawing.Size(400, 190);
             this.dtgv_CarroDeCompras.TabIndex = 20;

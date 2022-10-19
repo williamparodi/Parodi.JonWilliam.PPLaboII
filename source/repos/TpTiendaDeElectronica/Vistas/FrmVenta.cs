@@ -11,7 +11,7 @@ namespace Vistas
     {
         private List<Productos> listaDeProductos = new List<Productos>();
         private List<Productos> listaFiltrada = new List<Productos>();
-        private List<Productos> listaCompleta = new List<Productos>();
+        static List<Productos> listaCompleta = new List<Productos>();
         static List<Productos> listaActualizada = new List<Productos>();
         private Venta ventaFiltrada = new Venta();
         private AdminitradorStock adminitradorStock = new AdminitradorStock();
@@ -60,10 +60,13 @@ namespace Vistas
         /// <param name="e"></param>
         private void dtgvListaPorductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            AdminitradorStock adminitrador2 = new AdminitradorStock(listaDeProductos);
+
             this.fila = e.RowIndex;
             if (fila != -1)
             {
-                this.listaFiltrada.Add(adminitradorStock.ListaDeProductos[fila]);
+                AgregarAlCarro(adminitradorStock.ListaDeProductos[fila]);
+                //this.listaFiltrada.Add(adminitradorStock.ListaDeProductos[fila]);
             }
         }
 
@@ -122,6 +125,9 @@ namespace Vistas
                 else
                 {
                     this.Show();
+                    this.dtgv_CarroDeCompras.Columns.Clear();
+                    this.listaFiltrada.Clear();
+                    this.txt_PrecioTotal.Text = string.Empty;
                 }
             }
             else
@@ -167,7 +173,7 @@ namespace Vistas
             {
                 foreach(Productos prod in listaProductos)
                 {
-                    this.listaCompleta.Add(prod);
+                    listaCompleta.Add(prod);
                 }
             }
         }
@@ -177,6 +183,28 @@ namespace Vistas
             FrmLogin frmLogin = new FrmLogin(listaCompleta, cantidadVentas, gananciaTotal,listaActualizada);
             this.Close();
             frmLogin.Show();
+        }
+
+        private void AgregarAlCarro(Productos producto)
+        {
+            if (this.listaFiltrada.Contains(producto))
+            {
+                foreach(Productos p in this.listaFiltrada)
+                {
+                    if(p.Nombre == producto.Nombre)
+                    {
+                        p.Cantidad++;
+                        p.Precio += producto.Precio;
+                    }
+                    
+                }
+            }
+            else
+            {
+                producto.Cantidad = 1;
+                this.listaFiltrada.Add(producto);
+            }
+
         }
     }
 }

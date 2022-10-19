@@ -32,7 +32,6 @@
             this.lbl_CategoriaStock = new System.Windows.Forms.Label();
             this.cmb_CategoriaStock = new System.Windows.Forms.ComboBox();
             this.lbl_NombreStock = new System.Windows.Forms.Label();
-            this.txt_NombreStock = new System.Windows.Forms.TextBox();
             this.lbl_PrecioStock = new System.Windows.Forms.Label();
             this.txt_PrecioStock = new System.Windows.Forms.TextBox();
             this.lbl_CantidadStock = new System.Windows.Forms.Label();
@@ -45,6 +44,7 @@
             this.cmb_BuscarCategoriaStock = new System.Windows.Forms.ComboBox();
             this.dtgv_DatagridFiltrada = new System.Windows.Forms.DataGridView();
             this.btn_SalirStock = new System.Windows.Forms.Button();
+            this.txt_NombreStock = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_DatagridFiltrada)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,13 +81,6 @@
             this.lbl_NombreStock.Size = new System.Drawing.Size(65, 16);
             this.lbl_NombreStock.TabIndex = 2;
             this.lbl_NombreStock.Text = "Nombre :";
-            // 
-            // txt_NombreStock
-            // 
-            this.txt_NombreStock.Location = new System.Drawing.Point(110, 96);
-            this.txt_NombreStock.Name = "txt_NombreStock";
-            this.txt_NombreStock.Size = new System.Drawing.Size(121, 23);
-            this.txt_NombreStock.TabIndex = 3;
             // 
             // lbl_PrecioStock
             // 
@@ -209,12 +202,20 @@
             this.btn_SalirStock.UseVisualStyleBackColor = true;
             this.btn_SalirStock.Click += new System.EventHandler(this.btn_SalirStock_Click);
             // 
+            // txt_NombreStock
+            // 
+            this.txt_NombreStock.Location = new System.Drawing.Point(110, 100);
+            this.txt_NombreStock.Name = "txt_NombreStock";
+            this.txt_NombreStock.Size = new System.Drawing.Size(121, 23);
+            this.txt_NombreStock.TabIndex = 18;
+            // 
             // FrmAdminStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Thistle;
             this.ClientSize = new System.Drawing.Size(800, 502);
+            this.Controls.Add(this.txt_NombreStock);
             this.Controls.Add(this.btn_SalirStock);
             this.Controls.Add(this.dtgv_DatagridFiltrada);
             this.Controls.Add(this.cmb_BuscarCategoriaStock);
@@ -227,7 +228,6 @@
             this.Controls.Add(this.lbl_CantidadStock);
             this.Controls.Add(this.txt_PrecioStock);
             this.Controls.Add(this.lbl_PrecioStock);
-            this.Controls.Add(this.txt_NombreStock);
             this.Controls.Add(this.lbl_NombreStock);
             this.Controls.Add(this.cmb_CategoriaStock);
             this.Controls.Add(this.lbl_CategoriaStock);
@@ -246,7 +246,6 @@
         private System.Windows.Forms.Label lbl_CategoriaStock;
         private System.Windows.Forms.ComboBox cmb_CategoriaStock;
         private System.Windows.Forms.Label lbl_NombreStock;
-        private System.Windows.Forms.TextBox txt_NombreStock;
         private System.Windows.Forms.Label lbl_PrecioStock;
         private System.Windows.Forms.TextBox txt_PrecioStock;
         private System.Windows.Forms.Label lbl_CantidadStock;
@@ -259,5 +258,6 @@
         private System.Windows.Forms.ComboBox cmb_BuscarCategoriaStock;
         private System.Windows.Forms.DataGridView dtgv_DatagridFiltrada;
         private System.Windows.Forms.Button btn_SalirStock;
+        private System.Windows.Forms.TextBox txt_NombreStock;
     }
 }

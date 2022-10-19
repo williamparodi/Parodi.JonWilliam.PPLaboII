@@ -75,6 +75,7 @@ namespace Entidades
             set { this.cantidad = value; }
         }
         
+        /*
         /// <summary>
         /// Sobrecarga de operador == que compara dos Productos por categoria
         /// </summary>
@@ -87,7 +88,7 @@ namespace Entidades
             
             if(prod1 is not null && prod2 is not null)
             {
-                if(prod1.categoria == prod2.categoria)
+                if(prod1.nombre == prod2.nombre)
                 {
                     retorno = true;
                 }
@@ -106,7 +107,7 @@ namespace Entidades
         {
             return !(prod1 == prod2);
         }
-
+        */
         /// <summary>
         /// Crea un string y lo retorna con los datos del producto
         /// </summary>
@@ -114,7 +115,7 @@ namespace Entidades
         public virtual string MostrarProducto()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append($"Categoria : {this.categoria} Nombre : {this.nombre} Precio : {this.precio}");
+            sb.AppendLine($"Categoria : {this.categoria} Nombre : {this.nombre} Precio : {this.precio}");
             return sb.ToString();
 
         }

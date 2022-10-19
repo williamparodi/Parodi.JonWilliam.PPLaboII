@@ -1,21 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Venta 
+    public class Venta
     {
         protected List<Productos> listaProductos;
 
         /// <summary>
         /// Contructor por defecto que instancia una lista
         /// </summary>
-        public Venta() 
+        public Venta()
         {
-            this.listaProductos = new List<Productos>();  
+            this.listaProductos = new List<Productos>();
         }
 
         /// <summary>
@@ -26,7 +25,7 @@ namespace Entidades
         {
             this.listaProductos = listaProductos;
         }
-        
+
         /// <summary>
         /// Propiedad de la clase setea y retorna una lista
         /// </summary>
@@ -40,12 +39,12 @@ namespace Entidades
         /// Crea un string con los datos de la lista de Productos
         /// </summary>
         /// <returns></returns> un string con los datos de la lista
-        public  string MostrarListaProductos(List<Productos> lista)
+        public virtual string MostrarListaProductos(List<Productos> lista)
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("Lista de Productos: ");
 
-            foreach(Productos p in lista)
+            foreach (Productos p in lista)
             {
                 sb.AppendLine(p.MostrarProducto());
             }
@@ -62,9 +61,9 @@ namespace Entidades
         {
             double total = 0;
 
-            if(listaProductos is not null && listaProductos.Any())//se fija q contenga elementos
+            if (listaProductos is not null && listaProductos.Any())//se fija q contenga elementos
             {
-                foreach(Productos p in listaProductos)
+                foreach (Productos p in listaProductos)
                 {
                     total += p.Precio;
                 }
@@ -81,8 +80,8 @@ namespace Entidades
         public double CalcularPagoConCredito(double total)
         {
             double totalCredito = 0;
-            
-            if(total > 0)
+
+            if (total > 0)
             {
                 totalCredito = total * 1.10;
             }
@@ -99,11 +98,11 @@ namespace Entidades
         {
             bool retorno = true;
 
-            if(listaProductos is not null && listaProductos.Count>0)
+            if (listaProductos is not null && listaProductos.Count > 0)
             {
-                foreach(Productos producto in listaVenta)
+                foreach (Productos producto in listaVenta)
                 {
-                    if(producto.Cantidad <=0)
+                    if (producto.Cantidad <= 0)
                     {
                         retorno = false;
                     }
@@ -119,12 +118,12 @@ namespace Entidades
         /// <param name="formaPago"></param>
         /// <param name="listaCompras"></param>
         /// <returns></returns> double con el total 
-        public double CalcularPago(string formaPago,List<Productos> listaCompras)
+        public double CalcularPago(string formaPago, List<Productos> listaCompras)
         {
             double subtotal = 0;
             double total = 0;
 
-            if(formaPago != string.Empty && listaCompras is not null)
+            if (formaPago != string.Empty && listaCompras is not null)
             {
                 if (formaPago == "Credito")
                 {
@@ -139,21 +138,21 @@ namespace Entidades
 
             return total;
         }
-        
+
         /// <summary>
         /// Descuenta una unidad si se confirma la venta en la lista de compras
         /// </summary>
         /// <param name="listaProductos"></param>
         /// <param name="listaCompras"></param>
-        public void DescontarUnidad(List<Productos> listaProductos,List<Productos> listaCompras)
+        public void DescontarUnidad(List<Productos> listaProductos, List<Productos> listaCompras)
         {
-            if(listaProductos is not null && listaCompras is not null && listaProductos.Any() && listaCompras.Any())
+            if (listaProductos is not null && listaCompras is not null && listaProductos.Any() && listaCompras.Any())
             {
-                if(ConfirmaVenta(listaCompras))
+                if (ConfirmaVenta(listaCompras))
                 {
-                    foreach(Productos p in listaProductos)
+                    foreach (Productos p in listaProductos)
                     {
-                        if(listaCompras.Contains(p))
+                        if (listaCompras.Contains(p))
                         {
                             p.Cantidad--;
                         }
@@ -161,9 +160,8 @@ namespace Entidades
                 }
             }
         }
-
         
 
-
     }
+        
 }
