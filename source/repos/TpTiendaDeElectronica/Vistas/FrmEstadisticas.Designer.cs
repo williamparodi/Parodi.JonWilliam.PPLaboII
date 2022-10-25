@@ -197,6 +197,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSeaGreen;
             this.ClientSize = new System.Drawing.Size(800, 530);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.lbl_MasVendidoCat);

@@ -39,7 +39,7 @@
             this.txt_Dni = new System.Windows.Forms.TextBox();
             this.txt_Apellido = new System.Windows.Forms.TextBox();
             this.lbl_TelefonoCliente = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txt_Telefono = new System.Windows.Forms.TextBox();
             this.dtgvListaPorductos = new System.Windows.Forms.DataGridView();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Articulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -155,14 +155,14 @@
             this.lbl_TelefonoCliente.TabIndex = 9;
             this.lbl_TelefonoCliente.Text = "Telefono :";
             // 
-            // textBox2
+            // txt_Telefono
             // 
-            this.textBox2.Location = new System.Drawing.Point(645, 157);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PlaceholderText = "011 -0000000";
-            this.textBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.textBox2.Size = new System.Drawing.Size(100, 25);
-            this.textBox2.TabIndex = 10;
+            this.txt_Telefono.Location = new System.Drawing.Point(645, 157);
+            this.txt_Telefono.Name = "txt_Telefono";
+            this.txt_Telefono.PlaceholderText = "011 -0000000";
+            this.txt_Telefono.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txt_Telefono.Size = new System.Drawing.Size(100, 25);
+            this.txt_Telefono.TabIndex = 10;
             // 
             // dtgvListaPorductos
             // 
@@ -372,7 +372,7 @@
             this.Controls.Add(this.lbl_Categoria);
             this.Controls.Add(this.cmb_Categorias);
             this.Controls.Add(this.dtgvListaPorductos);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txt_Telefono);
             this.Controls.Add(this.lbl_TelefonoCliente);
             this.Controls.Add(this.txt_Apellido);
             this.Controls.Add(this.txt_Dni);
@@ -408,7 +408,7 @@
         private System.Windows.Forms.TextBox txt_Dni;
         private System.Windows.Forms.TextBox txt_Apellido;
         private System.Windows.Forms.Label lbl_TelefonoCliente;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txt_Telefono;
         private System.Windows.Forms.DataGridView dtgvListaPorductos;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Articulo;

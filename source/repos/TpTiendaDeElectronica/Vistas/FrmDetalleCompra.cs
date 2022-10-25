@@ -14,11 +14,12 @@ namespace Vistas
     public partial class FrmDetalleCompra : Form
     {
         public bool confirma;
-        static List<Productos> facturas = new List<Productos>();
+        private List<string> facturas = new List<string>();
         public double precioTotal = 0; 
         public FrmDetalleCompra()
         {
             InitializeComponent();
+            
         }
 
         /// <summary>
@@ -35,7 +36,6 @@ namespace Vistas
             {
                 sb.Append(p.MostrarProducto());
                 sb.AppendLine($" Cantidad : {p.Cantidad}");
-                facturas.Add(p);
             }
             sb.AppendLine($"Precio Total :{precio}");
             if(double.TryParse(precio,out precioASumar))
@@ -45,7 +45,12 @@ namespace Vistas
             
             this.lbl_ListaProductos.Text = sb.ToString();
         }
-        
+
+        public FrmDetalleCompra(List<Productos> listaFiltrada, string precio,List<string> listaFacturas) : this(listaFiltrada,precio)
+        {
+            this.facturas = listaFacturas;
+        }
+
         /// <summary>
         /// Al apretar el boton aceptar genera un mensaje de venta exitosa y esconde la visibilidad del form
         /// </summary>
@@ -75,5 +80,18 @@ namespace Vistas
             this.Hide();
         }
 
+        private void btn_HistorialFacturas_Click(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            if(this.facturas is not null && this.facturas.Any())
+            {
+                foreach(var item in this.facturas)
+                {
+                    sb.AppendLine(item.ToString());
+                }
+            }
+            MessageBox.Show(sb.ToString(), "Listado facturas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
+        }
     }
 }

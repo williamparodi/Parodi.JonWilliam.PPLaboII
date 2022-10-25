@@ -75,7 +75,7 @@ namespace Entidades
             set { this.cantidad = value; }
         }
         
-        /*
+        
         /// <summary>
         /// Sobrecarga de operador == que compara dos Productos por categoria
         /// </summary>
@@ -107,7 +107,7 @@ namespace Entidades
         {
             return !(prod1 == prod2);
         }
-        */
+        
         /// <summary>
         /// Crea un string y lo retorna con los datos del producto
         /// </summary>

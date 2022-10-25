@@ -13,6 +13,8 @@ namespace Vistas
         private List<Productos> listaFiltrada = new List<Productos>();
         static List<Productos> listaCompleta = new List<Productos>();
         static List<Productos> listaActualizada = new List<Productos>();
+        public List<Productos> listaDeCarro = new List<Productos>();
+        static List<string> listaFacturas = new List<string>();
         private Venta ventaFiltrada = new Venta();
         private AdminitradorStock adminitradorStock = new AdminitradorStock();
         static int cantidadVentas;
@@ -60,13 +62,11 @@ namespace Vistas
         /// <param name="e"></param>
         private void dtgvListaPorductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            AdminitradorStock adminitrador2 = new AdminitradorStock(listaDeProductos);
-
             this.fila = e.RowIndex;
             if (fila != -1)
             {
-                AgregarAlCarro(adminitradorStock.ListaDeProductos[fila]);
-                //this.listaFiltrada.Add(adminitradorStock.ListaDeProductos[fila]);
+                //AgregarAlCarro(adminitradorStock.ListaDeProductos[fila]);
+                this.listaFiltrada.Add(adminitradorStock.ListaDeProductos[fila]);
             }
         }
 
@@ -80,6 +80,7 @@ namespace Vistas
             this.dtgv_CarroDeCompras.DataSource = null;
             this.dtgv_CarroDeCompras.DataSource = listaFiltrada;
             this.txt_PrecioTotal.Text = ventaFiltrada.CalcularPago(cmb_FormaDePago.Text, listaFiltrada).ToString();
+
         }
 
         /// <summary>
@@ -103,11 +104,12 @@ namespace Vistas
         {
             StringBuilder sb = new StringBuilder("");
             sb.AppendLine("No hay stock suficiente");
-
-            if (ventaFiltrada.ConfirmaVenta(listaFiltrada) && listaFiltrada is not null && listaFiltrada.Count>0)// aca agregar agrgar count >0
+           
+            if (ventaFiltrada.ConfirmaVenta(listaFiltrada) && listaFiltrada is not null && listaFiltrada.Count > 0)// aca agregar agrgar count >0
             {
-                FrmDetalleCompra frmDetalleCompra = new FrmDetalleCompra(listaFiltrada, this.txt_PrecioTotal.Text);
-                frmDetalleCompra.ShowDialog();            
+                FrmDetalleCompra frmDetalleCompra = new FrmDetalleCompra(listaFiltrada, this.txt_PrecioTotal.Text,listaFacturas);
+                Cliente cliente = new Cliente();
+                frmDetalleCompra.ShowDialog();
 
                 if (frmDetalleCompra.confirma)
                 {
@@ -116,11 +118,20 @@ namespace Vistas
                     cantidadVentas++;
                     AgregaAListaCompleta(listaFiltrada);
                     listaActualizada = listaDeProductos;
+                    if(cliente.ValidaDatosCliente(txt_NombreCliente.Text,txt_Apellido.Text,txt_Dni.Text,txt_Telefono.Text))
+                    {
+                        listaFacturas.Add(Factura.CrearFactura(listaFiltrada, cliente, DateTime.Parse(txt_Fecha.Text)));
+                    }
+                    else
+                    {
+                        MessageBox.Show("Datos cliente erroneos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                     FrmEstadisticas frmEstadisticas = new FrmEstadisticas(listaCompleta, cantidadVentas, gananciaTotal);
                     this.Show();
                     this.dtgv_CarroDeCompras.Columns.Clear();
                     this.listaFiltrada.Clear();
                     this.txt_PrecioTotal.Text = string.Empty;
+                    this.txt_Fecha.Text = DateTime.Now.ToString(); 
                 }
                 else
                 {
@@ -134,7 +145,6 @@ namespace Vistas
             {
                 MessageBox.Show(sb.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         /// <summary>
@@ -184,12 +194,12 @@ namespace Vistas
             this.Close();
             frmLogin.Show();
         }
-
+        
         private void AgregarAlCarro(Productos producto)
         {
-            if (this.listaFiltrada.Contains(producto))
+            if (this.listaDeCarro.Contains(producto))
             {
-                foreach(Productos p in this.listaFiltrada)
+                foreach(Productos p in this.listaDeCarro)
                 {
                     if(p.Nombre == producto.Nombre)
                     {
@@ -202,10 +212,14 @@ namespace Vistas
             else
             {
                 producto.Cantidad = 1;
-                this.listaFiltrada.Add(producto);
+                this.listaDeCarro.Add(producto);
             }
 
         }
+       
+       
+
+
     }
 }
 

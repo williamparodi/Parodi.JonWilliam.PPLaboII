@@ -89,6 +89,7 @@
             this.btn_HistorialFacturas.TabIndex = 4;
             this.btn_HistorialFacturas.Text = "Historial Facturas";
             this.btn_HistorialFacturas.UseVisualStyleBackColor = true;
+            this.btn_HistorialFacturas.Click += new System.EventHandler(this.btn_HistorialFacturas_Click);
             // 
             // FrmDetalleCompra
             // 

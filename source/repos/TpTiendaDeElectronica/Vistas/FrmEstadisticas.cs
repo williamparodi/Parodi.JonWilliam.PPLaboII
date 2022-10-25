@@ -63,6 +63,10 @@ namespace Vistas
             MuestraMasVendidosTag(listaDeProductos);
         }
 
+        
+
+
+
         private void button1_Click(object sender, EventArgs e)
         {
             FrmLogin frmLogin = new FrmLogin(listaCompleta, cantidadVentas, gananciaTotal);
