@@ -74,7 +74,8 @@ namespace Entidades
         public string MostarCliente()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Nombre : {this.nombre} Apellido : {this.apellido} Dni : {this.dni} Telefono : {this.telefono}");
+            sb.AppendLine($"Nombre : {this.nombre} Apellido : {this.apellido}");
+            sb.AppendLine($"Dni : {this.dni} Telefono : {this.telefono}");
             return sb.ToString();
         }
     }

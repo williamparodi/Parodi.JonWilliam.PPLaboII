@@ -10,13 +10,16 @@ namespace Entidades
     {
         static int numeroFactura = 0;
        
-        public static string CrearFactura(List<Productos> listaDeCompras,Cliente cliente,DateTime fechaCompra)
+        public static string CrearFactura(List<Productos> listaDeCompras,Cliente cliente,DateTime fechaCompra,double precioTotal)
         {
             Venta venta = new Venta();
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Factura Numero : {numeroFactura++} Fecha : {fechaCompra}");
-            sb.AppendLine($"Datos Cliente : {cliente.MostarCliente()}");
+            sb.AppendLine($"Factura Numero : {numeroFactura++}");
+            sb.AppendLine($"Fecha : {fechaCompra}");
+            sb.AppendLine($"Datos Cliente : ");
+            sb.AppendLine($"{cliente.MostarCliente()}");
             sb.AppendLine(venta.MostrarListaProductos(listaDeCompras));
+            sb.AppendLine($"Precio Total : {precioTotal}");
             sb.AppendLine("------------------------------------------");
             return sb.ToString();
         }

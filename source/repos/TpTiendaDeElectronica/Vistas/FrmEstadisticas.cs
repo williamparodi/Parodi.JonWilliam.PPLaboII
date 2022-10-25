@@ -221,6 +221,7 @@ namespace Vistas
             if (lista2.Count > 0)
             {
                 lista2.GroupBy(x => x);
+              
                 producto = lista2.First();
             }
 

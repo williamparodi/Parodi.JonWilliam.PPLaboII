@@ -120,7 +120,7 @@ namespace Vistas
                     listaActualizada = listaDeProductos;
                     if(cliente.ValidaDatosCliente(txt_NombreCliente.Text,txt_Apellido.Text,txt_Dni.Text,txt_Telefono.Text))
                     {
-                        listaFacturas.Add(Factura.CrearFactura(listaFiltrada, cliente, DateTime.Parse(txt_Fecha.Text)));
+                        listaFacturas.Add(Factura.CrearFactura(listaFiltrada, cliente, DateTime.Parse(txt_Fecha.Text),double.Parse(this.txt_PrecioTotal.Text)));
                     }
                     else
                     {
