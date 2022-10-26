@@ -9,7 +9,7 @@ namespace Vistas
 {
     public partial class FrmVenta : Form
     {
-        private List<Productos> listaDeProductos = new List<Productos>();
+        static List<Productos> listaDeProductos = new List<Productos>();
         private List<Productos> listaFiltrada = new List<Productos>();
         static List<Productos> listaCompleta = new List<Productos>();
         static List<Productos> listaActualizada = new List<Productos>();
@@ -24,11 +24,11 @@ namespace Vistas
         /// <summary>
         /// Constructor por defecto y setea la hora al horario actual
         /// </summary>
-        public FrmVenta(List<Productos> listaDeProductos)
+        public FrmVenta(List<Productos> listaStock)
         {
             InitializeComponent();
             this.txt_Fecha.Text = DateTime.Now.ToString();
-            this.listaDeProductos = listaDeProductos;
+            listaDeProductos = listaStock;
             this.gananciaTotal = 0;
         }
 
@@ -50,9 +50,8 @@ namespace Vistas
         /// <param name="e"></param>
         private void cmb_Categorias_SelectedIndexChanged(object sender, EventArgs e)
         {
-            AdminitradorStock adminitrador = new AdminitradorStock(listaDeProductos);
-            this.adminitradorStock.ListaDeProductos = adminitrador.FiltrarCategoria(cmb_Categorias.Text);
-            this.dtgvListaPorductos.DataSource = adminitradorStock.ListaDeProductos;
+            this.listaFiltrada = adminitradorStock.FiltrarCategoria(cmb_Categorias.Text,listaDeProductos);
+            this.dtgvListaPorductos.DataSource = this.listaFiltrada;
         }
 
         /// <summary>
@@ -65,8 +64,8 @@ namespace Vistas
             this.fila = e.RowIndex;
             if (fila != -1)
             {
-                //AgregarAlCarro(adminitradorStock.ListaDeProductos[fila]);
-                this.listaFiltrada.Add(adminitradorStock.ListaDeProductos[fila]);
+                AgregarAlCarro(this.listaFiltrada[fila]);
+                //this.listaFiltrada.Add(adminitradorStock.ListaDeProductos[fila]);
             }
         }
 
@@ -78,8 +77,8 @@ namespace Vistas
         private void btn_Agregar_Click(object sender, EventArgs e)
         {
             this.dtgv_CarroDeCompras.DataSource = null;
-            this.dtgv_CarroDeCompras.DataSource = listaFiltrada;
-            this.txt_PrecioTotal.Text = ventaFiltrada.CalcularPago(cmb_FormaDePago.Text, listaFiltrada).ToString();
+            this.dtgv_CarroDeCompras.DataSource = listaDeCarro;
+            this.txt_PrecioTotal.Text = ventaFiltrada.CalcularPago(cmb_FormaDePago.Text, listaDeCarro).ToString();
 
         }
 
@@ -91,7 +90,7 @@ namespace Vistas
         private void btn_Borrar_Click(object sender, EventArgs e)
         {
             dtgv_CarroDeCompras.Columns.Clear();
-            this.listaFiltrada.Clear();
+            this.listaDeCarro.Clear();
             this.txt_PrecioTotal.Text = string.Empty;
         }
 
@@ -105,22 +104,22 @@ namespace Vistas
             StringBuilder sb = new StringBuilder("");
             sb.AppendLine("No hay stock suficiente");
            
-            if (ventaFiltrada.ConfirmaVenta(listaFiltrada) && listaFiltrada is not null && listaFiltrada.Count > 0)// aca agregar agrgar count >0
+            if (ventaFiltrada.ConfirmaVenta(listaDeCarro) && listaDeCarro is not null && listaDeCarro.Count > 0)// aca agregar agrgar count >0
             {
-                FrmDetalleCompra frmDetalleCompra = new FrmDetalleCompra(listaFiltrada, this.txt_PrecioTotal.Text,listaFacturas);
+                FrmDetalleCompra frmDetalleCompra = new FrmDetalleCompra(listaDeCarro, this.txt_PrecioTotal.Text,listaFacturas);
                 Cliente cliente = new Cliente();
                 frmDetalleCompra.ShowDialog();
 
                 if (frmDetalleCompra.confirma)
                 {
-                    ventaFiltrada.DescontarUnidad(listaDeProductos, listaFiltrada);
+                    ventaFiltrada.DescontarUnidad(listaDeProductos, listaDeCarro);
                     this.gananciaTotal += double.Parse(this.txt_PrecioTotal.Text);
                     cantidadVentas++;
-                    AgregaAListaCompleta(listaFiltrada);
+                    AgregaAListaCompleta(listaDeCarro);
                     listaActualizada = listaDeProductos;
                     if(cliente.ValidaDatosCliente(txt_NombreCliente.Text,txt_Apellido.Text,txt_Dni.Text,txt_Telefono.Text))
                     {
-                        listaFacturas.Add(Factura.CrearFactura(listaFiltrada, cliente, DateTime.Parse(txt_Fecha.Text),double.Parse(this.txt_PrecioTotal.Text)));
+                        listaFacturas.Add(Factura.CrearFactura(listaDeCarro, cliente, DateTime.Parse(txt_Fecha.Text),double.Parse(this.txt_PrecioTotal.Text)));
                     }
                     else
                     {
@@ -129,7 +128,7 @@ namespace Vistas
                     FrmEstadisticas frmEstadisticas = new FrmEstadisticas(listaCompleta, cantidadVentas, gananciaTotal);
                     this.Show();
                     this.dtgv_CarroDeCompras.Columns.Clear();
-                    this.listaFiltrada.Clear();
+                    this.listaDeCarro.Clear();
                     this.txt_PrecioTotal.Text = string.Empty;
                     this.txt_Fecha.Text = DateTime.Now.ToString(); 
                 }
@@ -137,7 +136,7 @@ namespace Vistas
                 {
                     this.Show();
                     this.dtgv_CarroDeCompras.Columns.Clear();
-                    this.listaFiltrada.Clear();
+                    this.listaDeCarro.Clear();
                     this.txt_PrecioTotal.Text = string.Empty;
                 }
             }
@@ -174,7 +173,7 @@ namespace Vistas
         /// <param name="e"></param>
         private void cmb_FormaDePago_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.txt_PrecioTotal.Text = ventaFiltrada.CalcularPago(cmb_FormaDePago.Text, listaFiltrada).ToString();
+            this.txt_PrecioTotal.Text = ventaFiltrada.CalcularPago(cmb_FormaDePago.Text, listaDeCarro).ToString();
         }
 
         public void AgregaAListaCompleta(List<Productos> listaProductos)
@@ -197,22 +196,26 @@ namespace Vistas
         
         private void AgregarAlCarro(Productos producto)
         {
-            if (this.listaDeCarro.Contains(producto))
+            Productos auxProducto = new Productos();
+            bool flag = false;
+     
+            auxProducto.Nombre = producto.Nombre;
+            auxProducto.Categoria = producto.Categoria;
+            auxProducto.Precio = producto.Precio;
+           
+            foreach (Productos p in this.listaDeCarro)
             {
-                foreach(Productos p in this.listaDeCarro)
+                if (p.Nombre == auxProducto.Nombre)
                 {
-                    if(p.Nombre == producto.Nombre)
-                    {
-                        p.Cantidad++;
-                        p.Precio += producto.Precio;
-                    }
-                    
+                    p.Cantidad++;
+                    p.Precio += auxProducto.Precio;
+                    flag = true;
                 }
             }
-            else
+            if(!flag)
             {
-                producto.Cantidad = 1;
-                this.listaDeCarro.Add(producto);
+                auxProducto.Cantidad = 1;
+                this.listaDeCarro.Add(auxProducto);
             }
 
         }

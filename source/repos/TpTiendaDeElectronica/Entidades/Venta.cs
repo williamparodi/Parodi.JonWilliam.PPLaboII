@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace Entidades
@@ -148,20 +147,23 @@ namespace Entidades
         {
             if (listaProductos is not null && listaCompras is not null && listaProductos.Any() && listaCompras.Any())
             {
-                if (ConfirmaVenta(listaCompras))
+
+                foreach (Productos p in listaProductos)
                 {
-                    foreach (Productos p in listaProductos)
+                    foreach (Productos x in listaCompras)
                     {
-                        if (listaCompras.Contains(p))
+                        if (p == x)
                         {
-                            p.Cantidad--;
+                            p.Cantidad -= x.Cantidad;
                         }
+
                     }
                 }
+
             }
         }
-        
+
 
     }
-        
+
 }

@@ -38,8 +38,7 @@ namespace Vistas
         /// <param name="e"></param> 
         private void cmb_BuscarCategoriaStock_SelectedIndexChanged(object sender, EventArgs e)
         {
-            AdminitradorStock adminitradorStock = new AdminitradorStock(this.listaDeProductos);
-            this.listaFiltrada = adminitradorStock.FiltrarCategoria(cmb_BuscarCategoriaStock.Text);
+            this.listaFiltrada = adminitradorStock.FiltrarCategoria(cmb_BuscarCategoriaStock.Text,this.listaDeProductos);
             this.dtgv_DatagridFiltrada.DataSource = this.listaFiltrada;
         }
 
@@ -75,7 +74,6 @@ namespace Vistas
                 }
                 else
                 {
-                    //AgregarDatosAProducto(txt_NombreStock.Text, txt_CantidadStock.Text, txt_PrecioStock.Text, cmb_BuscarCategoriaStock.Text);
                     this.listaDeProductos.Add(this.nuevoProducto);
                 }
                

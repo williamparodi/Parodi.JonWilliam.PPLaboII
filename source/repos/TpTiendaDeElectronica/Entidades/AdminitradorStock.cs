@@ -151,13 +151,13 @@ namespace Entidades
         /// </summary>
         /// <param name="categoria"></param>
         /// <returns></returns> La lista filtrada
-        public List<Productos> FiltrarCategoria(string categoria)
+        public List<Productos> FiltrarCategoria(string categoria,List<Productos> listaDeProductos)
         {
             List<Productos> auxListStock = new List<Productos>();
 
             if (!string.IsNullOrEmpty(categoria))
             {
-                foreach (Productos producto in this.listaProductos)
+                foreach (Productos producto in listaDeProductos)
                 {
                     if (producto.Categoria.ToString() == categoria)
                     {
