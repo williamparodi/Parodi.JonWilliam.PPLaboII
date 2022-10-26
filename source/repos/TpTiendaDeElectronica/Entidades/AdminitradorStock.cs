@@ -174,13 +174,13 @@ namespace Entidades
         /// </summary>
         /// <param name="nombre"></param>
         /// <returns></returns> lista filrada 
-        public List<Productos> FiltrarPorNombre(string nombre)
+        public List<Productos> FiltrarPorNombre(string nombre,List<Productos> listaDeProductos)
         {
             List<Productos> auxListStock = new List<Productos>();
 
             if (!string.IsNullOrEmpty(nombre))
             {
-                foreach (Productos producto in this.listaProductos)
+                foreach (Productos producto in listaDeProductos)
                 {
                     if (producto.Nombre.ToLower() == nombre.ToLower())
                     {

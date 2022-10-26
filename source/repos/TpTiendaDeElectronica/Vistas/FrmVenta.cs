@@ -65,7 +65,6 @@ namespace Vistas
             if (fila != -1)
             {
                 AgregarAlCarro(this.listaFiltrada[fila]);
-                //this.listaFiltrada.Add(adminitradorStock.ListaDeProductos[fila]);
             }
         }
 
@@ -154,14 +153,12 @@ namespace Vistas
         private void btn_BuscarNombre_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txt_NombreProducto.Text))
-            {
-                AdminitradorStock adminitrador = new AdminitradorStock(listaDeProductos);
+            {   
+                this.listaFiltrada = adminitradorStock.FiltrarPorNombre(txt_NombreProducto.Text,listaDeProductos);
 
-                this.adminitradorStock.ListaDeProductos = adminitrador.FiltrarPorNombre(txt_NombreProducto.Text);
-
-                if (this.adminitradorStock.ListaDeProductos.Count > 0)
+                if (this.listaFiltrada.Count > 0)
                 {
-                    this.dtgvListaPorductos.DataSource = adminitradorStock.ListaDeProductos;
+                    this.dtgvListaPorductos.DataSource = this.listaFiltrada;
                 }
             }
         }
