@@ -154,7 +154,7 @@ namespace Entidades
                     {
                         if (p == x)
                         {
-                            p.Cantidad -= x.Cantidad;
+                            p.Cantidad -= x.Cantidad;                    
                         }
 
                     }

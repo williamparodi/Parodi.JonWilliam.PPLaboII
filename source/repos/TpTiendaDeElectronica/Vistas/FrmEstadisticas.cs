@@ -16,11 +16,6 @@ namespace Vistas
         private double promedioGabinete;
         private double promedioPerisferico;
         private double promedioMother;
-        private Productos productoMasVendidoCatMirco;
-        private Productos productoMasVendidoCatGabinete;
-        private Productos productoMasVendidoCatMother;
-        private Productos productoMasVendidoCatPerisfericos;
-        private Productos productoMasVendidoCatMonitor;
 
         public FrmEstadisticas(List<Productos> listaDeProductos)
         {
@@ -33,11 +28,7 @@ namespace Vistas
             this.promedioGabinete = 0;
             this.promedioPerisferico = 0;
             this.promedioMother = 0;
-            this.productoMasVendidoCatMirco = new Productos();
-            this.productoMasVendidoCatGabinete = new Productos();
-            this.productoMasVendidoCatMother = new Productos();
-            this.productoMasVendidoCatPerisfericos = new Productos();
-            this.productoMasVendidoCatMonitor = new Productos();
+           
         }
 
         public FrmEstadisticas(List<Productos> listaDeProductos, int cantidadVentas, double gananciaTotal) : this(listaDeProductos)
@@ -62,9 +53,6 @@ namespace Vistas
 
             MuestraMasVendidosTag(listaDeProductos);
         }
-
-        
-
 
 
         private void button1_Click(object sender, EventArgs e)
@@ -205,7 +193,7 @@ namespace Vistas
 
         public Productos SacaProdMasVendioCatMirco(List<Productos> listaProducto)
         {
-            
+
             List<Productos> lista2 = new List<Productos>();
             Productos producto = new Productos();
 
@@ -213,15 +201,14 @@ namespace Vistas
             {
                 if (p.Categoria == ECategorias.Microprocesador)
                 {
-                    lista2.Add(p);
+                    SumarCantidad(p, lista2);
+                    
                 }
             }
 
-
             if (lista2.Count > 0)
             {
-                lista2.GroupBy(x => x);
-              
+                lista2.Max(x => x.Cantidad);
                 producto = lista2.First();
             }
 
@@ -237,14 +224,14 @@ namespace Vistas
             {
                 if (p.Categoria == ECategorias.Gabinete)
                 {
-                    lista2.Add(p);
+                    SumarCantidad(p, lista2);
                 }
             }
 
 
             if (lista2.Count > 0)
             {
-                lista2.GroupBy(x => x);
+                lista2.Max(x => x.Cantidad);
                 producto = lista2.First();
             }
 
@@ -260,13 +247,15 @@ namespace Vistas
             {
                 if (p.Categoria == ECategorias.Mother)
                 {
-                    lista2.Add(p);
+                    SumarCantidad(p, lista2);
+                    
                 }
             }
 
             if (lista2.Count > 0)
             {
-                lista2.GroupBy(x => x);
+                
+                lista2.Max(x => x.Cantidad);
                 producto = lista2.First();
             }
 
@@ -283,14 +272,15 @@ namespace Vistas
             {
                 if (p.Categoria == ECategorias.Monitor)
                 {
-                    lista2.Add(p);
+                    SumarCantidad(p, lista2);
+                   
                 }
             }
 
 
             if (lista2.Count > 0)
             {
-                lista2.GroupBy(x => x);
+                lista2.Max(x => x.Cantidad);
                 producto = lista2.First();
             }
 
@@ -306,13 +296,13 @@ namespace Vistas
             {
                 if (p.Categoria == ECategorias.Perisfericos)
                 {
-                    lista2.Add(p);
+                    SumarCantidad(p, lista2);
                 }
             }
 
             if (lista2.Count > 0)
             {
-                lista2.GroupBy(x => x);
+                lista2.Max(x => x);
                 producto = lista2.First();
             }
 
@@ -323,6 +313,12 @@ namespace Vistas
         {
             List<Productos> listaMasVendido = new List<Productos>();
             List<Productos> auxLista = new List<Productos>();
+            Productos productoMasVendidoCatMirco = new Productos();
+            Productos productoMasVendidoCatGabinete = new Productos();
+            Productos productoMasVendidoCatMother = new Productos();
+            Productos productoMasVendidoCatPerisfericos = new Productos();
+            Productos productoMasVendidoCatMonitor = new Productos();
+
             if (listaProductos is not null)
             {
                 productoMasVendidoCatMonitor = SacaProdMasVendioCatMonitor(listaProductos);
@@ -330,25 +326,46 @@ namespace Vistas
                 productoMasVendidoCatMirco = SacaProdMasVendioCatMirco(listaProductos);
                 productoMasVendidoCatPerisfericos = SacaProdMasVendioCatPerisfericos(listaProductos);
                 productoMasVendidoCatMother = SacaProdMasVendioMother(listaProductos);
+                
                 auxLista.Add(productoMasVendidoCatMonitor);
                 auxLista.Add(productoMasVendidoCatGabinete);
                 auxLista.Add(productoMasVendidoCatMirco);
                 auxLista.Add(productoMasVendidoCatPerisfericos);
                 auxLista.Add(productoMasVendidoCatMother);
-
-                foreach(Productos p in auxLista)
+                
+                foreach (Productos p in auxLista)
                 {
-                    if(p.Cantidad >0)
+                    if (p.Cantidad > 0)
                     {
                         listaMasVendido.Add(p);
                     }
                 }
-
+               
                 this.dataGridView1.DataSource = null;
                 this.dataGridView1.DataSource = listaMasVendido;
 
             }
 
+        }
+
+        public void SumarCantidad(Productos producto, List<Productos> listaProducto)
+        {
+            bool flag = false;
+            if(listaProducto is not null)
+            {
+                foreach(Productos p in listaProducto)
+                {
+                    if(producto.Nombre == p.Nombre)
+                    {
+                        p.Cantidad += producto.Cantidad;
+                        flag = true;
+                    }
+                }
+                if(!flag)
+                {
+                    listaProducto.Add(producto);
+                }
+            }
         }
     }
 }

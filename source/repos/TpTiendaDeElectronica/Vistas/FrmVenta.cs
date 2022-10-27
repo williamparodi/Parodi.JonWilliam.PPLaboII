@@ -41,6 +41,10 @@ namespace Vistas
         {
             this.dtgvListaPorductos.DataSource = null;
             this.cmb_FormaDePago.SelectedIndex = 0;
+            this.txt_NombreCliente.Text = "Pablo";
+            this.txt_Apellido.Text = "Gutierrez";
+            this.txt_Dni.Text = 31555666.ToString();
+            this.txt_Telefono.Text = 4562123.ToString();
         }
 
         /// <summary>
@@ -111,19 +115,23 @@ namespace Vistas
 
                 if (frmDetalleCompra.confirma)
                 {
+                    
                     ventaFiltrada.DescontarUnidad(listaDeProductos, listaDeCarro);
                     this.gananciaTotal += double.Parse(this.txt_PrecioTotal.Text);
                     cantidadVentas++;
                     AgregaAListaCompleta(listaDeCarro);
                     listaActualizada = listaDeProductos;
+
                     if(cliente.ValidaDatosCliente(txt_NombreCliente.Text,txt_Apellido.Text,txt_Dni.Text,txt_Telefono.Text))
                     {
                         listaFacturas.Add(Factura.CrearFactura(listaDeCarro, cliente, DateTime.Parse(txt_Fecha.Text),double.Parse(this.txt_PrecioTotal.Text)));
+                       
                     }
                     else
                     {
                         MessageBox.Show("Datos cliente erroneos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+
                     FrmEstadisticas frmEstadisticas = new FrmEstadisticas(listaCompleta, cantidadVentas, gananciaTotal);
                     this.Show();
                     this.dtgv_CarroDeCompras.Columns.Clear();
@@ -179,7 +187,8 @@ namespace Vistas
             {
                 foreach(Productos prod in listaProductos)
                 {
-                    listaCompleta.Add(prod);
+                    //listaCompleta.Add(prod);
+                    SumarCantidad(prod,listaCompleta);
                 }
             }
         }
@@ -216,8 +225,26 @@ namespace Vistas
             }
 
         }
-       
-       
+
+        public void SumarCantidad(Productos producto, List<Productos> listaProducto)
+        {
+            bool flag = false;
+            if (listaProducto is not null)
+            {
+                foreach (Productos p in listaProducto)
+                {
+                    if (producto.Nombre == p.Nombre)
+                    {
+                        p.Cantidad += producto.Cantidad;
+                        flag = true;
+                    }
+                }
+                if (!flag)
+                {
+                    listaProducto.Add(producto);
+                }
+            }
+        }
 
 
     }
