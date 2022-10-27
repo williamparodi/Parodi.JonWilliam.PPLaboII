@@ -1,25 +1,21 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Entidades;
 
 namespace Vistas
 {
     public partial class FrmDetalleCompra : Form
     {
         public bool confirma;
-        private List<string> facturas = new List<string>();
-        public double precioTotal = 0; 
+        static  List<string> facturas = new List<string>();
+        public double precioTotal = 0;
         public FrmDetalleCompra()
         {
             InitializeComponent();
-            
+
         }
 
         /// <summary>
@@ -27,28 +23,28 @@ namespace Vistas
         /// </summary>
         /// <param name="listaFiltrada"></param>
         /// <param name="precio"></param>
-        public FrmDetalleCompra(List<Productos> listaFiltrada,string precio) : this()
+        public FrmDetalleCompra(List<Productos> listaFiltrada, string precio) : this()
         {
             StringBuilder sb = new StringBuilder();
             double precioASumar = 0;
             sb.AppendLine("Listado de Productos : ");
-            foreach(Productos p in listaFiltrada)
+            foreach (Productos p in listaFiltrada)
             {
                 sb.Append(p.MostrarProducto());
                 sb.AppendLine($" Cantidad : {p.Cantidad}");
             }
             sb.AppendLine($"Precio Total :{precio}");
-            if(double.TryParse(precio,out precioASumar))
+            if (double.TryParse(precio, out precioASumar))
             {
                 this.precioTotal += precioASumar;
             }
-            
+
             this.lbl_ListaProductos.Text = sb.ToString();
         }
 
-        public FrmDetalleCompra(List<Productos> listaFiltrada, string precio,List<string> listaFacturas) : this(listaFiltrada,precio)
+        public FrmDetalleCompra(List<Productos> listaFiltrada, string precio, List<string> listaFacturas) : this(listaFiltrada, precio)
         {
-            this.facturas = listaFacturas;
+            facturas = listaFacturas;
         }
 
         /// <summary>
@@ -82,16 +78,18 @@ namespace Vistas
 
         private void btn_HistorialFacturas_Click(object sender, EventArgs e)
         {
+            
             StringBuilder sb = new StringBuilder();
-            if(this.facturas is not null && this.facturas.Any())
+   
+            if(facturas is not null && facturas.Any())
             {
-                foreach(var item in this.facturas)
+                foreach(var item in facturas)
                 {
                     sb.AppendLine(item.ToString());
                 }
             }
-            MessageBox.Show(sb.ToString(), "Listado facturas", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
+            MessageBox.Show(sb.ToString(), "Listado facturas", MessageBoxButtons.OK, MessageBoxIcon.Information);         
+          
         }
     }
 }

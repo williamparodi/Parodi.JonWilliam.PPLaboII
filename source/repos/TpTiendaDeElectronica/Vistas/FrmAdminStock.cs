@@ -223,6 +223,12 @@ namespace Vistas
 
             return retorno;
         }
+
+        private void btn_ComprarPorductos_Click(object sender, EventArgs e)
+        {
+            FrmComprarPorductos frmComprar = new FrmComprarPorductos(listaDeProductos);
+            frmComprar.Show();
+        }
     }
 
 }

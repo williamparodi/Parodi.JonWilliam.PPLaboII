@@ -133,6 +133,7 @@ namespace Vistas
                         cantidadVentas++;
                         AgregaAListaCompleta(listaDeCarro);
                         listaActualizada = listaDeProductos;
+                        
                         FrmEstadisticas frmEstadisticas = new FrmEstadisticas(listaCompleta, cantidadVentas, gananciaTotal,listaActualizada);
                         this.Show();
                         this.dtgv_CarroDeCompras.Columns.Clear();

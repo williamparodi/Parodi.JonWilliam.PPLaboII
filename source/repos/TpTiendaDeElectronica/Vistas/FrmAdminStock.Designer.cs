@@ -45,6 +45,7 @@
             this.dtgv_DatagridFiltrada = new System.Windows.Forms.DataGridView();
             this.btn_SalirStock = new System.Windows.Forms.Button();
             this.txt_NombreStock = new System.Windows.Forms.TextBox();
+            this.btn_ComprarPorductos = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv_DatagridFiltrada)).BeginInit();
             this.SuspendLayout();
             // 
@@ -209,12 +210,23 @@
             this.txt_NombreStock.Size = new System.Drawing.Size(121, 23);
             this.txt_NombreStock.TabIndex = 18;
             // 
+            // btn_ComprarPorductos
+            // 
+            this.btn_ComprarPorductos.Location = new System.Drawing.Point(532, 110);
+            this.btn_ComprarPorductos.Name = "btn_ComprarPorductos";
+            this.btn_ComprarPorductos.Size = new System.Drawing.Size(152, 23);
+            this.btn_ComprarPorductos.TabIndex = 19;
+            this.btn_ComprarPorductos.Text = "Comprar Productos";
+            this.btn_ComprarPorductos.UseVisualStyleBackColor = true;
+            this.btn_ComprarPorductos.Click += new System.EventHandler(this.btn_ComprarPorductos_Click);
+            // 
             // FrmAdminStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Thistle;
             this.ClientSize = new System.Drawing.Size(800, 502);
+            this.Controls.Add(this.btn_ComprarPorductos);
             this.Controls.Add(this.txt_NombreStock);
             this.Controls.Add(this.btn_SalirStock);
             this.Controls.Add(this.dtgv_DatagridFiltrada);
@@ -259,5 +271,6 @@
         private System.Windows.Forms.DataGridView dtgv_DatagridFiltrada;
         private System.Windows.Forms.Button btn_SalirStock;
         private System.Windows.Forms.TextBox txt_NombreStock;
+        private System.Windows.Forms.Button btn_ComprarPorductos;
     }
 }
