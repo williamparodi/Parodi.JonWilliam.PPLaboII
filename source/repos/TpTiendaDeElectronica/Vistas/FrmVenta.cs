@@ -68,7 +68,15 @@ namespace Vistas
             this.fila = e.RowIndex;
             if (fila != -1)
             {
-                AgregarAlCarro(this.listaFiltrada[fila]);
+                if (this.listaFiltrada[fila].Cantidad >0)
+                {
+                    AgregarAlCarro(this.listaFiltrada[fila]);
+                }
+                else
+                {
+                    MessageBox.Show("Ese producto no tiene stock", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+               
             }
         }
 
@@ -125,7 +133,7 @@ namespace Vistas
                         cantidadVentas++;
                         AgregaAListaCompleta(listaDeCarro);
                         listaActualizada = listaDeProductos;
-                        FrmEstadisticas frmEstadisticas = new FrmEstadisticas(listaCompleta, cantidadVentas, gananciaTotal);
+                        FrmEstadisticas frmEstadisticas = new FrmEstadisticas(listaCompleta, cantidadVentas, gananciaTotal,listaActualizada);
                         this.Show();
                         this.dtgv_CarroDeCompras.Columns.Clear();
                         this.listaDeCarro.Clear();

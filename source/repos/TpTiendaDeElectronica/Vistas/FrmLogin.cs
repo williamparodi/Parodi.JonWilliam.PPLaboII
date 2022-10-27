@@ -94,7 +94,7 @@ namespace Vistas
             }
             else if (cmb_Usuario.Text == contador.GetUsuario() && txt_Password.Text == contador.GetPassword())
             {
-                FrmEstadisticas frmEstadisticas = new FrmEstadisticas(listaProductosVendidos, cantidadVentas, gananciaTotal);
+                FrmEstadisticas frmEstadisticas = new FrmEstadisticas(listaProductosVendidos, cantidadVentas, gananciaTotal,listaActualizada);
                 frmEstadisticas.Show();
                 this.Hide();
             }

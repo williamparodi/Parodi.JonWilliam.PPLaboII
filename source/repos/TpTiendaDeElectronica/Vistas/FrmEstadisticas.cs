@@ -9,6 +9,7 @@ namespace Vistas
     public partial class FrmEstadisticas : Form
     {
         private List<Productos> listaCompleta; //lista con productos vendidos
+        private List<Productos> listaActualizada;
         private int cantidadVentas;
         private double gananciaTotal;
         private double promedioMicro;
@@ -21,6 +22,7 @@ namespace Vistas
         {
             InitializeComponent();
             this.listaCompleta = new List<Productos>();
+            listaActualizada = new List<Productos>();
             this.cantidadVentas = 0;
             this.gananciaTotal = 0;
             this.promedioMicro = 0;
@@ -28,7 +30,7 @@ namespace Vistas
             this.promedioGabinete = 0;
             this.promedioPerisferico = 0;
             this.promedioMother = 0;
-           
+            
         }
 
         public FrmEstadisticas(List<Productos> listaDeProductos, int cantidadVentas, double gananciaTotal) : this(listaDeProductos)
@@ -54,10 +56,16 @@ namespace Vistas
             MuestraMasVendidosTag(listaDeProductos);
         }
 
+        public FrmEstadisticas(List<Productos> listaDeProductos, int cantidadVentas, double gananciaTotal,List<Productos> listaProActualizada) : this(listaDeProductos,cantidadVentas,gananciaTotal)
+        {
+            listaActualizada = listaProActualizada;
+        }
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FrmLogin frmLogin = new FrmLogin(listaCompleta, cantidadVentas, gananciaTotal);
+            FrmLogin frmLogin = new FrmLogin(listaCompleta, cantidadVentas, gananciaTotal,listaActualizada);
             frmLogin.Show();
             this.Close();
         }
@@ -302,7 +310,7 @@ namespace Vistas
 
             if (lista2.Count > 0)
             {
-                lista2.Max(x => x);
+                lista2.Max(x => x.Cantidad);
                 producto = lista2.First();
             }
 

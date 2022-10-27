@@ -8,7 +8,7 @@ namespace Entidades
 {
     public static class Factura
     {
-        static int numeroFactura = 0;
+        static int numeroFactura = 001;
        
         public static string CrearFactura(List<Productos> listaDeCompras,Cliente cliente,DateTime fechaCompra,double precioTotal)
         {
