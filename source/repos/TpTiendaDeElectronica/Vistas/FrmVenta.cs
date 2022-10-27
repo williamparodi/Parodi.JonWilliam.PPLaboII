@@ -106,46 +106,46 @@ namespace Vistas
         {
             StringBuilder sb = new StringBuilder("");
             sb.AppendLine("No hay stock suficiente");
-           
+            
             if (ventaFiltrada.ConfirmaVenta(listaDeCarro) && listaDeCarro is not null && listaDeCarro.Count > 0)// aca agregar agrgar count >0
             {
-                FrmDetalleCompra frmDetalleCompra = new FrmDetalleCompra(listaDeCarro, this.txt_PrecioTotal.Text,listaFacturas);
                 Cliente cliente = new Cliente();
-                frmDetalleCompra.ShowDialog();
 
-                if (frmDetalleCompra.confirma)
+                if (cliente.ValidaDatosCliente(txt_NombreCliente.Text, txt_Apellido.Text, txt_Dni.Text, txt_Telefono.Text))
                 {
-                    
-                    ventaFiltrada.DescontarUnidad(listaDeProductos, listaDeCarro);
-                    this.gananciaTotal += double.Parse(this.txt_PrecioTotal.Text);
-                    cantidadVentas++;
-                    AgregaAListaCompleta(listaDeCarro);
-                    listaActualizada = listaDeProductos;
+                    listaFacturas.Add(Factura.CrearFactura(listaDeCarro, cliente, DateTime.Parse(txt_Fecha.Text), double.Parse(this.txt_PrecioTotal.Text)));
+                    FrmDetalleCompra frmDetalleCompra = new FrmDetalleCompra(listaDeCarro, this.txt_PrecioTotal.Text, listaFacturas);
+                    frmDetalleCompra.ShowDialog();
 
-                    if(cliente.ValidaDatosCliente(txt_NombreCliente.Text,txt_Apellido.Text,txt_Dni.Text,txt_Telefono.Text))
+                    if (frmDetalleCompra.confirma)
                     {
-                        listaFacturas.Add(Factura.CrearFactura(listaDeCarro, cliente, DateTime.Parse(txt_Fecha.Text),double.Parse(this.txt_PrecioTotal.Text)));
-                       
+
+                        ventaFiltrada.DescontarUnidad(listaDeProductos, listaDeCarro);
+                        this.gananciaTotal += double.Parse(this.txt_PrecioTotal.Text);
+                        cantidadVentas++;
+                        AgregaAListaCompleta(listaDeCarro);
+                        listaActualizada = listaDeProductos;
+                        FrmEstadisticas frmEstadisticas = new FrmEstadisticas(listaCompleta, cantidadVentas, gananciaTotal);
+                        this.Show();
+                        this.dtgv_CarroDeCompras.Columns.Clear();
+                        this.listaDeCarro.Clear();
+                        this.txt_PrecioTotal.Text = string.Empty;
+                        this.txt_Fecha.Text = DateTime.Now.ToString();
                     }
                     else
                     {
-                        MessageBox.Show("Datos cliente erroneos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Show();
+                        this.dtgv_CarroDeCompras.Columns.Clear();
+                        this.listaDeCarro.Clear();
+                        this.txt_PrecioTotal.Text = string.Empty;
                     }
 
-                    FrmEstadisticas frmEstadisticas = new FrmEstadisticas(listaCompleta, cantidadVentas, gananciaTotal);
-                    this.Show();
-                    this.dtgv_CarroDeCompras.Columns.Clear();
-                    this.listaDeCarro.Clear();
-                    this.txt_PrecioTotal.Text = string.Empty;
-                    this.txt_Fecha.Text = DateTime.Now.ToString(); 
                 }
                 else
                 {
-                    this.Show();
-                    this.dtgv_CarroDeCompras.Columns.Clear();
-                    this.listaDeCarro.Clear();
-                    this.txt_PrecioTotal.Text = string.Empty;
+                    MessageBox.Show("Datos cliente erroneos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+               
             }
             else
             {
@@ -187,7 +187,6 @@ namespace Vistas
             {
                 foreach(Productos prod in listaProductos)
                 {
-                    //listaCompleta.Add(prod);
                     SumarCantidad(prod,listaCompleta);
                 }
             }
