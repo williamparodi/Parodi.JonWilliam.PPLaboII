@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEstadisticas));
             this.txt_CantidadVentas = new System.Windows.Forms.TextBox();
             this.lbl_CantidadVentas = new System.Windows.Forms.Label();
             this.btn_Salir = new System.Windows.Forms.Button();
@@ -216,6 +217,7 @@
             this.Controls.Add(this.btn_Salir);
             this.Controls.Add(this.lbl_CantidadVentas);
             this.Controls.Add(this.txt_CantidadVentas);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmEstadisticas";
             this.Text = "Estadisticas";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
