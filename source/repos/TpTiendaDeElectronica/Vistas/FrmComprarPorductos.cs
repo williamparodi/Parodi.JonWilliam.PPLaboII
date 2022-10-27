@@ -88,6 +88,19 @@ namespace Vistas
             this.dgtv_Carro.DataSource = listaCarro;
         }
 
-
+        private void btn_Comprar_Click(object sender, EventArgs e)
+        {
+            if(this.listaCarro is not null)
+            {
+                foreach(Productos p in listaCarro)
+                {
+                    this.listaStock.Add(p);
+                }
+                FrmAdminStock frmAdminStock = new FrmAdminStock(listaStock);
+                frmAdminStock.Show();
+                this.Hide();
+            }
+            
+        }
     }
 }

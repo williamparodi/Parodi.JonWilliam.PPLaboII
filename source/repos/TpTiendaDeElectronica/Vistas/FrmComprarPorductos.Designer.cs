@@ -107,6 +107,7 @@
             this.btn_Comprar.TabIndex = 6;
             this.btn_Comprar.Text = "Comprar";
             this.btn_Comprar.UseVisualStyleBackColor = true;
+            this.btn_Comprar.Click += new System.EventHandler(this.btn_Comprar_Click);
             // 
             // FrmComprarPorductos
             // 
